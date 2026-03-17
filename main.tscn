@@ -18,6 +18,7 @@ glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
 albedo_texture = ExtResource("1_0xm2m")
+uv1_scale = Vector3(6.77, 6.77, 6.77)
 uv1_triplanar = true
 texture_filter = 0
 
@@ -38,6 +39,7 @@ shadow_enabled = true
 
 [node name="Floor" type="CSGBox3D" parent="." unique_id=121667866]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.096, -1.5, 0.535)
+calculate_tangents = false
 use_collision = true
 size = Vector3(29.299194, 3, 22.97406)
 material = SubResource("StandardMaterial3D_h2yge")
@@ -86,4 +88,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.80457664, 0.5346867, 6.060
 [node name="GridMap" type="GridMap" parent="obstacles" unique_id=211108263]
 
 [node name="Player" parent="." unique_id=694723809 instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47004962, 0.057801247, -1.2344806)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42272407, 0.0028638393, -1.254448)
