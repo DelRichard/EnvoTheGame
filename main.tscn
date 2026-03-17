@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://ywed3crfdc7h"]
+
+[ext_resource type="PackedScene" uid="uid://bfm5upmg7jv02" path="res://scenes/player.tscn" id="1_ig7tw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a02cp"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_go701"]
+sky_material = SubResource("ProceduralSkyMaterial_a02cp")
+
+[sub_resource type="Environment" id="Environment_5a7ea"]
+background_mode = 2
+sky = SubResource("Sky_go701")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_yp4wr"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
+albedo_color = Color(0.64391875, 0, 0.24590713, 1)
+
+[node name="Main" type="Node3D" unique_id=1172873568]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=184488807]
+environment = SubResource("Environment_5a7ea")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1180688813]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Ground" type="CSGMesh3D" parent="." unique_id=835721592]
+transform = Transform3D(10, 0, 0, 0, 0.016, 0, 0, 0, 10, 0, 0, 0)
+use_collision = true
+mesh = SubResource("BoxMesh_yp4wr")
+
+[node name="Player" parent="." unique_id=694723809 instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19537064, 0)
+
+[node name="obstacles" type="CSGCombiner3D" parent="." unique_id=1067244235]
+material_override = SubResource("StandardMaterial3D_0xm2m")
+use_collision = true
+
+[node name="platform" type="CSGBox3D" parent="obstacles" unique_id=587730288]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.994273, 0.46808565, -7.651124)
+size = Vector3(6.96875, 1, 3.6660767)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="obstacles/platform" unique_id=1314273180]
+transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0.56695557, -0.48987237, 2.5456371)
+size = Vector3(2.1339111, 2.2192383, 1)
+
+[node name="ramp" type="CSGBox3D" parent="obstacles" unique_id=1626775083]
+transform = Transform3D(0.6843817, 0, 1.8684162, 0, 1, 0, -0.72912395, 0, 1.753762, -5.654245, 0.9886968, 2.8366613)
+size = Vector3(4.562256, 2.2822266, 1)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="obstacles/ramp" unique_id=543729950]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -1.5858854, 0)
+operation = 2
+radius = 1.7280273
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="obstacles/ramp" unique_id=91175638]
+transform = Transform3D(0.9116617, -0.41094163, 0, 0.41094163, 0.9116617, 0, 0, 0, 0.39023635, -4.654129, -0.4808494, 0.0077798367)
+size = Vector3(5.665039, 1, 2.567505)
+
+[node name="stairs" type="CSGBox3D" parent="obstacles" unique_id=318798034]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.255106, 0.4413452, 3.6621046)
+size = Vector3(4.165039, 1.8826904, 2.6274414)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="obstacles/stairs" unique_id=1232746329]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.96447754, 1.3709671, 0)
+size = Vector3(2.236084, 1.2930298, 2.6274414)
+
+[node name="box" type="CSGBox3D" parent="obstacles" unique_id=2078789145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.80457664, 0.5346867, 6.0608864)

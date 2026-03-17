@@ -17,7 +17,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="Envo"
 run/main_scene="uid://ywed3crfdc7h"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://assets/Icons/icon.svg"
+config/icon="res://assets/icons/icon.svg"
 
 [input]
 
