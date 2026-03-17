@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://crcvc8xkq64ng"]
+[gd_scene format=3 uid="uid://cwpwkc07q6p12"]
 
-[ext_resource type="Script" uid="uid://c74sm8g20ix12" path="res://Scripts/player_movement.gd" id="1_cvnsp"]
+[ext_resource type="Script" uid="uid://c74sm8g20ix12" path="res://Scripts/player_movement.gd" id="1_3mip4"]
 [ext_resource type="Texture2D" uid="uid://rdasgdh5nkea" path="res://assets/CharacterModels/Player V2.png" id="1_v0iea"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cvnsp"]
@@ -237,7 +237,7 @@ height = 0.40361786
 [node name="Player" type="Node3D" unique_id=694723809]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1327594500]
-script = ExtResource("1_cvnsp")
+script = ExtResource("1_3mip4")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="CharacterBody3D" unique_id=1056046344]
 billboard = 1
