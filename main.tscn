@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b8akfuedm6mnv" path="res://assets/textures/Test grass.png" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bfm5upmg7jv02" path="res://scenes/player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://cdeka7re8b7wd" path="res://scenes/grass.tscn" id="3_h2yge"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a02cp"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -89,3 +90,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.80457664, 0.5346867, 6.060
 
 [node name="Player" parent="." unique_id=694723809 instance=ExtResource("1_ig7tw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42272407, 0.0028638393, -1.254448)
+
+[node name="Grass" parent="." unique_id=827563450 instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2556046, 0.12788041, -0.14929211)
+
+[node name="Grass2" parent="." unique_id=1475652732 instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.92785877, 0.14011048, -0.30932087)
+
+[node name="Grass3" parent="." unique_id=255071323 instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.563907, 0.12619933, -1.4079423)
+
+[node name="Grass4" parent="." unique_id=433681871 instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.923604, 0.13524055, -0.88952595)
+
+[node name="Grass5" parent="." unique_id=1976452944 instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1100062, 0.13524055, -0.6223009)

@@ -5,8 +5,8 @@ extends CharacterBody3D
 @onready var camera_3d: Camera3D = %Camera3D
 
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.8
+const SPEED = 2.0
+const JUMP_VELOCITY = 2.0
 const SENSITIVITY = 0.003
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")

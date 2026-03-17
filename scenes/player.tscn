@@ -232,7 +232,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v0iea"]
 radius = 0.11035156
-height = 0.40361786
+height = 0.4045782
 
 [node name="Player" type="Node3D" unique_id=694723809]
 
@@ -250,7 +250,7 @@ animation = &"jump"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=513218477]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02337265, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022892475, 0)
 shape = SubResource("CapsuleShape3D_v0iea")
 
 [node name="CameraPivot" type="Node3D" parent="CharacterBody3D" unique_id=1552578128]
@@ -263,4 +263,4 @@ spring_length = 0.5
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/CameraPivot/SpringArm3D" unique_id=52856436]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.23)
+transform = Transform3D(1, 0, 0, 0, 0.94389325, -0.3302509, 0, 0.3302509, 0.94389325, 0, -0.14872594, 0.2784478)
