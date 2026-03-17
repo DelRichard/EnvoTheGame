@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://crcvc8xkq64ng"]
+[gd_scene format=3 uid="uid://bfm5upmg7jv02"]
 
 [ext_resource type="Script" uid="uid://c74sm8g20ix12" path="res://Scripts/player_movement.gd" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://rdasgdh5nkea" path="res://assets/CharacterModels/Player V2.png" id="1_v0iea"]
+[ext_resource type="Texture2D" uid="uid://rdasgdh5nkea" path="res://assets/character_models/Player V2.png" id="1_v0iea"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cvnsp"]
 atlas = ExtResource("1_v0iea")
@@ -237,17 +237,30 @@ height = 0.40361786
 [node name="Player" type="Node3D" unique_id=694723809]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1327594500]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18219851, 0)
 script = ExtResource("1_cvnsp")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="CharacterBody3D" unique_id=1056046344]
-billboard = 1
+unique_name_in_owner = true
+billboard = 2
+alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_83xs0")
 animation = &"jump"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=513218477]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02337265, 0)
 shape = SubResource("CapsuleShape3D_v0iea")
 
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=52856436]
-transform = Transform3D(1, 0, 0, 0, 0.9645805, 0.2637889, 0, -0.2637889, 0.9645805, 0, 0.2931038, 0.6811421)
+[node name="CameraPivot" type="Node3D" parent="CharacterBody3D" unique_id=1552578128]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.047547624, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D/CameraPivot" unique_id=613432893]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.8994663, 0.43699017, 0, -0.43699017, 0.8994663, 0, 0, 0)
+spring_length = 0.5
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/CameraPivot/SpringArm3D" unique_id=52856436]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.23)

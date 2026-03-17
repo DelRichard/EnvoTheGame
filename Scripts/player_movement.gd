@@ -1,8 +1,9 @@
 extends CharacterBody3D
 
-@onready var animated_sprite_3d: AnimatedSprite3D = $AnimatedSprite3D
-@onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
-@onready var camera_3d: Camera3D = $Camera3D
+@onready var animated_sprite_3d: AnimatedSprite3D = %AnimatedSprite3D
+@onready var collision_shape_3d: CollisionShape3D = %CollisionShape3D
+@onready var camera_3d: Camera3D = %Camera3D
+
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.8

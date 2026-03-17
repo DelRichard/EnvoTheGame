@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ywed3crfdc7h"]
 
-[ext_resource type="PackedScene" uid="uid://crcvc8xkq64ng" path="res://scenes/player.tscn" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://b8akfuedm6mnv" path="res://assets/textures/Test grass.png" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bfm5upmg7jv02" path="res://scenes/player.tscn" id="1_ig7tw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a02cp"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -15,8 +16,13 @@ sky = SubResource("Sky_go701")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="BoxMesh" id="BoxMesh_yp4wr"]
-size = Vector3(5, 1, 5)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
+albedo_texture = ExtResource("1_0xm2m")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
+albedo_color = Color(0.48875344, 0.2716514, 0.12578514, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
 albedo_color = Color(0.64391875, 0, 0.24590713, 1)
@@ -30,13 +36,16 @@ environment = SubResource("Environment_5a7ea")
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Ground" type="CSGMesh3D" parent="." unique_id=835721592]
-transform = Transform3D(10, 0, 0, 0, 0.016, 0, 0, 0, 10, 0, 0, 0)
+[node name="Floor" type="CSGBox3D" parent="." unique_id=121667866]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.096, -1.5, 0.535)
 use_collision = true
-mesh = SubResource("BoxMesh_yp4wr")
+size = Vector3(29.299194, 3, 22.97406)
+material = SubResource("StandardMaterial3D_h2yge")
 
-[node name="Player" parent="." unique_id=694723809 instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19537064, 0)
+[node name="CSGBox3D" type="CSGBox3D" parent="Floor" unique_id=389340612]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1538157, 1.5760152, -0.6633311)
+operation = 2
+material = SubResource("StandardMaterial3D_1bvp3")
 
 [node name="obstacles" type="CSGCombiner3D" parent="." unique_id=1067244235]
 material_override = SubResource("StandardMaterial3D_0xm2m")
@@ -73,3 +82,8 @@ size = Vector3(2.236084, 1.2930298, 2.6274414)
 
 [node name="box" type="CSGBox3D" parent="obstacles" unique_id=2078789145]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.80457664, 0.5346867, 6.0608864)
+
+[node name="GridMap" type="GridMap" parent="obstacles" unique_id=211108263]
+
+[node name="Player" parent="." unique_id=694723809 instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47004962, 0.057801247, -1.2344806)
