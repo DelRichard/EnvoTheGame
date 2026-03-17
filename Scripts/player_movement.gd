@@ -6,7 +6,7 @@ extends CharacterBody3D
 
 
 const SPEED = 2.0
-const JUMP_VELOCITY = 2.0
+const JUMP_VELOCITY = 3.5
 const SENSITIVITY = 0.003
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -38,7 +38,7 @@ func _unhandled_input(event):
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-		if is_jumping and animated_sprite_3d.frame == 1:
+		if is_jumping and animated_sprite_3d.frame == 2:
 			animated_sprite_3d.pause()
 	else:
 		if is_jumping:

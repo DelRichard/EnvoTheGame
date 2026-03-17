@@ -2,7 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://b8akfuedm6mnv" path="res://assets/textures/Test grass.png" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bfm5upmg7jv02" path="res://scenes/player.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://cdeka7re8b7wd" path="res://scenes/grass.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://cdeka7re8b7wd" path="res://scenes/ShortGrass.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://dgrq45w0r2xm4" path="res://scenes/TallGrass.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bdop58hcewd5l" path="res://scenes/waste_puddle.tscn" id="5_lquwl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a02cp"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -91,17 +93,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.80457664, 0.5346867, 6.060
 [node name="Player" parent="." unique_id=694723809 instance=ExtResource("1_ig7tw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42272407, 0.0028638393, -1.254448)
 
-[node name="Grass" parent="." unique_id=827563450 instance=ExtResource("3_h2yge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2556046, 0.12788041, -0.14929211)
+[node name="GrassNodes" type="Node3D" parent="." unique_id=316511998]
 
-[node name="Grass2" parent="." unique_id=1475652732 instance=ExtResource("3_h2yge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.92785877, 0.14011048, -0.30932087)
+[node name="ShortGrass" parent="GrassNodes" unique_id=827563450 instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39100242, 0.080029175, 0.522004)
 
-[node name="Grass3" parent="." unique_id=255071323 instance=ExtResource("3_h2yge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.563907, 0.12619933, -1.4079423)
+[node name="ShortGrass2" parent="GrassNodes" unique_id=910015357 instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.60695875, 0.08242191, 1.0708239)
 
-[node name="Grass4" parent="." unique_id=433681871 instance=ExtResource("3_h2yge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.923604, 0.13524055, -0.88952595)
+[node name="ShortGrass3" parent="GrassNodes" unique_id=1650465331 instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.66706496, 0.078486145, -1.5831966)
 
-[node name="Grass5" parent="." unique_id=1976452944 instance=ExtResource("3_h2yge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1100062, 0.13524055, -0.6223009)
+[node name="ShortGrass4" parent="GrassNodes" unique_id=1148505278 instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06588076, 0.0807516, 0.053756535)
+
+[node name="ShortGrass5" parent="GrassNodes" unique_id=1137871585 instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94170576, 0.06892951, 0.41786796)
+
+[node name="TallGrass" parent="GrassNodes" unique_id=60557055 instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.031353, 0.16177127, 0.60703886)
+
+[node name="TallGrass3" parent="GrassNodes" unique_id=6911343 instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.81417257, 0.15628548, 0.91986674)
+
+[node name="TallGrass4" parent="GrassNodes" unique_id=1912519801 instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1128774, 0.15773833, 0.89378476)
+
+[node name="TallGrass2" parent="GrassNodes" unique_id=128340413 instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8560565, 0.15346977, 0.71940273)
+
+[node name="EnvironmentNodes" type="Node3D" parent="." unique_id=1655719568]
+
+[node name="WastePuddle" parent="EnvironmentNodes" unique_id=1791650593 instance=ExtResource("5_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.043940127, 0.0010433272, -0.24848354)
