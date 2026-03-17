@@ -3,38 +3,61 @@ extends CharacterBody3D
 @onready var animated_sprite_3d: AnimatedSprite3D = %AnimatedSprite3D
 @onready var collision_shape_3d: CollisionShape3D = %CollisionShape3D
 @onready var camera_3d: Camera3D = %Camera3D
+@onready var camera_pivot: Node3D = %CameraPivot
 
-
-const SPEED = 2.0
-const JUMP_VELOCITY = 3.5
+# MOVEMENT VARIABLES
+@export var speed = 2.0 # changed to export so it can be adjusted on editor
+@export var jump_velocity = 2.0
 const SENSITIVITY = 0.003
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var is_jumping = false
+
+# INPUT VARIABLES
 var mouse_captured = true
+
+# CAMERA VARIABLES 
+var camera_rotation: Vector3 = Vector3.ZERO
+
+# rotation limits
+const MAX_LOOK_UP = deg_to_rad(40.0)  
+const MAX_LOOK_DOWN = deg_to_rad(-40.0)  
+
 
 func _ready():
 	capture_mouse()
 
+# CAMERA
 func capture_mouse():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	mouse_captured = true
+
 
 func release_mouse():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	mouse_captured = false
 
-func _unhandled_input(event):
 
+func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
 		if mouse_captured: release_mouse()
 		else: capture_mouse()
 
 	if event is InputEventMouseMotion and mouse_captured:
+		# Rotate player horizontally (yaw)
 		rotate_y(-event.relative.x * SENSITIVITY)
-		camera_3d.rotate_x(-event.relative.y * SENSITIVITY)
-		camera_3d.rotation.x = clamp(camera_3d.rotation.x, deg_to_rad(-40), deg_to_rad(60))
 
+		# vertical rotation
+		handle_mouse_look(event.relative)
+
+
+func handle_mouse_look(mouse_delta: Vector2) -> void:
+	camera_rotation.x -= mouse_delta.y * SENSITIVITY
+	camera_rotation.x = clamp(camera_rotation.x, MAX_LOOK_DOWN, MAX_LOOK_UP)
+	camera_pivot.rotation.x = camera_rotation.x
+
+
+# MOVEMENT
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -46,7 +69,7 @@ func _physics_process(delta):
 			animated_sprite_3d.play("idle_back") 
 			animated_sprite_3d.play()
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		velocity.y = jump_velocity
 		is_jumping = true
 		animated_sprite_3d.play("jump")
 		animated_sprite_3d.frame = 0
@@ -55,17 +78,19 @@ func _physics_process(delta):
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * speed
+		velocity.z = direction.z * speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.z = move_toward(velocity.z, 0, speed)
 
 	move_and_slide()
 	
 	if not is_jumping:
 		update_animations(input_dir)
 
+
+# ANIMATION
 func update_animations(input_dir):
 	if input_dir == Vector2.ZERO:
 		if animated_sprite_3d.animation.contains("walk"):

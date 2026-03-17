@@ -261,13 +261,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022892475, 0)
 shape = SubResource("CapsuleShape3D_v0iea")
 
 [node name="CameraPivot" type="Node3D" parent="CharacterBody3D" unique_id=1552578128]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.047547624, 0)
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.86498487, 0.5017975, 0, -0.5017975, 0.86498487, 0, 0.047547624, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D/CameraPivot" unique_id=613432893]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.8994663, 0.43699017, 0, -0.43699017, 0.8994663, 0, 0, 0)
 spring_length = 0.5
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/CameraPivot/SpringArm3D" unique_id=52856436]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.94389325, -0.3302509, 0, 0.3302509, 0.94389325, 0, -0.14872594, 0.2784478)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.64417326)
