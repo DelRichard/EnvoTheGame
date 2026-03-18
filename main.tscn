@@ -54,7 +54,7 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="NPC" parent="." unique_id=1766800638 node_paths=PackedStringArray("my_target", "following_target") instance=ExtResource("6_7mycd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.67719, 0.057801485, -0.7526061)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2592247, 0.189818, 0.3871011)
 speed = 1.5
 current_behavior = 0
 my_target = NodePath("../Target")

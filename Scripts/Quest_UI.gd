@@ -4,6 +4,7 @@ extends CanvasLayer
 var quest_item_scene = preload("res://scenes/quest_row.tscn")
 
 var active_items = {}
+
 func _ready():
 	QuestManager.connect("quest_started", _on_quest_started)
 	QuestManager.connect("quest_updated", _on_quest_updated)

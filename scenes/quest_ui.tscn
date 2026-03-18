@@ -5,10 +5,11 @@
 [node name="Quest_UI" type="CanvasLayer" unique_id=595319656]
 script = ExtResource("1_0xxtl")
 
-[node name="ScrollContainer" type="VScrollBar" parent="." unique_id=1950052246]
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=63750216]
 custom_minimum_size = Vector2(250, 350)
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="quest_list" type="VBoxContainer" parent="ScrollContainer" unique_id=1003285839]
-layout_mode = 0
+[node name="QuestList" type="VBoxContainer" parent="ScrollContainer" unique_id=1003285839]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
