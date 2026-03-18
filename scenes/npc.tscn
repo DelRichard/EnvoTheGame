@@ -241,13 +241,10 @@ animations = [{
 radius = 0.11035156
 height = 0.4045782
 
-[node name="NPC" type="Node3D" unique_id=694723809]
-
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1327594500]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18219851, 0)
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1327594500]
 script = ExtResource("1_abqhh")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="CharacterBody3D" unique_id=1056046344]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1056046344]
 modulate = Color(0.2784314, 0.3254902, 1, 1)
 billboard = 2
 alpha_cut = 1
@@ -255,10 +252,10 @@ texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_83xs0")
 animation = &"jump"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=513218477]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=513218477]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022892475, 0)
 shape = SubResource("CapsuleShape3D_v0iea")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D" unique_id=512202661]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=512202661]
 avoidance_enabled = true
 debug_enabled = true

@@ -27,7 +27,7 @@ var min_path_update_interval: float = 0.1  # Minimum time between updates
 
 # BEHAVIOUR VARIABLES
 enum BehaviorState {IDLE, WANDER, MOVE_TO_TARGET, FOLLOW}
-var current_behavior: BehaviorState = BehaviorState.FOLLOW
+var current_behavior: BehaviorState = BehaviorState.WANDER
 
 enum WanderState {IDLE, WAITING_TO_MOVE, MOVE}
 var wander_state: WanderState = WanderState.IDLE

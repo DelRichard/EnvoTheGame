@@ -241,13 +241,10 @@ animations = [{
 radius = 0.11035156
 height = 0.4045782
 
-[node name="Player" type="Node3D" unique_id=694723809]
-
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1327594500]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18219851, 0)
+[node name="Player" type="CharacterBody3D" unique_id=1327594500]
 script = ExtResource("1_cvnsp")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="CharacterBody3D" unique_id=1056046344]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1056046344]
 unique_name_in_owner = true
 billboard = 2
 alpha_cut = 1
@@ -255,19 +252,19 @@ texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_83xs0")
 animation = &"jump"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=513218477]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=513218477]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022892475, 0)
 shape = SubResource("CapsuleShape3D_v0iea")
 
-[node name="CameraPivot" type="Node3D" parent="CharacterBody3D" unique_id=1552578128]
+[node name="CameraPivot" type="Node3D" parent="." unique_id=1552578128]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.86498487, 0.5017975, 0, -0.5017975, 0.86498487, 0, 0.047547624, 0)
 
-[node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D/CameraPivot" unique_id=613432893]
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot" unique_id=613432893]
 unique_name_in_owner = true
 spring_length = 0.5
 
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/CameraPivot/SpringArm3D" unique_id=52856436]
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=52856436]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.64417326)

@@ -7,7 +7,7 @@ extends CharacterBody3D
 
 # MOVEMENT VARIABLES
 @export var speed = 2.0 # changed to export so it can be adjusted on editor
-@export var jump_velocity = 2.0
+@export var jump_velocity = 3.5
 const SENSITIVITY = 0.003
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")

@@ -49,14 +49,12 @@ environment = SubResource("Environment_5a7ea")
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Player" parent="." unique_id=694723809 instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42272407, 0.0028638393, -1.254448)
-
-[node name="NPC" parent="." unique_id=1766800638 instance=ExtResource("6_7mycd")]
+[node name="NPC" parent="." unique_id=1766800638 node_paths=PackedStringArray("following_target") instance=ExtResource("6_7mycd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.67719, 0.057801485, -0.7526061)
+following_target = NodePath("../Player")
 
-[node name="CharacterBody3D" parent="NPC" index="0" unique_id=1327594500 node_paths=PackedStringArray("following_target")]
-following_target = NodePath("../../Player")
+[node name="Player" parent="." unique_id=1327594500 instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19747579, 0.24, 1.2851288)
 
 [node name="World" type="Node3D" parent="." unique_id=759869951]
 
