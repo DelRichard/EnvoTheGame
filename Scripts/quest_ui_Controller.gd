@@ -1,6 +1,8 @@
-extends Control
+extends CanvasLayer
 
-@onready var quest_list = $ScrollContainer/VBoxContainer
+@onready var quest_list: VBoxContainer = $ScrollContainer/quest_list
+
+
 var quest_item_scene = preload("res://scenes/quest_row.tscn")
 
 var active_items = {}

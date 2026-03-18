@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dgrq45w0r2xm4" path="res://scenes/TallGrass.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bdop58hcewd5l" path="res://scenes/waste_puddle.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://dfs65ke4d7os0" path="res://scenes/npc.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://c5w31euxmh80k" path="res://scenes/quest_ui.tscn" id="7_272bh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a02cp"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -155,3 +156,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.80457664, 0.5346867, 6.060
 [node name="Target" type="MeshInstance3D" parent="." unique_id=1740905929]
 transform = Transform3D(0.27833217, 0, 0, 0, 0.27833217, 0, 0, 0, 0.27833217, 6.5469675, 1.5991602, -7.0017815)
 mesh = SubResource("SphereMesh_7mycd")
+
+[node name="Quest_UI" parent="." unique_id=595319656 instance=ExtResource("7_272bh")]

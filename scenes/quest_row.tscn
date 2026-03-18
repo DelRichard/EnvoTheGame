@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://coue73xfnrr4b"]
 
+[ext_resource type="Script" uid="uid://bic1j8nh7a00y" path="res://Scripts/Quest_Row.gd" id="1_drg8e"]
+
 [node name="Quest_Row" type="VBoxContainer" unique_id=657019387]
+custom_minimum_size = Vector2(250, 0)
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_drg8e")
 
 [node name="Name_Label" type="Label" parent="." unique_id=882508086]
 layout_mode = 2

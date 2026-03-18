@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @onready var quest_list: VBoxContainer = $VScrollBar/Questlist
-var quest_item_scene = preload("res://scenes/quest_item_ui.tscn")
+var quest_item_scene = preload("res://scenes/quest_row.tscn")
 
 var active_items = {}
 func _ready():

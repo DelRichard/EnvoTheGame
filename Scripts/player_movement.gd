@@ -26,7 +26,9 @@ const MAX_LOOK_DOWN = deg_to_rad(-40.0)
 
 func _ready():
 	capture_mouse()
-
+	await get_tree().process_frame
+	QuestManager.start_quest("A Friendly Face")
+	
 # CAMERA
 func capture_mouse():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
