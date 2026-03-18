@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ebs5cwglrhkw" path="res://Scripts/npc_movement.gd" id="1_abqhh"]
 [ext_resource type="Texture2D" uid="uid://b1qikktef21qt" path="res://assets/character_models/Player Sprite.png" id="2_rv78h"]
+[ext_resource type="Script" uid="uid://ctdykeqout1eh" path="res://scenes/npc_detection.gd" id="3_rv78h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_rv78h")
@@ -241,6 +242,8 @@ animations = [{
 radius = 0.11035156
 height = 0.4045782
 
+[sub_resource type="PrismMesh" id="PrismMesh_abqhh"]
+
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=1327594500]
 script = ExtResource("1_abqhh")
 
@@ -250,12 +253,31 @@ billboard = 2
 alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_83xs0")
-animation = &"jump"
+animation = &"walk_side"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=513218477]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022892475, 0)
 shape = SubResource("CapsuleShape3D_v0iea")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=512202661]
+path_desired_distance = 0.25
+target_desired_distance = 0.5
 avoidance_enabled = true
+height = 0.5
+radius = 0.1
 debug_enabled = true
+
+[node name="FaceDirection" type="MeshInstance3D" parent="." unique_id=1508491913]
+transform = Transform3D(0.0674028, 0, 0, 0, -6.5248447e-09, 0.0674028, 0, -0.14927106, -2.94627e-09, 0, 0, -0.17517102)
+mesh = SubResource("PrismMesh_abqhh")
+
+[node name="Head" type="Node3D" parent="." unique_id=587238579]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.074888974, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="Head" unique_id=423178346]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+script = ExtResource("3_rv78h")
+debug = false
+
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

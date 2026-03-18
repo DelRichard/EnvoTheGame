@@ -6,7 +6,7 @@ extends CharacterBody3D
 @onready var camera_pivot: Node3D = %CameraPivot
 
 # MOVEMENT VARIABLES
-@export var speed = 2.0 # changed to export so it can be adjusted on editor
+@export var speed = 2.0 
 @export var jump_velocity = 3.5
 const SENSITIVITY = 0.003
 
