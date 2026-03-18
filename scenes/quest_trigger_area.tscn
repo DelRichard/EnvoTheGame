@@ -3,9 +3,12 @@
 [ext_resource type="Script" uid="uid://bmegmofvlytv0" path="res://Scripts/Quest_Trigger_Area.gd" id="1_q0x26"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ih837"]
+radius = 0.76923865
 
 [node name="Quest_Trigger_Area" type="Area3D" unique_id=442041655]
 script = ExtResource("1_q0x26")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1492933164]
 shape = SubResource("SphereShape3D_ih837")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c5w31euxmh80k"]
 
 [ext_resource type="Script" uid="uid://c32kry8hp18je" path="res://Scripts/quest_ui_Controller.gd" id="1_0xxtl"]
-[ext_resource type="PackedScene" uid="uid://coue73xfnrr4b" path="res://scenes/quest_row.tscn" id="2_gnyia"]
 
 [node name="Quest_UI" type="CanvasLayer" unique_id=595319656]
 script = ExtResource("1_0xxtl")
@@ -13,6 +12,3 @@ offset_bottom = 8.0
 
 [node name="quest_list" type="VBoxContainer" parent="ScrollContainer" unique_id=1003285839]
 layout_mode = 0
-
-[node name="Quest_Row" parent="ScrollContainer/quest_list" unique_id=657019387 instance=ExtResource("2_gnyia")]
-layout_mode = 2
