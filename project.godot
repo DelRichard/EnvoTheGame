@@ -19,6 +19,11 @@ run/main_scene="uid://ywed3crfdc7h"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://assets/icons/icon.svg"
 
+[autoload]
+
+QuestManager="*uid://5fu0j1iscfem"
+QuestLoader="*uid://bibvmvvs2vp5b"
+
 [global_group]
 
 Player=""

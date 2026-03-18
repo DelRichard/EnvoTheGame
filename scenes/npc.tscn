@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ebs5cwglrhkw" path="res://Scripts/npc_movement.gd" id="1_abqhh"]
 [ext_resource type="Texture2D" uid="uid://b1qikktef21qt" path="res://assets/character_models/Player Sprite.png" id="2_rv78h"]
-[ext_resource type="Script" uid="uid://ctdykeqout1eh" path="res://scenes/npc_detection.gd" id="3_rv78h"]
+[ext_resource type="Script" uid="uid://ctdykeqout1eh" path="res://Scripts/npc_detection.gd" id="3_rv78h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_rv78h")

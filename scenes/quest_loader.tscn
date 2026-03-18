@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cgoj8r681utqn"]
+
+[ext_resource type="Script" uid="uid://bibvmvvs2vp5b" path="res://Scripts/quest_loader.gd" id="1_ov7la"]
+
+[node name="Quest_Loader" type="Node" unique_id=2143722138]
+script = ExtResource("1_ov7la")

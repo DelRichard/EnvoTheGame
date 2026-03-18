@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://coue73xfnrr4b"]
+
+[node name="Quest_Row" type="VBoxContainer" unique_id=657019387]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Name_Label" type="Label" parent="." unique_id=882508086]
+layout_mode = 2
+
+[node name="Objective_Label" type="Label" parent="." unique_id=655975034]
+layout_mode = 2
