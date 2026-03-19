@@ -1,8 +1,8 @@
-# delete this script, it's replaced by the detection component
+class_name DetectionComponent extends Node
 
-extends RayCast3D
+@onready var head: Node3D = $"../Head"
+@onready var ray_cast_3d: RayCast3D = $"../Head/RayCast3D"
 
-@onready var head: Node3D = $".."
 
 @export var horizontal_fov := 150.0
 @export var vertical_fov := 120.0  
@@ -54,10 +54,10 @@ func is_in_fov() -> bool:
 
 
 func has_line_of_sight() -> bool:
-	target_position = to_local(player_head.global_position)
-	force_raycast_update()
+	ray_cast_3d.target_position = ray_cast_3d.to_local(player_head.global_position)
+	ray_cast_3d.force_raycast_update()
 	# If nothing is in the way, we can see them
-	if not is_colliding():
+	if not ray_cast_3d.is_colliding():
 		return true
 	# If something is in the way, check if it's the player themselves
-	return get_collider() == player
+	return ray_cast_3d.get_collider() == player

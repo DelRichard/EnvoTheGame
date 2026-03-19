@@ -5,6 +5,9 @@ extends CharacterBody3D
 @onready var camera_3d: Camera3D = %Camera3D
 @onready var camera_pivot: Node3D = %CameraPivot
 
+@onready var health_component: HealthComponent = %HealthComponent
+
+
 # MOVEMENT VARIABLES
 @export var speed = 2.0 
 @export var jump_velocity = 3.5
@@ -106,3 +109,9 @@ func update_animations(input_dir):
 		else: 
 			animated_sprite_3d.play("walk_side")
 			animated_sprite_3d.flip_h = input_dir.x < 0
+
+
+
+
+func _on_died() -> void:
+	print("Player Died!")

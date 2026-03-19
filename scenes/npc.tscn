@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ebs5cwglrhkw" path="res://Scripts/npc_movement.gd" id="1_abqhh"]
 [ext_resource type="Texture2D" uid="uid://b1qikktef21qt" path="res://assets/character_models/Player Sprite.png" id="2_rv78h"]
-[ext_resource type="Script" uid="uid://ctdykeqout1eh" path="res://Scripts/npc_detection.gd" id="3_rv78h"]
+[ext_resource type="Script" uid="uid://boqy1e4phksc2" path="res://Scripts/detectionComponent.gd" id="4_4wlns"]
 [ext_resource type="PackedScene" uid="uid://36rqobnfuhu4" path="res://scenes/quest_trigger_area.tscn" id="4_7n8xq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
@@ -245,7 +245,7 @@ height = 0.4045782
 
 [sub_resource type="PrismMesh" id="PrismMesh_abqhh"]
 
-[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1327594500]
+[node name="NPC" type="CharacterBody3D" unique_id=1327594500]
 script = ExtResource("1_abqhh")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1056046344]
@@ -277,10 +277,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.074888974, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="Head" unique_id=423178346]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-script = ExtResource("3_rv78h")
-debug = false
 
 [node name="Quest_Trigger_Area" parent="." unique_id=442041655 instance=ExtResource("4_7n8xq")]
+
+[node name="DetectionComponent" type="Node" parent="." unique_id=2050607046]
+script = ExtResource("4_4wlns")
+debug = false
+metadata/_custom_type_script = "uid://boqy1e4phksc2"
 
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
