@@ -131,6 +131,8 @@ func move_to_target(target: Vector3) -> void:
 		last_path_update_time = 0.0
 
 
+
+
 # ANIMATION
 
 func get_view_direction() -> String:

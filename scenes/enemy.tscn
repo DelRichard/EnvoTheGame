@@ -248,8 +248,9 @@ height = 0.75
 
 [sub_resource type="PrismMesh" id="PrismMesh_abqhh"]
 
-[node name="Enemy" type="CharacterBody3D" unique_id=1327594500]
+[node name="Enemy" type="CharacterBody3D" unique_id=1327594500 groups=["Enemy"]]
 script = ExtResource("1_5uy6h")
+speed = 0.5
 follow_distance = 0.5
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1056046344]
@@ -285,6 +286,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.074888974, 0)
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 
 [node name="HealthComponent" type="Node" parent="." unique_id=893036511]
+unique_name_in_owner = true
 script = ExtResource("4_c4w8v")
 metadata/_custom_type_script = "uid://dtuix55s3pkso"
 
@@ -300,3 +302,4 @@ metadata/_custom_type_script = "uid://boqy1e4phksc2"
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="died" from="HealthComponent" to="." method="_on_enemy_died"]
+[connection signal="hit" from="HealthComponent" to="." method="_on_enemy_hit"]

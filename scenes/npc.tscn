@@ -264,8 +264,6 @@ shape = SubResource("CapsuleShape3D_v0iea")
 path_desired_distance = 0.25
 target_desired_distance = 0.5
 avoidance_enabled = true
-height = 0.5
-radius = 0.1
 debug_enabled = true
 
 [node name="FaceDirection" type="MeshInstance3D" parent="." unique_id=1508491913]

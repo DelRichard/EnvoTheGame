@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c74sm8g20ix12" path="res://Scripts/player_movement.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://b1qikktef21qt" path="res://assets/character_models/Player Sprite.png" id="2_g2els"]
 [ext_resource type="Script" uid="uid://dtuix55s3pkso" path="res://Scripts/healthComponent.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://dheljymm3smhd" path="res://Scripts/playerCombatComponent.gd" id="4_dqkch"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_g2els")
@@ -279,4 +280,10 @@ unique_name_in_owner = true
 script = ExtResource("3_qhqgy")
 metadata/_custom_type_script = "uid://dtuix55s3pkso"
 
+[node name="PlayerCombatComponent" type="Node" parent="." unique_id=1259078205]
+unique_name_in_owner = true
+script = ExtResource("4_dqkch")
+metadata/_custom_type_script = "uid://dheljymm3smhd"
+
 [connection signal="died" from="HealthComponent" to="." method="_on_died"]
+[connection signal="hit" from="HealthComponent" to="." method="_on_player_hit"]

@@ -133,6 +133,11 @@ func move_to_target(target: Vector3) -> void:
 		is_moving = true
 		last_path_update_time = 0.0
 
+#for combat
+func apply_knockback(from_position: Vector3, force: float = 5.0):
+	var dir = (global_position - from_position).normalized()
+	velocity += dir * force
+
 
 # ANIMATION
 
@@ -301,5 +306,13 @@ func be_following() -> void:
 
 
 func _on_enemy_died() -> void:
-	be_idle() #temporary
 	print("Enemy Killed!")
+	queue_free()
+
+
+func _on_enemy_hit(from_position: Vector3) -> void:
+	print("Enemy Hit!")
+	animated_sprite_3d.modulate = Color.RED
+	await get_tree().create_timer(0.1).timeout
+	animated_sprite_3d.modulate = Color.WEB_GREEN #put white when enemy sprite ready
+	apply_knockback(from_position)

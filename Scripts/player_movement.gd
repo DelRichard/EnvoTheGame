@@ -7,6 +7,8 @@ extends CharacterBody3D
 
 @onready var health_component: HealthComponent = %HealthComponent
 
+var is_dead := false
+
 
 # MOVEMENT VARIABLES
 @export var speed = 2.0 
@@ -94,6 +96,11 @@ func _physics_process(delta):
 	if not is_jumping:
 		update_animations(input_dir)
 
+#for combat
+func apply_knockback(from_position: Vector3, force: float = 5.0):
+	var dir = (global_position - from_position).normalized()
+	velocity += dir * force
+
 
 # ANIMATION
 func update_animations(input_dir):
@@ -110,8 +117,36 @@ func update_animations(input_dir):
 			animated_sprite_3d.play("walk_side")
 			animated_sprite_3d.flip_h = input_dir.x < 0
 
+func die():
+	# Stop movement
+	velocity = Vector3.ZERO
+	
+	# Disable input
+	set_process(false)
+	set_physics_process(false)
+	
+	await get_tree().create_timer(2.0).timeout
+	restart_level()
 
+
+func restart_level():
+	get_tree().reload_current_scene()
 
 
 func _on_died() -> void:
-	print("Player Died!")
+	if is_dead:
+		return
+	
+	is_dead = true
+	
+	print("You died")
+	
+	die()
+
+
+func _on_player_hit(from_position: Vector3) -> void:
+	print("Player got hit!")
+	animated_sprite_3d.modulate = Color.RED
+	await get_tree().create_timer(0.1).timeout
+	animated_sprite_3d.modulate = Color.WHITE
+	apply_knockback(from_position)
