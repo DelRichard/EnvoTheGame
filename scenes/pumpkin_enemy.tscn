@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://dpks4qovmjtaj"]
+
+[ext_resource type="Texture2D" uid="uid://ch8kcp6y2m3oi" path="res://assets/character_models/Pumpkin Vegion.png" id="1_84xek"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrhu3"]
+atlas = ExtResource("1_84xek")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw5hk"]
+atlas = ExtResource("1_84xek")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8q88w"]
+atlas = ExtResource("1_84xek")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrq8m"]
+atlas = ExtResource("1_84xek")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_win5y"]
+atlas = ExtResource("1_84xek")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vycp7"]
+atlas = ExtResource("1_84xek")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sy4ln"]
+atlas = ExtResource("1_84xek")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8vpl"]
+atlas = ExtResource("1_84xek")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dd55b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrhu3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cw5hk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8q88w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrq8m")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_win5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vycp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sy4ln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8vpl")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_84xek"]
+radius = 0.17008881
+
+[node name="pumpkin_enemy" type="CharacterBody3D" unique_id=1789294105]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=172102467]
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_dd55b")
+animation = &"idle"
+frame_progress = 0.13560997
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1206888442]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07329574, 0)
+shape = SubResource("SphereShape3D_84xek")
