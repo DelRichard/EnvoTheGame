@@ -20,7 +20,7 @@ func _ready():
 	player_head = player.get_node("CameraPivot")
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if player and can_see_player() and is_in_fov() and has_line_of_sight():
 		if debug:
 			print("NPC can see player")

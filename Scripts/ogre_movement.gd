@@ -1,16 +1,12 @@
 extends CharacterBody3D
 
-@onready var animated_sprite_3d: AnimatedSprite3D = $AnimatedSprite3D
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
-
-@onready var health_component: HealthComponent = $HealthComponent
-
 
 enum BehaviorState { IDLE, WANDER, MOVE_TO_TARGET, FOLLOW }
 enum WanderState   { IDLE, WAITING_TO_MOVE, MOVE }
 
-@export var speed: float = 1.5
+@export var speed: float = 1.0
 @export var jump_velocity: float = 2.0
 @export var idle_wait_time: float = 2.0
 @export var follow_distance: float = 0.75
@@ -65,19 +61,16 @@ func _physics_process(delta: float) -> void:
 	# Gravity & jumping
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-		if is_jumping and animated_sprite_3d.frame == 1:
-			animated_sprite_3d.pause()
+
 	else:
 		if is_jumping:
 			is_jumping = false
-			animated_sprite_3d.play("idle_back")
-			animated_sprite_3d.play()
+
 
 	if wants_jump and is_on_floor():
 		velocity.y = jump_velocity
 		is_jumping = true
-		animated_sprite_3d.play("jump")
-		animated_sprite_3d.frame = 0
+
 
 	# Horizontal movement
 	if direction:
@@ -87,7 +80,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 
-	update_animations(Vector2(direction.x, direction.z))
+
 	move_and_slide()
 
 
@@ -133,63 +126,9 @@ func move_to_target(target: Vector3) -> void:
 		is_moving = true
 		last_path_update_time = 0.0
 
-#for combat
-func apply_knockback(from_position: Vector3, force: float = 5.0):
-	var dir = (global_position - from_position).normalized()
-	velocity += dir * force
 
 
-# ANIMATION
 
-func get_view_direction() -> String:
-	var camera = get_viewport().get_camera_3d()
-	if not camera:
-		return "back"
-
-	var to_camera = camera.global_position - global_position
-	to_camera.y = 0
-	if to_camera.length() < 0.1:
-		return "back"
-	to_camera = to_camera.normalized()
-
-	# NPC faces -Z in Godot's local space
-	var npc_forward = -global_transform.basis.z
-	npc_forward.y = 0
-	npc_forward = npc_forward.normalized()
-
-	# dot > 0  → camera is in front of NPC (you see their face)
-	# dot < 0  → camera is behind NPC (you see their back)
-	var dot   = npc_forward.dot(to_camera)
-	var cross = npc_forward.cross(to_camera).y  # positive = camera to NPC's right
-
-	if abs(dot) >= abs(cross):
-		return "front" if dot >= 0 else "back"
-	else:
-		return "side"
-
-
-func get_view_flip() -> bool:
-	var camera = get_viewport().get_camera_3d()
-	if not camera:
-		return false
-	var to_camera = (camera.global_position - global_position)
-	to_camera.y = 0
-	var npc_forward = -global_transform.basis.z
-	npc_forward.y = 0
-	return npc_forward.cross(to_camera).y > 0
-
-
-func update_animations(movement_dir: Vector2) -> void:
-	if is_jumping:
-		return
-
-	var view_dir = get_view_direction()
-	var prefix   = "walk_" if movement_dir != Vector2.ZERO else "idle_"
-
-	animated_sprite_3d.play(prefix + view_dir)
-
-	if view_dir == "side":
-		animated_sprite_3d.flip_h = get_view_flip()
 
 func rotate_to_movement_direction(delta: float) -> void:
 	if direction.length() > 0.01:
@@ -237,8 +176,8 @@ func wander_waiting_to_move(delta: float) -> void:
 
 
 func get_new_target_location() -> Vector3:
-	var offset_x = randf_range(0.5, 3.0) * (-1 if randf() < 0.5 else 1)
-	var offset_z = randf_range(0.5, 3.0) * (-1 if randf() < 0.5 else 1)
+	var offset_x = randf_range(0.5, 13.0) * (-1 if randf() < 0.5 else 1)
+	var offset_z = randf_range(0.5, 13.0) * (-1 if randf() < 0.5 else 1)
 	return global_transform.origin + Vector3(offset_x, 0, offset_z)
 
 
@@ -303,16 +242,3 @@ func go_there() -> void:
 
 func be_following() -> void:
 	current_behavior = BehaviorState.FOLLOW
-
-
-func _on_enemy_died() -> void:
-	print("Enemy Killed!")
-	queue_free()
-
-
-func _on_enemy_hit(from_position: Vector3) -> void:
-	print("Enemy Hit!")
-	animated_sprite_3d.modulate = Color.RED
-	await get_tree().create_timer(0.1).timeout
-	animated_sprite_3d.modulate = Color.WEB_GREEN #put white when enemy sprite ready
-	apply_knockback(from_position)

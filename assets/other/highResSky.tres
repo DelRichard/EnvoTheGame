@@ -1,0 +1,6 @@
+[gd_resource type="PanoramaSkyMaterial" format=3 uid="uid://b8iendwpau6jq"]
+
+[ext_resource type="Texture2D" uid="uid://b5cpelheqync2" path="res://assets/other/golden_gate_hills_4k.exr" id="1_qqdxt"]
+
+[resource]
+panorama = ExtResource("1_qqdxt")
