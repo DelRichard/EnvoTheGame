@@ -298,4 +298,5 @@ script = ExtResource("4_dqkch")
 metadata/_custom_type_script = "uid://dheljymm3smhd"
 
 [connection signal="died" from="HealthComponent" to="." method="_on_died"]
+[connection signal="health_changed" from="HealthComponent" to="." method="_on_player_health_changed"]
 [connection signal="hit" from="HealthComponent" to="." method="_on_player_hit"]

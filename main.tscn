@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ywed3crfdc7h"]
 
 [ext_resource type="Texture2D" uid="uid://b8akfuedm6mnv" path="res://assets/textures/Test grass.png" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bevt2tbays3j0" path="res://scenes/health_bar.tscn" id="1_efxa6"]
 [ext_resource type="PackedScene" uid="uid://bfm5upmg7jv02" path="res://scenes/player.tscn" id="1_ig7tw"]
 [ext_resource type="Material" uid="uid://d0mncyu3q3uhe" path="res://assets/other/simpleSky.tres" id="2_kek77"]
 [ext_resource type="PackedScene" uid="uid://cdeka7re8b7wd" path="res://scenes/ShortGrass.tscn" id="3_h2yge"]
@@ -10,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c5w31euxmh80k" path="res://scenes/quest_ui.tscn" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://d4an8hkum7vyq" path="res://scenes/enemy.tscn" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://q425jtwl4rf8" path="res://scenes/ogre.tscn" id="10_4c57u"]
+[ext_resource type="PackedScene" uid="uid://k2gd2xdondbq" path="res://scenes/ogreNew.scn" id="12_dg77c"]
 
 [sub_resource type="Sky" id="Sky_go701"]
 sky_material = ExtResource("2_kek77")
@@ -66,6 +68,21 @@ albedo_color = Color(0.26494515, 0.18139187, 0.09739705, 1)
 
 [node name="Main" type="Node3D" unique_id=1172873568]
 
+[node name="UIManager" type="CanvasLayer" parent="." unique_id=322643656]
+
+[node name="MainUI" type="Control" parent="UIManager" unique_id=1576332577]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayerHealthBar" parent="UIManager/MainUI" unique_id=378000757 instance=ExtResource("1_efxa6")]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 16.0
+offset_right = 513.0
+offset_bottom = 43.0
+
 [node name="Quest_UI" parent="." unique_id=595319656 instance=ExtResource("7_272bh")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=184488807]
@@ -75,8 +92,9 @@ environment = SubResource("Environment_5a7ea")
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Player" parent="." unique_id=1327594500 instance=ExtResource("1_ig7tw")]
+[node name="Player" parent="." unique_id=1327594500 node_paths=PackedStringArray("health_bar") instance=ExtResource("1_ig7tw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19747579, 0.24, 1.2851288)
+health_bar = NodePath("../UIManager/MainUI/PlayerHealthBar")
 
 [node name="World" type="Node3D" parent="." unique_id=759869951]
 
@@ -581,6 +599,12 @@ following_target = NodePath("../Player")
 
 [node name="Ogre" parent="." unique_id=105097978 node_paths=PackedStringArray("my_target", "following_target") instance=ExtResource("10_4c57u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.092103, 0.05419495, 2.7228494)
+current_behavior = 1
+my_target = NodePath("../TestTarget")
+following_target = NodePath("../Player")
+
+[node name="Ogre2" parent="." unique_id=1141079115 node_paths=PackedStringArray("my_target", "following_target") instance=ExtResource("12_dg77c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0619006, 0.22139257, 2.4130244)
 current_behavior = 1
 my_target = NodePath("../TestTarget")
 following_target = NodePath("../Player")

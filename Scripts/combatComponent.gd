@@ -5,7 +5,7 @@ class_name CombatComponent extends Node
 
 
 @export var attack_damage:= 5.0
-@export var attack_range:= 0.5
+@export var attack_range:= 0.75
 @export var attack_speed := 1
 
 var can_attack := true

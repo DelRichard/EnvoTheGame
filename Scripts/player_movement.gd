@@ -6,6 +6,9 @@ extends CharacterBody3D
 @onready var camera_pivot: Node3D = %CameraPivot
 
 @onready var health_component: HealthComponent = %HealthComponent
+@export var health_bar: ProgressBar 
+
+
 
 var is_dead := false
 
@@ -33,6 +36,7 @@ func _ready():
 	capture_mouse()
 	await get_tree().process_frame
 	QuestManager.start_quest("A Friendly Face")
+	health_bar.init_health(health_component.current_health)
 	
 # CAMERA
 func capture_mouse():
@@ -150,3 +154,8 @@ func _on_player_hit(from_position: Vector3) -> void:
 	await get_tree().create_timer(0.1).timeout
 	animated_sprite_3d.modulate = Color.WHITE
 	apply_knockback(from_position)
+
+
+func _on_player_health_changed(current_health, max_health) -> void:
+	health_bar.max_value = max_health
+	health_bar.health = current_health

@@ -28,6 +28,7 @@ QuestLoader="*uid://bibvmvvs2vp5b"
 
 Player=""
 Enemy=""
+UI=""
 
 [input]
 

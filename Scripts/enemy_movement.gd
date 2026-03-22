@@ -7,6 +7,7 @@ extends CharacterBody3D
 @onready var health_component: HealthComponent = $HealthComponent
 
 
+
 enum BehaviorState { IDLE, WANDER, MOVE_TO_TARGET, FOLLOW }
 enum WanderState   { IDLE, WAITING_TO_MOVE, MOVE }
 
@@ -41,6 +42,8 @@ var was_idle: bool = false
 
 
 # CORE LOOP
+
+
 
 func _physics_process(delta: float) -> void:
 	# Behaviour
