@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c5w31euxmh80k" path="res://scenes/quest_ui.tscn" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://d4an8hkum7vyq" path="res://scenes/enemy.tscn" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://q425jtwl4rf8" path="res://scenes/ogre.tscn" id="10_4c57u"]
+[ext_resource type="Resource" uid="uid://bxrwqj4xli6ng" path="res://Dialogue/DANESH IS GAY.tres" id="10_w48qg"]
 [ext_resource type="PackedScene" uid="uid://k2gd2xdondbq" path="res://scenes/ogreNew.scn" id="12_dg77c"]
 [ext_resource type="PackedScene" uid="uid://8af1w86qyvr5" path="res://scenes/dialogue_manager.tscn" id="13_ycdy4"]
 
@@ -572,12 +573,19 @@ current_behavior = 1
 my_target = NodePath("../TestTarget")
 following_target = NodePath("../Player")
 
+[node name="Quest_Trigger_Area" parent="NPC" index="5" unique_id=442041655]
+npc_id = "NPC1"
+
 [node name="NPC2" parent="." unique_id=312828229 node_paths=PackedStringArray("my_target", "following_target") instance=ExtResource("6_7mycd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5184493, 0.379636, 5.7537203)
 speed = 1.5
 current_behavior = 1
 my_target = NodePath("../TestTarget")
 following_target = NodePath("../Player")
+
+[node name="Quest_Trigger_Area" parent="NPC2" index="5" unique_id=442041655]
+npc_id = "NPC2"
+initial_dialogue = ExtResource("10_w48qg")
 
 [node name="Enemy" parent="." unique_id=423599029 node_paths=PackedStringArray("my_target", "following_target") instance=ExtResource("8_5vw27")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4430745, 0.48, -1.580513)
@@ -611,3 +619,6 @@ my_target = NodePath("../TestTarget")
 following_target = NodePath("../Player")
 
 [node name="DialogueManager" parent="." unique_id=394143442 instance=ExtResource("13_ycdy4")]
+
+[editable path="NPC"]
+[editable path="NPC2"]

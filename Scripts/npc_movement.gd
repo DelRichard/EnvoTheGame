@@ -36,10 +36,19 @@ var wander_state: WanderState = WanderState.IDLE
 var idle_timer_count: float = 0.0
 var was_idle: bool = false
 
+################################
+var in_dialogue := false
+var dialogue_target: Node3D = null
+################################
 
 # CORE LOOP
 
 func _physics_process(delta: float) -> void:
+	if in_dialogue:
+		handle_dialogue_state(delta)
+		move_and_slide()
+		return
+		
 	# Behaviour
 	match current_behavior:
 		BehaviorState.IDLE:
@@ -68,7 +77,6 @@ func _physics_process(delta: float) -> void:
 		if is_jumping:
 			is_jumping = false
 			animated_sprite_3d.play("idle_back")
-			animated_sprite_3d.play()
 
 	if wants_jump and is_on_floor():
 		velocity.y = jump_velocity
@@ -86,7 +94,33 @@ func _physics_process(delta: float) -> void:
 
 	update_animations(Vector2(direction.x, direction.z))
 	move_and_slide()
-
+	
+################################################################
+func handle_dialogue_state(delta: float) -> void: 
+	if not dialogue_target:
+		return
+	stop_movement()
+	velocity.x = 0
+	velocity.z = 0
+	var dir = (dialogue_target.global_position - global_position)
+	dir.y = 0
+	
+	if dir.length() > 0.01:
+		var target_rot = atan2(-dir.x, -dir.z)
+		rotation.y = lerp_angle(rotation.y, target_rot, rotation_speed * delta)
+	update_animations(Vector2.ZERO)
+	
+func enter_dialogue(target: Node3D) -> void:
+	in_dialogue = true
+	dialogue_target = target
+	stop_movement()
+	
+	
+	
+func exit_dialogue() -> void:
+	in_dialogue = false
+	dialogue_target = null
+################################################################
 
 # MOVEMENT
 
@@ -297,3 +331,7 @@ func go_there() -> void:
 
 func be_following() -> void:
 	current_behavior = BehaviorState.FOLLOW
+
+
+func _on_quest_trigger_area_body_exited(body: Node3D) -> void:
+	pass # Replace with function body.

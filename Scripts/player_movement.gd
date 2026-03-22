@@ -8,6 +8,8 @@ extends CharacterBody3D
 @onready var health_component: HealthComponent = %HealthComponent
 @export var health_bar: ProgressBar 
 
+var last_direction := "front"
+var in_dialogue := false
 
 
 var is_dead := false
@@ -31,7 +33,14 @@ var camera_rotation: Vector3 = Vector3.ZERO
 const MAX_LOOK_UP = deg_to_rad(40.0)  
 const MAX_LOOK_DOWN = deg_to_rad(-40.0)  
 
+func enter_dialogue():
+	in_dialogue = true
+	velocity = Vector3.ZERO
+	animated_sprite_3d.play("idle_" + last_direction)
 
+func exit_dialogue():
+	in_dialogue = false
+	
 func _ready():
 	capture_mouse()
 	await get_tree().process_frame
@@ -70,6 +79,9 @@ func handle_mouse_look(mouse_delta: Vector2) -> void:
 
 # MOVEMENT
 func _physics_process(delta):
+	if in_dialogue:
+		return 
+		
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 		if is_jumping and animated_sprite_3d.frame == 2:
@@ -109,18 +121,18 @@ func apply_knockback(from_position: Vector3, force: float = 5.0):
 # ANIMATION
 func update_animations(input_dir):
 	if input_dir == Vector2.ZERO:
-		if animated_sprite_3d.animation.contains("walk"):
-			var suffix = animated_sprite_3d.animation.split("_")[1]
-			animated_sprite_3d.play("idle_" + suffix)
+		animated_sprite_3d.play("idle_" + last_direction)
 	else:
 		if input_dir.y < 0: 
+			last_direction = "back"
 			animated_sprite_3d.play("walk_back")
 		elif input_dir.y > 0:
+			last_direction = "front"
 			animated_sprite_3d.play("walk_front")
 		else: 
+			last_direction = "side"
 			animated_sprite_3d.play("walk_side")
 			animated_sprite_3d.flip_h = input_dir.x < 0
-
 func die():
 	# Stop movement
 	velocity = Vector3.ZERO

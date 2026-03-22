@@ -292,6 +292,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.074888974, 0)
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 
 [node name="Quest_Trigger_Area" parent="." unique_id=442041655 instance=ExtResource("4_7n8xq")]
+npc_id = "\"Default\""
 initial_dialogue = ExtResource("4_tl2vt")
 
 [node name="DetectionComponent" type="Node" parent="." unique_id=2050607046]
@@ -301,3 +302,4 @@ metadata/_custom_type_script = "uid://boqy1e4phksc2"
 
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
+[connection signal="body_exited" from="Quest_Trigger_Area" to="Quest_Trigger_Area" method="_on_body_exited"]
