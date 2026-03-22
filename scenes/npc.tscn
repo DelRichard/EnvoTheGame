@@ -3,8 +3,7 @@
 [ext_resource type="Script" uid="uid://ebs5cwglrhkw" path="res://Scripts/npc_movement.gd" id="1_abqhh"]
 [ext_resource type="Texture2D" uid="uid://b1qikktef21qt" path="res://assets/character_models/Player Sprite.png" id="2_rv78h"]
 [ext_resource type="Script" uid="uid://boqy1e4phksc2" path="res://Scripts/detectionComponent.gd" id="4_4wlns"]
-[ext_resource type="PackedScene" uid="uid://36rqobnfuhu4" path="res://scenes/Quest_Dialogue_Trigger.tscn" id="4_7n8xq"]
-
+[ext_resource type="PackedScene" uid="uid://36rqobnfuhu4" path="res://scenes/quest_trigger_area.tscn" id="4_7n8xq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("2_rv78h")
