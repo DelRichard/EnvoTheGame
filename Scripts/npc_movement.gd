@@ -36,7 +36,6 @@ var wander_state: WanderState = WanderState.IDLE
 var idle_timer_count: float = 0.0
 var was_idle: bool = false
 
-
 # CORE LOOP
 
 func _physics_process(delta: float) -> void:

@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://36rqobnfuhu4"]
 
-[ext_resource type="Script" uid="uid://bmegmofvlytv0" path="res://Scripts/Quest_Trigger_Area.gd" id="1_q0x26"]
+[ext_resource type="Script" uid="uid://bmegmofvlytv0" path="res://Scripts/Quest_Dialogue_Trigger.gd" id="1_q0x26"]
+[ext_resource type="Resource" uid="uid://6rytl0gdv66a" path="res://Dialogues/NPC_TEST_DIALOGUE.tres" id="2_atm2w"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_q0x26"]
 
 [node name="Quest_Trigger_Area" type="Area3D" unique_id=442041655]
 script = ExtResource("1_q0x26")
+initial_dialogue = ExtResource("2_atm2w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1492933164]
 shape = SubResource("SphereShape3D_q0x26")

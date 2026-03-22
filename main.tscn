@@ -11,7 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://c5w31euxmh80k" path="res://scenes/quest_ui.tscn" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://d4an8hkum7vyq" path="res://scenes/enemy.tscn" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://q425jtwl4rf8" path="res://scenes/ogre.tscn" id="10_4c57u"]
+<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://k2gd2xdondbq" path="res://scenes/ogreNew.scn" id="12_dg77c"]
+=======
+[ext_resource type="PackedScene" uid="uid://dhv4gc648syqe" path="res://scenes/DialogueManager.tscn" id="11_efxa6"]
+>>>>>>> Stashed changes
 
 [sub_resource type="Sky" id="Sky_go701"]
 sky_material = ExtResource("2_kek77")
@@ -603,8 +607,12 @@ current_behavior = 1
 my_target = NodePath("../TestTarget")
 following_target = NodePath("../Player")
 
+<<<<<<< Updated upstream
 [node name="Ogre2" parent="." unique_id=1141079115 node_paths=PackedStringArray("my_target", "following_target") instance=ExtResource("12_dg77c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0619006, 0.22139257, 2.4130244)
 current_behavior = 1
 my_target = NodePath("../TestTarget")
 following_target = NodePath("../Player")
+=======
+[node name="DialogueManger" parent="." unique_id=1792607515 instance=ExtResource("11_efxa6")]
+>>>>>>> Stashed changes
