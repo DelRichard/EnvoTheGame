@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b1qikktef21qt" path="res://assets/character_models/Player Sprite.png" id="2_rv78h"]
 [ext_resource type="Script" uid="uid://boqy1e4phksc2" path="res://Scripts/detectionComponent.gd" id="4_4wlns"]
 [ext_resource type="PackedScene" uid="uid://36rqobnfuhu4" path="res://scenes/quest_trigger_area.tscn" id="4_7n8xq"]
+[ext_resource type="Resource" uid="uid://bbilre0o78xy1" path="res://Dialogue/TEST_DIALOGUE.tres" id="4_tl2vt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("2_rv78h")
@@ -291,6 +292,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.074888974, 0)
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 
 [node name="Quest_Trigger_Area" parent="." unique_id=442041655 instance=ExtResource("4_7n8xq")]
+initial_dialogue = ExtResource("4_tl2vt")
 
 [node name="DetectionComponent" type="Node" parent="." unique_id=2050607046]
 script = ExtResource("4_4wlns")

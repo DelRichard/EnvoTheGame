@@ -23,6 +23,8 @@ config/icon="res://assets/icons/icon.svg"
 
 QuestManager="*uid://5fu0j1iscfem"
 QuestLoader="*uid://bibvmvvs2vp5b"
+DialogueManager="*uid://8af1w86qyvr5"
+DialogueController="*uid://fj4cc2l82etv"
 
 [global_group]
 

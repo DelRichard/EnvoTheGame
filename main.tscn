@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d4an8hkum7vyq" path="res://scenes/enemy.tscn" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://q425jtwl4rf8" path="res://scenes/ogre.tscn" id="10_4c57u"]
 [ext_resource type="PackedScene" uid="uid://k2gd2xdondbq" path="res://scenes/ogreNew.scn" id="12_dg77c"]
+[ext_resource type="PackedScene" uid="uid://8af1w86qyvr5" path="res://scenes/dialogue_manager.tscn" id="13_ycdy4"]
 
 [sub_resource type="Sky" id="Sky_go701"]
 sky_material = ExtResource("2_kek77")
@@ -608,3 +609,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0619006, 0.22139257, 2.4130
 current_behavior = 1
 my_target = NodePath("../TestTarget")
 following_target = NodePath("../Player")
+
+[node name="DialogueManager" parent="." unique_id=394143442 instance=ExtResource("13_ycdy4")]
