@@ -1,0 +1,48 @@
+[gd_scene format=4 uid="uid://cdeka7re8b7wd"]
+
+[ext_resource type="Texture2D" uid="uid://bnak68nyycihg" path="res://assets/character_models/envoPropsDRAFT_Short Grass.png" id="1_70mkg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mt43n"]
+resource_name = "shortGrass"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("1_70mkg")
+roughness = 0.5
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_y8qwm"]
+_surfaces = [{
+"aabb": AABB(-0.2974298, -0.2974298, -0.2974298, 0.5948596, 0.5948596, 0.5948596),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"name": "shortGrass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAD///9/AAD//wAA/38AAP//////fwAAAAAAAP9/AAD/f///AAAAAP9/AAD//wAA/3//////AAD/fwAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_7sxgd"]
+resource_name = "envoPropsDRAFT_Plane_001"
+_surfaces = [{
+"aabb": AABB(-0.2974298, -0.2974298, -0.2974298, 0.5948596, 0.5948596, 0.5948596),
+"attribute_data": PackedByteArray("//8AAAAA//8AAAAA////////AAAAAP//AAAAAP////8="),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"material": SubResource("StandardMaterial3D_mt43n"),
+"name": "shortGrass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAD///9//////wAA/3//////////f///AAAAAP9/////f///AAD/v/9/AAD///+//3///////7//fwAAAAD/v/9/////f////3////9/////fwAA/38AAP9/AAD/fwAA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_y8qwm")
+
+[node name="ShortGrass" type="MeshInstance3D" unique_id=750424643]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+mesh = SubResource("ArrayMesh_7sxgd")
+skeleton = NodePath("")

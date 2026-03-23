@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://b11m0ffyk104"]
+
+[ext_resource type="PackedScene" uid="uid://bqqm4f46pnv7t" path="res://assets/props/pile.tscn" id="1_hfbw2"]
+[ext_resource type="Material" uid="uid://cr6y3bbrmlcqv" path="res://assets/materials/mountain.tres" id="2_26tyc"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_26tyc"]
+points = PackedVector3Array(-1.2654531, -0.4838502, -0.52223057, 1.4720333, -0.4093302, -0.22260988, 0.012802306, -0.5380402, 1.4887545, -0.07416776, 0.82792675, 0.050800085, 0.057050448, -0.4907169, -1.3797995, 0.5463916, -0.8445608, 0.13945882, -1.3650169, -0.596019, 0.41772535, 1.1946138, -0.36254823, 0.9142927, -0.031128895, 0.04470181, 1.2779363, 0.18882117, 0.66240984, -0.43418255, -0.64390355, -0.2615618, -1.2627002, 1.0574971, -0.45321307, -0.9939652, -1.4041222, -0.26450995, 0.3160059, -0.8238826, -0.35112125, 1.1519207, -0.42297482, 0.48042747, 0.6171301, -0.121456586, -0.8043632, 0.9452657, -1.166654, -0.40705106, -0.9019238, 0.6255722, -0.13026714, 1.232807, 0.055171378, 0.81435436, 0.050800085, 1.2784315, -0.6317874, -0.35590526, 1.4206473, -0.40768197, 0.4138824, -0.7984479, -0.44951797, 1.2227163, 1.4563191, -0.35977194, -0.35503972, 0.27691346, -0.8369315, 0.1825883, -1.4499363, -0.41014656, -0.17773244, -0.07336248, 0.82027006, -0.035370514, 0.056009766, -0.3916287, -1.3461529, -0.2574753, -0.76457745, 1.0865579, 0.54517573, -0.8426341, 0.27249825, 0.19350958, -0.4970965, 1.4999602, -0.49082974, -0.36497274, -1.3684137, -1.2827997, -0.6242168, 0.40768152)
+
+[node name="mountains" type="Node3D" unique_id=1927079183]
+
+[node name="pile" parent="." unique_id=1493187020 instance=ExtResource("1_hfbw2")]
+transform = Transform3D(1.9927044, 0, 0, 0, 3.475705, 0, 0, 0, 1.6289063, -0.22377145, 0, -0.7646277)
+surface_material_override/0 = ExtResource("2_26tyc")
+
+[node name="pile2" parent="." unique_id=823356108 instance=ExtResource("1_hfbw2")]
+transform = Transform3D(0.7936004, 0, -0.9172758, 0, 2.0447915, 0, 1.8278594, 0, 0.39825282, 2.3605604, -0.63106394, -2.1133301)
+surface_material_override/0 = ExtResource("2_26tyc")
+
+[node name="pile3" parent="." unique_id=2034371006 instance=ExtResource("1_hfbw2")]
+transform = Transform3D(1.2625178, 0, -0.7736854, 0, 2.0447915, 0, 1.5417261, 0, 0.6335702, 0.23086238, -0.9682393, -3.0600612)
+surface_material_override/0 = ExtResource("2_26tyc")
+
+[node name="pile4" parent="." unique_id=740267549 instance=ExtResource("1_hfbw2")]
+transform = Transform3D(1.1741996, 0, -2.152133, 0, 2.0447915, 0, 3.684358, 0, 0.685882, -3.207522, -1.127954, -0.5161822)
+surface_material_override/0 = ExtResource("2_26tyc")
+
+[node name="pile5" parent="." unique_id=1468845706 instance=ExtResource("1_hfbw2")]
+transform = Transform3D(1.9805527, 0, 1.2645901, 0, 2.0447912, 0, -2.2858484, 0, 1.0956924, -0.11970472, -0.63106394, 0.7792803)
+surface_material_override/0 = ExtResource("2_26tyc")
+
+[node name="pile6" parent="." unique_id=113638225 instance=ExtResource("1_hfbw2")]
+transform = Transform3D(1.9805527, 0, 1.2645901, 0, 2.0447912, 0, -2.2858484, 0, 1.0956924, 4.048095, -1.4477272, 0.7792803)
+surface_material_override/0 = ExtResource("2_26tyc")
+
+[node name="pile7" parent="." unique_id=984889786 instance=ExtResource("1_hfbw2")]
+transform = Transform3D(1.9805527, 0, 1.2645901, 0, 1.3050944, 0, -2.2858484, 0, 1.0956924, -6.5403686, -1.7856568, 0.7792803)
+surface_material_override/0 = ExtResource("2_26tyc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1209121982]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=952865472]
+transform = Transform3D(6.735696, 0, 0.81586707, 0, 3.59451, 0, -1.3736987, 0, 4.0004644, -1.608099, -0.34277678, -0.29288882)
+shape = SubResource("ConvexPolygonShape3D_26tyc")

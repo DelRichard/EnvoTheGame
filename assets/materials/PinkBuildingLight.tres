@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://btrmr7qsj6lbq"]
+
+[ext_resource type="Shader" uid="uid://dftwbemaanj7f" path="res://assets/materials/skyscraper.gdshader" id="1_lphic"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_lphic")
+shader_parameter/size = -180.0
+shader_parameter/thickness = 0.08
+shader_parameter/ratio = Vector2(0.5, 1)
+shader_parameter/base_color = Color(0.55, 0.55, 0.55, 1)
+shader_parameter/window_color = Color(1, 0, 0.75686276, 1)
+shader_parameter/window_intensity = 20.0
+shader_parameter/window_freq = 0.18
+shader_parameter/scale = Vector2(0.87, 1)

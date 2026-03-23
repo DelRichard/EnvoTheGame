@@ -1,0 +1,48 @@
+[gd_scene format=4 uid="uid://dgrq45w0r2xm4"]
+
+[ext_resource type="Texture2D" uid="uid://bnak68nyycihg" path="res://assets/character_models/envoPropsDRAFT_Short Grass.png" id="1_3s353"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mt43n"]
+resource_name = "shortGrass"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("1_3s353")
+roughness = 0.5
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5tl1k"]
+_surfaces = [{
+"aabb": AABB(-0.2974298, -0.2974298, -0.2974298, 0.5948596, 1.0948596, 0.5948596),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIABAACAAUABgAHAAgABgAJAAcACgAGAAgACgAIAAsA"),
+"name": "shortGrass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AAD/f/9/AAD//wAA/38AAP///3//fwAAAAAAAP9/AAAAAP///38AAP//////fwAA/3//fwAAAAD/fwAA//8AAP9//3///wAA/38AAAAAAAD/f///AAAAAP9//////wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_evsfj"]
+resource_name = "envoPropsDRAFT_Plane_002"
+_surfaces = [{
+"aabb": AABB(-0.2974298, -0.2974298, -0.2974298, 0.5948596, 1.0948596, 0.5948596),
+"attribute_data": PackedByteArray("////fwAA//8AAP9/////////AAAAAAAA////fwAA//8AAP9/////////AAAAAAAA"),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIABAACAAUABgAHAAgABgAJAAcACgAGAAgACgAIAAsA"),
+"material": SubResource("StandardMaterial3D_mt43n"),
+"name": "shortGrass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AAD/f/9//////wAA/3///////3//f///AAAAAP9///8AAP///3//////////f////3//fwAA/7//fwAA////v/9//3////+//38AAAAA/7//f///AAD/v/9///////+//3////9/////f////3////9/////f////38AAP9/AAD/fwAA/38AAP9/AAD/fwAA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_5tl1k")
+
+[node name="TallGrass" type="MeshInstance3D" unique_id=297500220]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+mesh = SubResource("ArrayMesh_evsfj")
+skeleton = NodePath("")

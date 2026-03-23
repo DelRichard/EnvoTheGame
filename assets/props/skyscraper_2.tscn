@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://bild0j3oylkd2"]
+
+[ext_resource type="Material" uid="uid://6mi1865dkntu" path="res://assets/materials/yellowBuildingLight.tres" id="1_momab"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rw61x"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pl7kl"]
+_surfaces = [{
+"aabb": AABB(-1, -3.7656412, -1, 2, 7.898431, 2),
+"format": 34896613377,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAwAAAAIAAAAEAAEABAAAAAUAAAADAAUABAAFAAYABgABAAQABgAFAAMAAQAGAAcABgADAAcAAQAHAAgACAACAAEACAAHAAMAAwACAAkACAAJAAIACAADAAkA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 10,
+"vertex_data": PackedByteArray("AAAAAP//AAAAACrNAAAAAAAAKs3//wAA////////AAAAAAAAAAAAAP//AAD//wAA//8AAAAAAAD/////AAAAAOl/lv8AAAAA6X+W////AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_4o4jc"]
+resource_name = "envoPropsDRAFT_Cube_001"
+_surfaces = [{
+"aabb": AABB(-1, -3.7656412, -1, 2, 7.898431, 2),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/8f/3//X/8//1//f/8f/z9YtauKApP/P1i1UzUCk/9/WLWriv/f/z//3/9/WLVTNf9f/38Ck/8/ApP/f/9f/z//XwAAApP/P/9f/z//nwAAWLVTNf9f/3//n/+//1//vwKT/39YtauK"),
+"format": 34896613399,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFQAUABcAFQAXABgAGQAaABsAGgAZABwAGgAcAB0A"),
+"material": SubResource("StandardMaterial3D_rw61x"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 30,
+"vertex_data": PackedByteArray("AAAAAP//VNUAACrNAABU1QAAKs3//1TVAAAAAAAAVNUAAAAAAAD/v///AAD///+///8AAAAA/78AAAAA////v+l/lv8AABz7////////DP7pf5b///9P+f////8AAGP26X+W/wAAn+QAACrN//8y5AAAKs0AAK3o6X+W////PuD//wAAAABU1f///////1TV/////wAAVNX//wAA//9U1QAAAAD///+/////////I9T//wAA////vwAAKs3//2XF6X+W////cfH//wAAAAD//wAAKs0AAP//AAAAAAAA////////AAD//+l/lv8AAP//VNVU1VTVVNVU1VTVVNVU1QAA/38AAP9/AAD/fwAA/393hMq9dsHnAu7DxgdBiW279GORsUNk77EgYTCuRWeItaoqqiqqKqoqqiqqKqoqqir///////////////////////////+//7+/uz7E/7//v9ivJdCSk2zs")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_pl7kl")
+
+[node name="skyscraper2" type="MeshInstance3D" unique_id=611909110]
+mesh = SubResource("ArrayMesh_4o4jc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_momab")
