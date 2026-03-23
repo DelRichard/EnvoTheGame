@@ -5,6 +5,7 @@ extends CharacterBody3D
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 
 @onready var health_component: HealthComponent = $HealthComponent
+@onready var audio_stream_player_3d: AudioStreamPlayer3D = %AudioStreamPlayer3D
 
 
 
@@ -310,6 +311,8 @@ func be_following() -> void:
 
 func _on_enemy_died() -> void:
 	print("Enemy Killed!")
+	audio_stream_player_3d.play()
+	await get_tree().create_timer(1.0).timeout
 	queue_free()
 
 
@@ -317,5 +320,5 @@ func _on_enemy_hit(from_position: Vector3) -> void:
 	print("Enemy Hit!")
 	animated_sprite_3d.modulate = Color.RED
 	await get_tree().create_timer(0.1).timeout
-	animated_sprite_3d.modulate = Color.WEB_GREEN #put white when enemy sprite ready
+	animated_sprite_3d.modulate = Color.WHITE
 	apply_knockback(from_position)

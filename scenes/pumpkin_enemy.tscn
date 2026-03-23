@@ -2,22 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://ch8kcp6y2m3oi" path="res://assets/character_models/Pumpkin Vegion.png" id="1_84xek"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lrhu3"]
-atlas = ExtResource("1_84xek")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cw5hk"]
-atlas = ExtResource("1_84xek")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8q88w"]
-atlas = ExtResource("1_84xek")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xrq8m"]
-atlas = ExtResource("1_84xek")
-region = Rect2(96, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_win5y"]
 atlas = ExtResource("1_84xek")
 region = Rect2(0, 32, 32, 32)
@@ -34,8 +18,41 @@ region = Rect2(64, 32, 32, 32)
 atlas = ExtResource("1_84xek")
 region = Rect2(96, 32, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrhu3"]
+atlas = ExtResource("1_84xek")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw5hk"]
+atlas = ExtResource("1_84xek")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8q88w"]
+atlas = ExtResource("1_84xek")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrq8m"]
+atlas = ExtResource("1_84xek")
+region = Rect2(96, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_dd55b"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_win5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vycp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sy4ln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8vpl")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lrhu3")
@@ -64,7 +81,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_sy4ln")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f8vpl")
+"texture": SubResource("AtlasTexture_vycp7")
 }],
 "loop": true,
 "name": &"jump",
@@ -80,8 +97,8 @@ radius = 0.17008881
 billboard = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_dd55b")
-animation = &"idle"
-frame_progress = 0.13560997
+animation = &"jump"
+frame_progress = 0.057450242
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1206888442]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07329574, 0)

@@ -1,4 +1,9 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://bfgwdcuapog6f"]
 
+[ext_resource type="Texture2D" uid="uid://d3xthohy7iavb" path="res://assets/textures/WhatsApp Image 2026-03-23 at 12.53.42 PM.jpeg" id="1_7x6pw"]
+
 [resource]
-albedo_color = Color(0.26665926, 0.22733745, 0.15240797, 1)
+albedo_texture = ExtResource("1_7x6pw")
+uv1_scale = Vector3(0.97, 0.97, 0.97)
+uv1_triplanar = true
+texture_filter = 0

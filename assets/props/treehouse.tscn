@@ -2,6 +2,7 @@
 
 [ext_resource type="Material" uid="uid://bxj1b2sa8ufjk" path="res://assets/materials/lightwood.tres" id="1_6nvgw"]
 [ext_resource type="Material" uid="uid://bfgwdcuapog6f" path="res://assets/materials/wood.tres" id="2_6ekus"]
+[ext_resource type="Shader" uid="uid://b3rtm875dpluq" path="res://assets/materials/sway.gdshader" id="3_6ekus"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m3i6g"]
 resource_name = "Material"
@@ -109,7 +110,18 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ana2x")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ndhq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x21ro"]
+render_priority = 0
+shader = ExtResource("3_6ekus")
+shader_parameter/sway_amount = 0.02700000128249999
+shader_parameter/sway_scale = 10.0
+shader_parameter/sway_duration = 2.0
+shader_parameter/sway_direction = Vector3(0, 0, 2)
+shader_parameter/albedo_color = Color(0.7811883, 0.8387457, 0.8541561, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/specular = 0.5
+shader_parameter/opacity = 1.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_e2dnr"]
 _surfaces = [{
@@ -134,7 +146,7 @@ _surfaces = [{
 "index_count": 144,
 "index_data": PackedByteArray("GQABAAIAAQADAAIAGQACAAAAGgABABkAAAAbABkAGwAaABkAAAALABsAGgAEAAEADAAbAAsAHAAEABoAHAAGAAQABQAGABwABQAcAAcABwAcAAgAHQAaABsAHAAaAB0ACgAbAAwAHQAbAAoACgAMAA0AHgAIABwAHgAcAB0ACAAeAAkADwAJAB4AHgAOAA8ADQAfAAoAHgAgAA4AHQAgAB4AIAATAA4AIQAdAAoAHQAhACAAIQAKAB8ADQARAB8AIgAgACEAIAAiABMAIgAhAB8AFAATACIAIgAVABQAIgASABUAIwASACIAIgAfACMAIwAXABIAFgAXACMAFgAYABcAIwAfACQAIwAkABYAJAAfABEAFgAkABAAJAARABAA"),
 "lods": [0.110031895, PackedByteArray("AAABAAIAAQADAAIABAABAAAABQAGAAQABQAEAAcABwAEAAgACQAIAAQACgAEAAAACQAEAAoAAAALAAoADAAKAAsACgAMAA0ACgAOAAkACQAOAA8ADQAQAAoADQARABAAEgAOAAoAEgAKABAADgASABMAFAATABIAEgAVABQAEgAQABYAFgAXABIAFgAYABcA")],
-"material": SubResource("StandardMaterial3D_1ndhq"),
+"material": SubResource("ShaderMaterial_x21ro"),
 "primitive": 3,
 "uv_scale": Vector4(2, 2.0005248, 0, 0),
 "vertex_count": 37,
@@ -142,9 +154,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_e2dnr")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x21ro"]
-albedo_color = Color(0.7967997, 0.88366795, 0.89617354, 1)
 
 [node name="treehouse" type="Node3D" unique_id=1943605150]
 
@@ -166,4 +175,3 @@ surface_material_override/0 = ExtResource("2_6ekus")
 [node name="cloth" type="MeshInstance3D" parent="." unique_id=1885573459]
 mesh = SubResource("ArrayMesh_4gqml")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_x21ro")
