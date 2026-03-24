@@ -1,20 +1,16 @@
 [gd_scene format=3 uid="uid://bdop58hcewd5l"]
 
-[ext_resource type="Texture2D" uid="uid://c1sscklqpn3k5" path="res://assets/textures/waste puddle small.png" id="1_k5dcw"]
+[ext_resource type="Material" uid="uid://cl1bnnnyq120h" path="res://assets/materials/wastePuddle.tres" id="1_pg2o2"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_pg2o2"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_af6vo"]
-render_priority = 1
-transparency = 1
-albedo_texture = ExtResource("1_k5dcw")
-emission_enabled = true
-emission = Color(0, 0.77871734, 0, 1)
-emission_energy_multiplier = 6.99
-texture_filter = 0
-texture_repeat = false
 
 [node name="WastePuddle" type="MeshInstance3D" unique_id=1930249513]
 transform = Transform3D(0.084829316, 0, 0, 0, 0.084829316, 0, 0, 0, 0.084829316, 0, 0, 0)
 mesh = SubResource("PlaneMesh_pg2o2")
-surface_material_override/0 = SubResource("StandardMaterial3D_af6vo")
+surface_material_override/0 = ExtResource("1_pg2o2")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." unique_id=2057580634]
+radius = 1.0
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+avoidance_layers = 2

@@ -12,7 +12,7 @@ enum WanderState   { IDLE, WAITING_TO_MOVE, MOVE }
 @export var idle_wait_time: float = 2.0
 @export var follow_distance: float = 0.75
 
-@export var current_behavior: BehaviorState = BehaviorState.FOLLOW
+@export var current_behavior: BehaviorState = BehaviorState.WANDER
 @export var my_target: Node3D
 @export var following_target: Node3D
 @export var debug: bool = false
@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 		BehaviorState.MOVE_TO_TARGET:
 			go_to_target(my_target)
 		BehaviorState.FOLLOW:
-			follow(following_target)
+			follow(following_target, delta)
 
 	# Navigation
 	last_path_update_time += delta
@@ -277,7 +277,7 @@ func go_to_target(currentTarget: Node3D) -> void:
 
 
 # follow
-func follow(myFollowTarget: Node3D) -> void:
+func follow(myFollowTarget: Node3D, delta: float) -> void:
 	was_idle = false
 
 	var direction = myFollowTarget.global_position - global_position
@@ -286,6 +286,9 @@ func follow(myFollowTarget: Node3D) -> void:
 	if distance > follow_distance:
 		move_to_target(myFollowTarget.global_position)
 	else:
+		if direction.length() > 0.01:
+			var target_rot = atan2(-direction.x, -direction.z)
+			rotation.y = lerp_angle(rotation.y, target_rot, rotation_speed * delta)
 		stop_movement()
 
 

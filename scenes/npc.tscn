@@ -188,6 +188,7 @@ path_desired_distance = 0.25
 target_desired_distance = 0.5
 avoidance_enabled = true
 radius = 0.25
+avoidance_mask = 3
 debug_enabled = true
 
 [node name="FaceDirection" type="MeshInstance3D" parent="." unique_id=1508491913]

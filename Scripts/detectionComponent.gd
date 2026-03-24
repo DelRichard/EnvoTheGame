@@ -4,7 +4,7 @@ class_name DetectionComponent extends Node
 @onready var ray_cast_3d: RayCast3D = $"../Head/RayCast3D"
 
 
-@export var horizontal_fov := 150.0
+@export var horizontal_fov := 160.0
 @export var vertical_fov := 120.0  
 @export var max_view_distance := 10.0
 @export var debug:= true
@@ -13,7 +13,7 @@ var player
 var player_head
 
 var see_player := false
-
+var last_state := false
 
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
@@ -22,13 +22,14 @@ func _ready():
 
 func _physics_process(_delta: float) -> void:
 	if player and can_see_player() and is_in_fov() and has_line_of_sight():
-		if debug:
-			print("NPC can see player")
 		see_player = true
 	else:
-		if debug:
-			print("NPC cannot see player")
 		see_player = false
+	
+	if see_player != last_state:
+		if debug:
+			print("See player:", see_player)
+		last_state = see_player
 
 
 func can_see_player() -> bool:

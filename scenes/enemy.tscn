@@ -229,6 +229,7 @@ height = 0.75
 script = ExtResource("1_5uy6h")
 speed = 0.5
 follow_distance = 0.25
+debug = true
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=167188248]
 unique_name_in_owner = true
@@ -245,7 +246,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.033655062, 0)
 shape = SubResource("CapsuleShape3D_v0iea")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=512202661]
-path_desired_distance = 0.25
+path_desired_distance = 0.5
 target_desired_distance = 0.5
 avoidance_enabled = true
 height = 0.5
@@ -278,8 +279,9 @@ script = ExtResource("5_c4w8v")
 metadata/_custom_type_script = "uid://cxwy2c2vtih3b"
 
 [node name="DetectionComponent" type="Node" parent="." unique_id=735301194]
+unique_name_in_owner = true
 script = ExtResource("5_xwavj")
-debug = false
+max_view_distance = 5.0
 metadata/_custom_type_script = "uid://boqy1e4phksc2"
 
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]

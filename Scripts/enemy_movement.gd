@@ -17,7 +17,7 @@ enum WanderState   { IDLE, WAITING_TO_MOVE, MOVE }
 @export var idle_wait_time: float = 2.0
 @export var follow_distance: float = 0.75
 
-@export var current_behavior: BehaviorState = BehaviorState.FOLLOW
+@export var current_behavior: BehaviorState = BehaviorState.WANDER
 @export var my_target: Node3D
 @export var following_target: Node3D
 @export var debug: bool = false
@@ -56,7 +56,7 @@ func _physics_process(delta: float) -> void:
 		BehaviorState.MOVE_TO_TARGET:
 			go_to_target(my_target)
 		BehaviorState.FOLLOW:
-			follow(following_target)
+			follow(following_target, delta)
 
 	# Navigation
 	last_path_update_time += delta
@@ -253,7 +253,7 @@ func go_to_target(currentTarget: Node3D) -> void:
 
 
 # follow
-func follow(myFollowTarget: Node3D) -> void:
+func follow(myFollowTarget: Node3D, delta: float) -> void:
 	was_idle = false
 
 	var direction = myFollowTarget.global_position - global_position
@@ -262,14 +262,17 @@ func follow(myFollowTarget: Node3D) -> void:
 	if distance > follow_distance:
 		move_to_target(myFollowTarget.global_position)
 	else:
+		if direction.length() > 0.01:
+			var target_rot = atan2(-direction.x, -direction.z)
+			rotation.y = lerp_angle(rotation.y, target_rot, rotation_speed * delta)
 		stop_movement()
 
 
 # SIGNALS
 
 func _on_navigation_agent_3d_target_reached() -> void:
-	if debug:
-		print("Target reached")
+	#if debug:
+		#print("Target reached")
 	if current_behavior == BehaviorState.WANDER:
 		wander_state = WanderState.IDLE
 	if current_behavior == BehaviorState.MOVE_TO_TARGET:
@@ -316,9 +319,14 @@ func _on_enemy_died() -> void:
 	queue_free()
 
 
-func _on_enemy_hit(from_position: Vector3) -> void:
+func _on_enemy_hit(from_position: Vector3, knockback: float) -> void:
 	print("Enemy Hit!")
 	animated_sprite_3d.modulate = Color.RED
 	await get_tree().create_timer(0.1).timeout
 	animated_sprite_3d.modulate = Color.WHITE
-	apply_knockback(from_position)
+	apply_knockback(from_position, knockback)
+	if current_behavior != BehaviorState.FOLLOW:
+		var dir = (from_position - global_position)
+		if dir.length() > 0.01:
+			var target_rot = atan2(-dir.x, -dir.z)
+			rotation.y = lerp_angle(rotation.y, target_rot, 1.0)

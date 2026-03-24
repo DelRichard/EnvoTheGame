@@ -14,7 +14,7 @@ func _ready() -> void:
 	current_health = max_health
 	_emit()
 
-func damage(amount: float, from_position: Vector3) -> void:
+func damage(amount: float, from_position: Vector3, knockback: float = 0.0) -> void:
 	if invincible:
 		return
 	
@@ -22,7 +22,7 @@ func damage(amount: float, from_position: Vector3) -> void:
 	
 	current_health = clamp(current_health - amount, 0.0, max_health)
 	_emit()
-	hit.emit(from_position)
+	hit.emit(from_position, knockback)
 	
 	if current_health == 0.0:
 		died.emit()

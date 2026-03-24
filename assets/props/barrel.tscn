@@ -55,3 +55,10 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1109033575]
 shape = SubResource("ConvexPolygonShape3D_lglh2")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." unique_id=626711389]
+radius = 0.35
+height = 0.5
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+use_3d_avoidance = true

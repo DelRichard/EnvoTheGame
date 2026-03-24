@@ -8,6 +8,8 @@ extends CharacterBody3D
 @onready var health_component: HealthComponent = %HealthComponent
 @export var health_bar: ProgressBar 
 
+
+
 var last_direction := "front"
 var in_dialogue := false
 
@@ -160,12 +162,12 @@ func _on_died() -> void:
 	die()
 
 
-func _on_player_hit(from_position: Vector3) -> void:
+func _on_player_hit(from_position: Vector3, knockback: float) -> void:
 	print("Player got hit!")
 	animated_sprite_3d.modulate = Color.RED
 	await get_tree().create_timer(0.1).timeout
 	animated_sprite_3d.modulate = Color.WHITE
-	apply_knockback(from_position)
+	apply_knockback(from_position, knockback)
 
 
 func _on_player_health_changed(current_health, max_health) -> void:
