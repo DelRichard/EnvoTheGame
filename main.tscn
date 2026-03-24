@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bevt2tbays3j0" path="res://scenes/health_bar.tscn" id="1_efxa6"]
 [ext_resource type="PackedScene" uid="uid://bfm5upmg7jv02" path="res://scenes/player.tscn" id="1_ig7tw"]
 [ext_resource type="Material" uid="uid://d0mncyu3q3uhe" path="res://assets/other/simpleSky.tres" id="2_kek77"]
+[ext_resource type="PackedScene" uid="uid://dx334m23y6gsy" path="res://ui/pause_menu.tscn" id="2_qsp4k"]
 [ext_resource type="PackedScene" uid="uid://cdeka7re8b7wd" path="res://assets/props/ShortGrass.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dgrq45w0r2xm4" path="res://assets/props/TallGrass.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bdop58hcewd5l" path="res://assets/props/waste_puddle.tscn" id="5_lquwl"]
@@ -235,6 +236,9 @@ buffer = PackedFloat32Array(-0.00082721404, -0.012849124, -0.00037314623, 5.7365
 [node name="Main" type="Node3D" unique_id=1172873568]
 
 [node name="UIManager" type="CanvasLayer" parent="." unique_id=322643656]
+
+[node name="PauseMenu" parent="UIManager" unique_id=1595251561 instance=ExtResource("2_qsp4k")]
+z_index = 2
 
 [node name="MainUI" type="Control" parent="UIManager" unique_id=1576332577]
 layout_mode = 3
