@@ -1,46 +1,46 @@
-[gd_scene format=3 uid="uid://d4an8hkum7vyq"]
+[gd_scene format=3 uid="uid://4qbwmfk73gcx"]
 
-[ext_resource type="Script" uid="uid://66c8irla78c8" path="res://Scripts/enemy_movement.gd" id="1_5uy6h"]
-[ext_resource type="SpriteFrames" uid="uid://d0bd46qm83gjr" path="res://assets/character_models/RadishSpriteFrames.tres" id="2_xwavj"]
-[ext_resource type="AudioStream" uid="uid://cs6dfgxel2a5d" path="res://assets/other/enemyDeathSound.wav" id="3_xwavj"]
-[ext_resource type="Script" uid="uid://dtuix55s3pkso" path="res://Scripts/healthComponent.gd" id="4_c4w8v"]
-[ext_resource type="Script" uid="uid://cxwy2c2vtih3b" path="res://Scripts/combatComponent.gd" id="5_c4w8v"]
-[ext_resource type="Script" uid="uid://boqy1e4phksc2" path="res://Scripts/detectionComponent.gd" id="5_xwavj"]
+[ext_resource type="Script" uid="uid://66c8irla78c8" path="res://Scripts/enemy_movement.gd" id="1_vsxyj"]
+[ext_resource type="SpriteFrames" uid="uid://b7vn5hp0ef0r5" path="res://assets/character_models/ChiliBossSpriteFrames.tres" id="2_vsxyj"]
+[ext_resource type="AudioStream" uid="uid://cs6dfgxel2a5d" path="res://assets/other/enemyDeathSound.wav" id="3_oo6tx"]
+[ext_resource type="Script" uid="uid://dtuix55s3pkso" path="res://Scripts/healthComponent.gd" id="4_jqthf"]
+[ext_resource type="Script" uid="uid://cxwy2c2vtih3b" path="res://Scripts/combatComponent.gd" id="5_brwue"]
+[ext_resource type="Script" uid="uid://boqy1e4phksc2" path="res://Scripts/detectionComponent.gd" id="6_vpi3u"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v0iea"]
-radius = 0.35
-height = 0.75
+radius = 0.5652313
+height = 1.9456024
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c4w8v"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_abqhh"]
 
-[node name="Enemy" type="CharacterBody3D" unique_id=1327594500 groups=["Enemy"]]
-script = ExtResource("1_5uy6h")
-speed = 0.5
+[node name="ChiliBoss" type="CharacterBody3D" unique_id=1327594500 groups=["Enemy"]]
+script = ExtResource("1_vsxyj")
+speed = 2.0
 follow_distance = 0.25
 debug = true
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=167188248]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4708187, -0.026712298)
-pixel_size = 0.05
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.508162, 0)
+pixel_size = 0.025
 billboard = 2
 alpha_cut = 1
 texture_filter = 0
-sprite_frames = ExtResource("2_xwavj")
+sprite_frames = ExtResource("2_vsxyj")
 animation = &"idle_front"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=513218477]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.033655062, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24289703, 0)
 shape = SubResource("CapsuleShape3D_v0iea")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=512202661]
 path_desired_distance = 0.5
 target_desired_distance = 0.5
+navigation_layers = 2
 avoidance_enabled = true
-height = 0.5
-radius = 0.1
+radius = 1.0
 debug_enabled = true
 
 [node name="FaceDirection" type="MeshInstance3D" parent="." unique_id=1508491913]
@@ -56,22 +56,29 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=372986322]
 unique_name_in_owner = true
-stream = ExtResource("3_xwavj")
+stream = ExtResource("3_oo6tx")
 volume_db = 34.338
 
 [node name="HealthComponent" type="Node" parent="." unique_id=893036511]
 unique_name_in_owner = true
-script = ExtResource("4_c4w8v")
+script = ExtResource("4_jqthf")
+max_health = 200.0
 metadata/_custom_type_script = "uid://dtuix55s3pkso"
 
 [node name="CombatComponent" type="Node" parent="." unique_id=1364949613]
-script = ExtResource("5_c4w8v")
+script = ExtResource("5_brwue")
+attack_damage = 10.0
+attack_range = 1.0
+attack_angle = 200.0
+knockback_force = 20.0
+lose_sight_time = 10.0
 metadata/_custom_type_script = "uid://cxwy2c2vtih3b"
 
 [node name="DetectionComponent" type="Node" parent="." unique_id=735301194]
 unique_name_in_owner = true
-script = ExtResource("5_xwavj")
-max_view_distance = 5.0
+script = ExtResource("6_vpi3u")
+horizontal_fov = 200.0
+vertical_fov = 300.0
 metadata/_custom_type_script = "uid://boqy1e4phksc2"
 
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]

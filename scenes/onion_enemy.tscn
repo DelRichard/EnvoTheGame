@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cysfx3rghgowv"]
 
 [ext_resource type="Texture2D" uid="uid://c7wbs4lmi05xx" path="res://assets/character_models/Onion Vegion.png" id="1_4yayv"]
+[ext_resource type="SpriteFrames" uid="uid://dnwfs018lx8gl" path="res://assets/character_models/OnionSpriteFrames.tres" id="2_h53dp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h53dp"]
 atlas = ExtResource("1_4yayv")
@@ -100,6 +101,13 @@ billboard = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_kapcl")
 animation = &"death"
+frame_progress = 0.3113815
+
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="." unique_id=687868300]
+billboard = 2
+texture_filter = 0
+sprite_frames = ExtResource("2_h53dp")
+animation = &"walk_side"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=886869630]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1497203, 0)

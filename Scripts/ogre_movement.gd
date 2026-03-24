@@ -11,7 +11,7 @@ enum WanderState   { IDLE, WAITING_TO_MOVE, MOVE }
 @export var idle_wait_time: float = 2.0
 @export var follow_distance: float = 0.75
 
-@export var current_behavior: BehaviorState = BehaviorState.FOLLOW
+@export var current_behavior: BehaviorState = BehaviorState.WANDER
 @export var my_target: Node3D
 @export var following_target: Node3D
 @export var debug: bool = false

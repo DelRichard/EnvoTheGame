@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dtdw72kbpdc0a"
-path="res://.godot/imported/envoPropsDRAFT.glb-e90ad1b0dd4428c6ea6a173405090bb4.scn"
+path="res://.godot/imported/envoPropsDRAFT.glb-d9ac3de8c9e96efa296eb1ef8060b43e.scn"
 
 [deps]
 
-source_file="res://assets/character_models/envoPropsDRAFT.glb"
-dest_files=["res://.godot/imported/envoPropsDRAFT.glb-e90ad1b0dd4428c6ea6a173405090bb4.scn"]
+source_file="res://assets/models/envoPropsDRAFT.glb"
+dest_files=["res://.godot/imported/envoPropsDRAFT.glb-d9ac3de8c9e96efa296eb1ef8060b43e.scn"]
 
 [params]
 

@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dibsv2iis1r77"
-path.s3tc="res://.godot/imported/Field Person 6.png-ffc0cd8134511f95789c32271ef7b58b.s3tc.ctex"
+uid="uid://cq16adtxrlpqo"
+path.s3tc="res://.godot/imported/envoPropsDRAFT_Short Grass.png-ba29c6a12011ad5c6cd2c6be7eeebe7e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "4dc127e97a94e8e6c8eeab7cac1312ba"
+}
 
 [deps]
 
-source_file="res://assets/character_models/Field Person 6.png"
-dest_files=["res://.godot/imported/Field Person 6.png-ffc0cd8134511f95789c32271ef7b58b.s3tc.ctex"]
+source_file="res://assets/models/envoPropsDRAFT_Short Grass.png"
+dest_files=["res://.godot/imported/envoPropsDRAFT_Short Grass.png-ba29c6a12011ad5c6cd2c6be7eeebe7e.s3tc.ctex"]
 
 [params]
 

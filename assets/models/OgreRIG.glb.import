@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dbebueliuf17n"
-path="res://.godot/imported/OgreRIG.glb-8faa05aededd36f270bd182a29dd50dc.scn"
+path="res://.godot/imported/OgreRIG.glb-9a595752d31693fa60ce54b684d5f433.scn"
 
 [deps]
 
-source_file="res://assets/character_models/OgreRIG.glb"
-dest_files=["res://.godot/imported/OgreRIG.glb-8faa05aededd36f270bd182a29dd50dc.scn"]
+source_file="res://assets/models/OgreRIG.glb"
+dest_files=["res://.godot/imported/OgreRIG.glb-9a595752d31693fa60ce54b684d5f433.scn"]
 
 [params]
 

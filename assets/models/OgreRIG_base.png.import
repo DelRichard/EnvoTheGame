@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dibsv2iis1r77"
-path.s3tc="res://.godot/imported/Field Person 6.png-ffc0cd8134511f95789c32271ef7b58b.s3tc.ctex"
+uid="uid://buq0ksbryprmy"
+path.s3tc="res://.godot/imported/OgreRIG_base.png-fafb6e6ac73709da2687d3e114fb4aba.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "2facff46181c41e2cb152fe6485ef8bb"
+}
 
 [deps]
 
-source_file="res://assets/character_models/Field Person 6.png"
-dest_files=["res://.godot/imported/Field Person 6.png-ffc0cd8134511f95789c32271ef7b58b.s3tc.ctex"]
+source_file="res://assets/models/OgreRIG_base.png"
+dest_files=["res://.godot/imported/OgreRIG_base.png-fafb6e6ac73709da2687d3e114fb4aba.s3tc.ctex"]
 
 [params]
 

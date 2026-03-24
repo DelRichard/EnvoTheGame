@@ -1,165 +1,10 @@
 [gd_scene format=3 uid="uid://dfs65ke4d7os0"]
 
 [ext_resource type="Script" uid="uid://ebs5cwglrhkw" path="res://Scripts/npc_movement.gd" id="1_abqhh"]
-[ext_resource type="Texture2D" uid="uid://g1t80f4gvsio" path="res://assets/character_models/Field Person 1.png" id="2_4wlns"]
+[ext_resource type="SpriteFrames" uid="uid://blvw70gbvj3jo" path="res://assets/character_models/FieldPerson4bSpriteFrames.tres" id="2_4wlns"]
 [ext_resource type="Script" uid="uid://boqy1e4phksc2" path="res://Scripts/detectionComponent.gd" id="4_4wlns"]
 [ext_resource type="PackedScene" uid="uid://36rqobnfuhu4" path="res://scenes/quest_trigger_area.tscn" id="4_7n8xq"]
 [ext_resource type="Resource" uid="uid://bbilre0o78xy1" path="res://Dialogue/TEST_DIALOGUE.tres" id="4_tl2vt"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tl2vt"]
-atlas = ExtResource("2_4wlns")
-region = Rect2(0, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hwkja"]
-atlas = ExtResource("2_4wlns")
-region = Rect2(32, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0tygy"]
-atlas = ExtResource("2_4wlns")
-region = Rect2(64, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sptji"]
-atlas = ExtResource("2_4wlns")
-region = Rect2(96, 0, 32, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_7n8xq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tl2vt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hwkja")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0tygy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sptji")
-}],
-"loop": true,
-"name": &"attack",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tl2vt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hwkja")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0tygy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sptji")
-}],
-"loop": true,
-"name": &"idle_back",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tl2vt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hwkja")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0tygy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sptji")
-}],
-"loop": true,
-"name": &"idle_front",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tl2vt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hwkja")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0tygy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sptji")
-}],
-"loop": true,
-"name": &"idle_side",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tl2vt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hwkja")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0tygy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sptji")
-}],
-"loop": true,
-"name": &"jump",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tl2vt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hwkja")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0tygy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sptji")
-}],
-"loop": true,
-"name": &"walk_back",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tl2vt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hwkja")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0tygy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sptji")
-}],
-"loop": true,
-"name": &"walk_front",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tl2vt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hwkja")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0tygy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sptji")
-}],
-"loop": true,
-"name": &"walk_side",
-"speed": 5.0
-}]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v0iea"]
 radius = 0.11035156
@@ -175,9 +20,8 @@ unique_name_in_owner = true
 billboard = 2
 alpha_cut = 1
 texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_7n8xq")
-animation = &"attack"
-frame_progress = 0.75435424
+sprite_frames = ExtResource("2_4wlns")
+animation = &"walk_side"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=513218477]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0006121546, 0)

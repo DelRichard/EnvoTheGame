@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://dynyk073vc7hu"]
 
-[ext_resource type="PackedScene" uid="uid://dtdw72kbpdc0a" path="res://assets/character_models/envoPropsDRAFT.glb" id="1_q4ike"]
+[ext_resource type="PackedScene" uid="uid://dtdw72kbpdc0a" path="res://assets/models/envoPropsDRAFT.glb" id="1_q4ike"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y3abv"]
 
