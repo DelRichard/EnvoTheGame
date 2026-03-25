@@ -31,8 +31,8 @@
 [ext_resource type="PackedScene" uid="uid://4qbwmfk73gcx" path="res://scenes/chiliBoss.tscn" id="30_kq58d"]
 [ext_resource type="PackedScene" uid="uid://clmvy1n7ikcbr" path="res://scenes/onionEnemy.tscn" id="30_seu75"]
 [ext_resource type="PackedScene" uid="uid://bk641x1hnklb1" path="res://scenes/pumpkinEnemy.tscn" id="31_htxhm"]
-[ext_resource type="PackedScene" uid="uid://dn73xhgj7xv41" path="res://scenes/machine_part.tscn" id="32_htxhm"]
-[ext_resource type="PackedScene" uid="uid://bjlpdkdxkgqkc" path="res://scenes/wrench.tscn" id="33_jq2sk"]
+[ext_resource type="PackedScene" path="res://scenes/machine_part.tscn" id="32_htxhm"]
+[ext_resource type="PackedScene" path="res://scenes/wrench.tscn" id="33_jq2sk"]
 
 [sub_resource type="Sky" id="Sky_go701"]
 sky_material = ExtResource("2_kek77")

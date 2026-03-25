@@ -256,6 +256,7 @@ radius = 0.11035156
 height = 0.4045782
 
 [node name="Player" type="CharacterBody3D" unique_id=1327594500 groups=["Player"]]
+safe_margin = 0.01
 script = ExtResource("1_cvnsp")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1056046344]
