@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://clmvy1n7ikcbr"]
+
+[ext_resource type="Script" uid="uid://66c8irla78c8" path="res://Scripts/enemy_movement.gd" id="1_m6vfl"]
+[ext_resource type="SpriteFrames" uid="uid://dnwfs018lx8gl" path="res://assets/character_models/OnionSpriteFrames.tres" id="2_m6vfl"]
+[ext_resource type="AudioStream" uid="uid://cs6dfgxel2a5d" path="res://assets/other/enemyDeathSound.wav" id="3_rglj6"]
+[ext_resource type="Script" uid="uid://dtuix55s3pkso" path="res://Scripts/healthComponent.gd" id="4_mdh8v"]
+[ext_resource type="Script" uid="uid://cxwy2c2vtih3b" path="res://Scripts/combatComponent.gd" id="5_4xs0i"]
+[ext_resource type="Script" uid="uid://boqy1e4phksc2" path="res://Scripts/detectionComponent.gd" id="6_ybfsr"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8hoyo"]
+radius = 0.38586426
+height = 0.7717285
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c4w8v"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_abqhh"]
+
+[node name="OnionEnemy" type="CharacterBody3D" unique_id=1327594500 groups=["Enemy"]]
+script = ExtResource("1_m6vfl")
+speed = 0.5
+follow_distance = 0.25
+debug = true
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=167188248]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4708187, -0.026712298)
+pixel_size = 0.05
+billboard = 2
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = ExtResource("2_m6vfl")
+animation = &"idle_front"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=513218477]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06234157, 0)
+shape = SubResource("CapsuleShape3D_8hoyo")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=512202661]
+path_desired_distance = 0.5
+target_desired_distance = 0.5
+avoidance_enabled = true
+height = 0.5
+radius = 0.1
+debug_enabled = true
+
+[node name="FaceDirection" type="MeshInstance3D" parent="." unique_id=1508491913]
+transform = Transform3D(0.0674028, 0, 0, 0, -6.5248447e-09, 0.0674028, 0, -0.14927106, -2.94627e-09, 0, 0, -0.17517102)
+material_override = SubResource("StandardMaterial3D_c4w8v")
+mesh = SubResource("PrismMesh_abqhh")
+
+[node name="Head" type="Node3D" parent="." unique_id=587238579]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.074888974, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="Head" unique_id=423178346]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=372986322]
+unique_name_in_owner = true
+stream = ExtResource("3_rglj6")
+volume_db = 34.338
+
+[node name="HealthComponent" type="Node" parent="." unique_id=893036511]
+unique_name_in_owner = true
+script = ExtResource("4_mdh8v")
+metadata/_custom_type_script = "uid://dtuix55s3pkso"
+
+[node name="CombatComponent" type="Node" parent="." unique_id=1364949613]
+script = ExtResource("5_4xs0i")
+metadata/_custom_type_script = "uid://cxwy2c2vtih3b"
+
+[node name="DetectionComponent" type="Node" parent="." unique_id=735301194]
+unique_name_in_owner = true
+script = ExtResource("6_ybfsr")
+max_view_distance = 5.0
+metadata/_custom_type_script = "uid://boqy1e4phksc2"
+
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
+[connection signal="died" from="HealthComponent" to="." method="_on_enemy_died"]
+[connection signal="hit" from="HealthComponent" to="." method="_on_enemy_hit"]

@@ -29,6 +29,8 @@
 [ext_resource type="Material" uid="uid://btrmr7qsj6lbq" path="res://assets/materials/PinkBuildingLight.tres" id="23_xuqvo"]
 [ext_resource type="Material" uid="uid://b1etmo4g4avdh" path="res://assets/materials/cobblestone.tres" id="24_xuqvo"]
 [ext_resource type="PackedScene" uid="uid://4qbwmfk73gcx" path="res://scenes/chiliBoss.tscn" id="30_kq58d"]
+[ext_resource type="PackedScene" uid="uid://clmvy1n7ikcbr" path="res://scenes/onionEnemy.tscn" id="30_seu75"]
+[ext_resource type="PackedScene" uid="uid://bk641x1hnklb1" path="res://scenes/pumpkinEnemy.tscn" id="31_htxhm"]
 
 [sub_resource type="Sky" id="Sky_go701"]
 sky_material = ExtResource("2_kek77")
@@ -640,4 +642,12 @@ following_target = NodePath("../Player")
 
 [node name="ChiliBoss" parent="." unique_id=1550910716 node_paths=PackedStringArray("following_target") instance=ExtResource("30_kq58d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.280097, 1.091839, 22.850468)
+following_target = NodePath("../Player")
+
+[node name="OnionEnemy" parent="." unique_id=1324152274 node_paths=PackedStringArray("following_target") instance=ExtResource("30_seu75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2822165, 0.32918143, -6.447735)
+following_target = NodePath("../Player")
+
+[node name="PumpkinEnemy" parent="." unique_id=1214367680 node_paths=PackedStringArray("following_target") instance=ExtResource("31_htxhm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61878633, 0.32918155, -4.844804)
 following_target = NodePath("../Player")
