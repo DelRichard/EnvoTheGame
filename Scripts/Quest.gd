@@ -1,5 +1,6 @@
-extends Resource
-class_name Quest
+class_name Quest extends Resource
+
+@export var next_quest: String = ""
 
 enum QuestState {
 	NOT_STARTED,

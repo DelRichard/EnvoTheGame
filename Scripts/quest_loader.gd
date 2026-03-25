@@ -10,32 +10,35 @@ func load_quests():
 	var q3 = Quest.new()
 	
 	q0.quest_name = "Crazy Introductions"
-	q0.objectives = [
-		"Talk to Gold Foot",
-	]
+	q0.objectives = ["Talk to Gold Foot"]
+	q0.next_quest = "Teary Fields"
 	
 	q1.quest_name = "Teary Fields"
 	q1.objectives = [
 		"Find the lost wrench",
-		"Talk to Gold Foot",
+		"Return the wrench to gold foot",
 	]
+	q1.next_quest = "Green Waters"
 	
 	q2.quest_name = "Green Waters"
 	q2.objectives = [
+		"Talk to Gold Foot in the village",
 		"Find the missing machine parts",
-		"Talk to Gold Foot",
 		"Investigate the valley",
 		"Defeat the pumpkin veggions",
 		"Talk to the villager",
 		"Talk to Gold Foot",
 	]
+	q2.next_quest = "Red Hot Chilli Pepper"
 	
 	q3.quest_name = "Red Hot Chilli Pepper"
 	q3.objectives = [
 		"Talk to the ogre",
 		"Go to the pond village gate",
 		"Defeat the boss",
+		"Talk to the guard"
 	]
+	q3.next_quest = ""
 	
 	QuestManager.register_quest(q0)
 	QuestManager.register_quest(q1)

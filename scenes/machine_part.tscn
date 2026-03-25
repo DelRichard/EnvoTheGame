@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dn73xhgj7xv41"]
 
 [ext_resource type="Texture2D" uid="uid://bugcrqich1vp6" path="res://assets/textures/Machine part.png" id="1_ew6mf"]
-[ext_resource type="Script" uid="uid://bqvv1ct68or2k" path="res://Scripts/Pickable_Item_Area.gd" id="2_mf0eb"]
+[ext_resource type="Script" uid="uid://bi71pgdnn7eui" path="res://Scripts/machine_part.gd" id="2_ew6mf"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_e7nyc"]
 radius = 0.2667078
@@ -10,8 +10,8 @@ radius = 0.2667078
 billboard = 2
 texture_filter = 0
 texture = ExtResource("1_ew6mf")
-script = ExtResource("2_mf0eb")
-item_name = "Machine Part"
+script = ExtResource("2_ew6mf")
+item_name = "MachinePart"
 hover_amplitude = 0.05
 
 [node name="Pick_up_range" type="Area3D" parent="." unique_id=1925985801]

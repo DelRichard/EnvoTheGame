@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bjlpdkdxkgqkc"]
 
 [ext_resource type="Texture2D" uid="uid://bt2ptg72lho6s" path="res://assets/textures/wrench.png" id="1_dr0k1"]
-[ext_resource type="Script" uid="uid://bqvv1ct68or2k" path="res://Scripts/Pickable_Item_Area.gd" id="2_6dcrx"]
+[ext_resource type="Script" uid="uid://bqvv1ct68or2k" path="res://Scripts/Wrench.gd" id="2_6dcrx"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_e7nyc"]
 radius = 0.2667078

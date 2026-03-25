@@ -20,11 +20,13 @@ func _process(delta):
 func interact():
 	if not player_in_range:
 		return
-	if item_name == "Wrench":
-		QuestManager.set_objective("Green Waters", "Talk to Gold Foot")
 	InventoryManager.add_item(item_name, amount)
+	var quest = QuestManager.quests.get("Teary Fields")
+	if quest:
+		if quest.state == Quest.QuestState.STARTED:
+			QuestManager.update_objective("Teary Fields")
 	queue_free()
-		
+	
 func _input(event):
 	if player_in_range and event.is_action_pressed("interact"):
 		interact()

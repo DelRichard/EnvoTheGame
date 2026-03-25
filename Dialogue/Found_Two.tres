@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://7ivby5yu5sj2"]
+
+[ext_resource type="Script" uid="uid://dmp1iu63or1av" path="res://Scripts/DialogueData.gd" id="1_sthji"]
+
+[resource]
+script = ExtResource("1_sthji")
+lines = Array[String](["Says the parts are not enough but have bigger problems the villagers have gone missing"])
+metadata/_custom_type_script = "uid://dmp1iu63or1av"

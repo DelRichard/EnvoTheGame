@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://5pf77a5bqnjs"]
+
+[ext_resource type="Script" uid="uid://dmp1iu63or1av" path="res://Scripts/DialogueData.gd" id="1_6i6gd"]
+
+[resource]
+script = ExtResource("1_6i6gd")
+lines = Array[String](["Asks for another favour. mentions that veggions stole some parts"])
+metadata/_custom_type_script = "uid://dmp1iu63or1av"

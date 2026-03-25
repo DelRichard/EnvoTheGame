@@ -11,7 +11,7 @@ var active_npc: Node = null
 func _ready():
 	panel.hide()
 	set_process_input(false)
-
+	
 func start_dialogue(data: DialogueData, npc: Node = null):
 	if is_active:
 		return
@@ -33,7 +33,7 @@ func start_dialogue(data: DialogueData, npc: Node = null):
 	panel.show()
 	set_process_input(true)
 	display_line()
-
+	
 func display_line():
 	if line_index < current_dialogue.lines.size():
 		text_label.text = current_dialogue.lines[line_index]

@@ -6,7 +6,7 @@
 script = ExtResource("1_jbixp")
 
 [node name="BackgroundPanel" type="Panel" parent="." unique_id=1251669578]
-custom_minimum_size = Vector2(400, 100)
+custom_minimum_size = Vector2(500, 100)
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -19,6 +19,8 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Label" type="Label" parent="BackgroundPanel" unique_id=2092740791]
+custom_minimum_size = Vector2(500, 100)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+autowrap_mode = 2

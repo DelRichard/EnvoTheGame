@@ -4,5 +4,7 @@
 
 [resource]
 script = ExtResource("1_ri8li")
-lines = Array[String](["Hello There", "Find my wrench"])
+lines = Array[String](["Gold foot introduces himself. 
+asks for help finding missing wrench
+direct player to field"])
 metadata/_custom_type_script = "uid://dmp1iu63or1av"
