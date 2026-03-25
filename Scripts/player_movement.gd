@@ -46,6 +46,7 @@ func exit_dialogue():
 func _ready():
 	capture_mouse()
 	await get_tree().process_frame
+	QuestManager.start_quest("Crazy Introductions")
 	health_bar.init_health(health_component.current_health)
 	
 # CAMERA
