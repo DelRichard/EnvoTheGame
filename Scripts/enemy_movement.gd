@@ -7,8 +7,6 @@ extends CharacterBody3D
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = %AudioStreamPlayer3D
 
-
-
 enum BehaviorState { IDLE, WANDER, MOVE_TO_TARGET, FOLLOW }
 enum WanderState   { IDLE, WAITING_TO_MOVE, MOVE }
 
@@ -40,11 +38,6 @@ var min_path_update_interval: float = 0.1
 var wander_state: WanderState = WanderState.IDLE
 var idle_timer_count: float = 0.0
 var was_idle: bool = false
-
-
-# CORE LOOP
-
-
 
 func _physics_process(delta: float) -> void:
 	# Behaviour
