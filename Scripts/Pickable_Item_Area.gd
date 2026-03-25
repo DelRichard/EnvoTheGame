@@ -18,9 +18,12 @@ func _process(delta):
 	position.y = base_position.y + sin(time * hover_speed) * hover_amplitude
 	
 func interact():
-	if player_in_range:
-		InventoryManager.add_item(item_name, amount)
-		queue_free()
+	if not player_in_range:
+		return
+	if item_name == "Wrench":
+		QuestManager.set_objective("Green Waters", "Talk to Gold Foot")
+	InventoryManager.add_item(item_name, amount)
+	queue_free()
 		
 func _input(event):
 	if player_in_range and event.is_action_pressed("interact"):

@@ -10,9 +10,10 @@ func register_quest(quest: Quest):
 	if quest == null:
 		push_error("Tried to register null quest")
 		return
-	
+		
 	if quests.has(quest.quest_name):
 		push_warning("Quest already registered: " + quest.quest_name)
+		
 	quests[quest.quest_name] = quest
 	print("Registered quest:", quest.quest_name)
 	
@@ -25,7 +26,6 @@ func start_quest(quest_name: String):
 		
 	if quest.state != Quest.QuestState.NOT_STARTED:
 		return
-		
 	quest.state = Quest.QuestState.STARTED
 	quest.current_objective_index = 0
 	
@@ -75,5 +75,11 @@ func finish_quest(quest_name: String):
 	
 func trigger_quest_event(quest_name: String):
 	match quest_name:
-		"A Friendly Face":
-			print("NPC interaction finished")
+		"Crazy Introductions":
+			print("Crazy Introductions Quest Completed")
+		"Teary Fields":
+			print("Teary Fields Quest Completed")
+		"Green Waters":
+			print("Green Waters Quest Completed")
+		"Red Hot Chilli Pepper":
+			print("Red Hot Chilli Pepper Quest Completed")
