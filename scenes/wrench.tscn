@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bjlpdkdxkgqkc"]
+
+[ext_resource type="Texture2D" uid="uid://bt2ptg72lho6s" path="res://assets/textures/wrench.png" id="1_dr0k1"]
+[ext_resource type="Script" uid="uid://bqvv1ct68or2k" path="res://Scripts/Pickable_Item_Area.gd" id="2_6dcrx"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e7nyc"]
+radius = 0.2667078
+
+[node name="Wrench" type="Sprite3D" unique_id=1209115370]
+billboard = 2
+texture_filter = 0
+texture = ExtResource("1_dr0k1")
+script = ExtResource("2_6dcrx")
+item_name = "Wrench"
+hover_amplitude = 0.05
+
+[node name="Pick_up_range" type="Area3D" parent="." unique_id=1925985801]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pick_up_range" unique_id=899432553]
+shape = SubResource("SphereShape3D_e7nyc")
+
+[connection signal="body_entered" from="Pick_up_range" to="." method="_on_pick_up_range_body_entered"]
+[connection signal="body_exited" from="Pick_up_range" to="." method="_on_pick_up_range_body_exited"]
