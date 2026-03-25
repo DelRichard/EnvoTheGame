@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://ebs5cwglrhkw" path="res://Scripts/npc_movement.gd" id="1_abqhh"]
 [ext_resource type="SpriteFrames" uid="uid://blvw70gbvj3jo" path="res://assets/character_models/FieldPerson4bSpriteFrames.tres" id="2_4wlns"]
-[ext_resource type="Script" uid="uid://boqy1e4phksc2" path="res://Scripts/detectionComponent.gd" id="4_4wlns"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v0iea"]
 radius = 0.11035156
@@ -42,11 +41,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.074888974, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="Head" unique_id=423178346]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-
-[node name="DetectionComponent" type="Node" parent="." unique_id=2050607046]
-script = ExtResource("4_4wlns")
-debug = false
-metadata/_custom_type_script = "uid://boqy1e4phksc2"
 
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

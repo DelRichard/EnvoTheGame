@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://6uvu40vomeyv"]
+[gd_scene format=3 uid="uid://bi1ulsobs7vgx"]
 
 [ext_resource type="Script" uid="uid://gon3n67yd0je" path="res://Scripts/Gold_Foot_NPC.gd" id="1_lpwjs"]
 [ext_resource type="Texture2D" uid="uid://d2h86py8ns57f" path="res://assets/character_models/Gold foot.png" id="2_d831w"]
-[ext_resource type="Resource" uid="uid://bxrwqj4xli6ng" path="res://Dialogue/Initial Dialogue GoldFoot.tres" id="2_rhpjb"]
+[ext_resource type="Resource" path="res://Dialogue/Initial Dialogue GoldFoot.tres" id="2_rhpjb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lpwjs"]
 radius = 0.11376953
