@@ -29,6 +29,8 @@
 [ext_resource type="PackedScene" uid="uid://4qbwmfk73gcx" path="res://scenes/chiliBoss.tscn" id="29_aq8fk"]
 [ext_resource type="PackedScene" uid="uid://clmvy1n7ikcbr" path="res://scenes/onionEnemy.tscn" id="30_bvj8e"]
 [ext_resource type="PackedScene" uid="uid://bk641x1hnklb1" path="res://scenes/pumpkinEnemy.tscn" id="31_mmjla"]
+[ext_resource type="PackedScene" uid="uid://bjlpdkdxkgqkc" path="res://scenes/wrench.tscn" id="32_tvhpe"]
+[ext_resource type="PackedScene" uid="uid://dn73xhgj7xv41" path="res://scenes/machine_part.tscn" id="33_fvapf"]
 [ext_resource type="Material" uid="uid://duxbd5lv13iuf" path="res://assets/materials/grass.tres" id="38_ek2hi"]
 [ext_resource type="Texture2D" uid="uid://vielv5tboong" path="res://assets/models/door_WhatsApp Image 2026-03-23 at 2.46.jpg" id="39_ek2hi"]
 
@@ -688,3 +690,15 @@ transform = Transform3D(0.50093687, 0, -0.8654838, 0, 1, 0, 0.8654838, 0, 0.5009
 
 [node name="OnionEnemy" parent="." unique_id=1272817638 instance=ExtResource("30_bvj8e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.938884, 3.4571047, 25.749943)
+
+[node name="Wrench" parent="." unique_id=1209115370 instance=ExtResource("32_tvhpe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.807267, 3.4573863, 25.003796)
+
+[node name="Machine_Part" parent="." unique_id=1741133662 instance=ExtResource("33_fvapf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3944309, 3.4465284, 20.0241)
+
+[node name="Machine_Part2" parent="." unique_id=1141725124 instance=ExtResource("33_fvapf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.412904, 3.4607646, 16.596375)
+
+[node name="Quest NPC" parent="." unique_id=1023472071 instance=ExtResource("27_x3xat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1698656, 3.532795, -3.8977659)
