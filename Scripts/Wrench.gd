@@ -6,6 +6,7 @@ extends Sprite3D
 @export var hover_amplitude: float = 0.25
 @export var hover_speed: float = 2.0
 
+@onready var interact_icon = get_node("/root/Main/Player/Interact_Icon")
 var player_in_range := false
 var base_position: Vector3
 var time := 0.0
@@ -33,8 +34,10 @@ func _input(event):
 		
 func _on_pick_up_range_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
+		interact_icon.toggle_visibility()
 		player_in_range = true
 		
 func _on_pick_up_range_body_exited(body: Node3D) -> void:
 	if body.is_in_group("Player"):
+		interact_icon.toggle_visibility()
 		player_in_range = false

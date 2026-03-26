@@ -1,11 +1,10 @@
-extends Sprite3D
+extends Node3D
 
+@onready var interact_icon: Sprite3D = get_node_or_null("Icon")
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func toggle_visibility():
+	if interact_icon == null:
+		print("WARNING: Icon missing on ", get_path())
+		return
+		
+	interact_icon.visible = !interact_icon.visible

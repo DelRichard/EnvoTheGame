@@ -1,5 +1,7 @@
 extends Sprite3D
 
+@onready var interact_icon = get_node("/root/Main/Player/Interact_Icon")
+
 @export var item_name: String = "MachinePart"
 @export var amount: int = 1
 
@@ -23,9 +25,11 @@ func _input(event):
 		interact()
 		
 func _on_pick_up_range_body_entered(body: Node3D) -> void:
-	if body.is_in_group("Player"): 
+	if body.is_in_group("Player"):
+		interact_icon.toggle_visibility()
 		player_in_range = true
 		
 func _on_pick_up_range_body_exited(body: Node3D) -> void:
-	if body.is_in_group("Player"): 
+	if body.is_in_group("Player"):
+		interact_icon.toggle_visibility()
 		player_in_range = false
