@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b1qikktef21qt" path="res://assets/character_models/Player Sprite.png" id="2_g2els"]
 [ext_resource type="Script" uid="uid://dtuix55s3pkso" path="res://Scripts/healthComponent.gd" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://dheljymm3smhd" path="res://Scripts/playerCombatComponent.gd" id="4_dqkch"]
+[ext_resource type="PackedScene" uid="uid://gogcenknv2n8" path="res://scenes/interact_icon.tscn" id="5_qlg0r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("2_g2els")
@@ -297,6 +298,9 @@ metadata/_custom_type_script = "uid://dtuix55s3pkso"
 unique_name_in_owner = true
 script = ExtResource("4_dqkch")
 metadata/_custom_type_script = "uid://dheljymm3smhd"
+
+[node name="Interact_Icon" parent="." unique_id=1009156314 instance=ExtResource("5_qlg0r")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.25536382, 0)
 
 [connection signal="died" from="HealthComponent" to="." method="_on_died"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_player_health_changed"]
