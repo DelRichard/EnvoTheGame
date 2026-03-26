@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://gogcenknv2n8"]
+
+[ext_resource type="Texture2D" uid="uid://b4th62mejoxm2" path="res://assets/Icons/interact icon.png" id="2_jpbxn"]
+[ext_resource type="Script" uid="uid://dtjmdrrd0m25x" path="res://Scripts/interact_icon.gd" id="2_mlf0e"]
+
+[node name="Interact_Icon" type="Node3D" unique_id=1402131093]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("2_mlf0e")
+
+[node name="Icon" type="Sprite3D" parent="." unique_id=1539374550]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+visible = false
+billboard = 2
+texture_filter = 0
+texture = ExtResource("2_jpbxn")

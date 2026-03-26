@@ -1,9 +1,10 @@
 extends CharacterBody3D
 
 @onready var interact_area: Area3D = $Interact_Area
-
+@onready var interact_icon = get_node("/root/Main/Player/Interact_Icon")
 @export var npc_id: String = "Gold_Foot"
 @export var initial_dialogue: DialogueData
+
 
 var player_in_range := false
 var has_talked := false
@@ -12,7 +13,8 @@ var dialogue_target: Node3D = null
 
 func _ready():
 	add_to_group("npcs")
-	
+
+
 func enter_dialogue(target: Node3D) -> void:
 	in_dialogue = true
 	dialogue_target = target
@@ -99,7 +101,11 @@ func _input(event):
 		interact()
 		
 func _on_interact_area_body_entered(body: Node3D) -> void:
-	if body.is_in_group("Player"): player_in_range = true
+	if body.is_in_group("Player"):
+		interact_icon.toggle_visibility()
+		player_in_range = true
 	
 func _on_interact_area_body_exited(body: Node3D) -> void:
-	if body.is_in_group("Player"): player_in_range = false
+	if body.is_in_group("Player"):
+		interact_icon.toggle_visibility()
+		player_in_range = false

@@ -44,6 +44,7 @@ animation = &"attack"
 transform = Transform3D(0.30104536, 0, 0, 0, 0.16527049, 0, 0, 0, 0.30104536, 0, 0.021095574, 0.0032070875)
 mesh = SubResource("CylinderMesh_m6vfl")
 surface_material_override/0 = SubResource("ShaderMaterial_8hoyo")
+animation = &"hidden"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=513218477]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.060821533, 0)
