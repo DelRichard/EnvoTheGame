@@ -8,7 +8,7 @@ extends CharacterBody3D
 @export var debug: bool = false
 
 @export var attack_damage:= 5.0
-@export var attack_range:= 0.75
+@export var attack_range:= 1
 @export var attack_speed := 1
 @export var knockback_force := 5.0
 @export var detect_range := 3.0

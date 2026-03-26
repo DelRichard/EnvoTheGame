@@ -39,7 +39,7 @@ billboard = 2
 alpha_cut = 1
 texture_filter = 0
 sprite_frames = ExtResource("2_m6vfl")
-animation = &"death"
+animation = &"hidden"
 
 [node name="fume" type="MeshInstance3D" parent="." unique_id=1297465800]
 transform = Transform3D(0.30104536, 0, 0, 0, 0.16527049, 0, 0, 0, 0.30104536, 0, 0.021095574, 0.0032070875)
