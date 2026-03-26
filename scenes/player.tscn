@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://c74sm8g20ix12" path="res://Scripts/player_movement.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://b1qikktef21qt" path="res://assets/character_models/Player Sprite.png" id="2_g2els"]
 [ext_resource type="Script" uid="uid://dtuix55s3pkso" path="res://Scripts/healthComponent.gd" id="3_qhqgy"]
-[ext_resource type="Script" uid="uid://dheljymm3smhd" path="res://Scripts/playerCombatComponent.gd" id="4_dqkch"]
 [ext_resource type="PackedScene" uid="uid://gogcenknv2n8" path="res://scenes/interact_icon.tscn" id="5_qlg0r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
@@ -131,7 +130,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qlg0r")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 5.0
 }, {
@@ -266,7 +265,7 @@ billboard = 2
 alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_83xs0")
-animation = &"walk_front"
+animation = &"attack"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=513218477]
 unique_name_in_owner = true
@@ -294,14 +293,10 @@ unique_name_in_owner = true
 script = ExtResource("3_qhqgy")
 metadata/_custom_type_script = "uid://dtuix55s3pkso"
 
-[node name="PlayerCombatComponent" type="Node" parent="." unique_id=1259078205]
-unique_name_in_owner = true
-script = ExtResource("4_dqkch")
-metadata/_custom_type_script = "uid://dheljymm3smhd"
-
 [node name="Interact_Icon" parent="." unique_id=1009156314 instance=ExtResource("5_qlg0r")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.25536382, 0)
 
+[connection signal="animation_finished" from="AnimatedSprite3D" to="." method="_on_animation_finished"]
 [connection signal="died" from="HealthComponent" to="." method="_on_died"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_player_health_changed"]
 [connection signal="hit" from="HealthComponent" to="." method="_on_player_hit"]

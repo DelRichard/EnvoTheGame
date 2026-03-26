@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode unshaded;
+render_mode cull_disabled;
 
 group_uniforms FlameShape;
 uniform float top_radius : hint_range(0.0, 1.5);
@@ -125,26 +125,27 @@ float getDepth(float n, float cutoff, float steps){
 }
 
 void fragment() {
+    // Discard the top cap — its normal points straight up
+    if (NORMAL.y > 0.5) {
+        discard;
+    }
+
     float steps = 4.;
-    float cutoff = 0.15; 
+    float cutoff = 0.15;
 
     vec2 uv = UV;
     uv.x *= 5.0;
     float t = TIME * 3.0;
-    
+
     float noise = getNoise(uv, t);
     cutoff = 1.1 - uv.y * 2.5;
 
-    if (noise < cutoff){
-        discard; // More efficient than setting ALPHA to 0
+    if (noise < cutoff) {
+        discard;
     } else {
-        // Calculate the depth (0.0 to 1.0) of the flame at this pixel
         float d = pow(getDepth(noise, cutoff, steps), 0.7);
-        
-        // Blend between your two chosen colors based on depth
         vec3 final_color = mix(tip_color.rgb, base_color.rgb, d);
-        
         ALBEDO = final_color * _color_intensity;
-        ALPHA = d; // Use the depth to handle transparency/fading
-     }
+        ALPHA = d;
+    }
 }

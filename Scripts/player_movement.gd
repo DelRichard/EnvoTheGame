@@ -35,6 +35,17 @@ var camera_rotation: Vector3 = Vector3.ZERO
 const MAX_LOOK_UP = deg_to_rad(40.0)  
 const MAX_LOOK_DOWN = deg_to_rad(-40.0)  
 
+
+@export var attack_damage := 10.0
+@export var attack_range := 1.5
+@export var attack_speed := 0.5
+@export var knockback_force := 5.0
+@export var attack_cooldown := 0.0
+
+var can_attack := true
+var is_attacking: = false
+
+
 func enter_dialogue():
 	in_dialogue = true
 	velocity = Vector3.ZERO
@@ -101,6 +112,13 @@ func _physics_process(delta):
 		animated_sprite_3d.play("jump")
 		animated_sprite_3d.frame = 0
 
+	if Input.is_action_just_pressed("attack") and can_attack:
+		is_attacking = true
+		animated_sprite_3d.play("attack")
+		attack()
+	
+	apply_cooldown(delta)
+	
 	var input_dir = Input.get_vector("a", "d", "w", "s")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
@@ -113,13 +131,35 @@ func _physics_process(delta):
 
 	move_and_slide()
 	
-	if not is_jumping:
+	if not is_jumping and not is_attacking:
 		update_animations(input_dir)
 
 #for combat
 func apply_knockback(from_position: Vector3, force: float = 5.0):
 	var dir = (global_position - from_position).normalized()
 	velocity += dir * force
+
+func apply_cooldown(delta: float):
+	if not can_attack:
+		attack_cooldown -= delta
+		if attack_cooldown <= 0:
+			can_attack = true
+
+func attack():
+	can_attack = false
+	attack_cooldown = attack_speed
+	
+	var enemies = get_tree().get_nodes_in_group("Enemy")
+	
+	for enemy in enemies:
+		var dist = global_position.distance_to(enemy.global_position)
+		if dist <= attack_range:
+			enemy.health_component.damage(attack_damage,
+			global_position,knockback_force)
+	
+	
+
+
 
 
 # ANIMATION
@@ -137,6 +177,11 @@ func update_animations(input_dir):
 			last_direction = "side"
 			animated_sprite_3d.play("walk_side")
 			animated_sprite_3d.flip_h = input_dir.x < 0
+
+
+
+
+
 func die():
 	# Stop movement
 	velocity = Vector3.ZERO
@@ -175,3 +220,8 @@ func _on_player_hit(from_position: Vector3, knockback: float) -> void:
 func _on_player_health_changed(current_health, max_health) -> void:
 	health_bar.max_value = max_health
 	health_bar.health = current_health
+
+
+func _on_animation_finished() -> void:
+	if animated_sprite_3d.animation == "attack":
+		is_attacking = false

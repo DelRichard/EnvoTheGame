@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://42i1iuuc5vf8" path="res://assets/materials/smoke.gdshader" id="5_qv1vs"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_m6vfl"]
+cap_top = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8hoyo"]
 render_priority = 0
@@ -38,13 +39,13 @@ billboard = 2
 alpha_cut = 1
 texture_filter = 0
 sprite_frames = ExtResource("2_m6vfl")
-animation = &"attack"
+animation = &"death"
 
 [node name="fume" type="MeshInstance3D" parent="." unique_id=1297465800]
 transform = Transform3D(0.30104536, 0, 0, 0, 0.16527049, 0, 0, 0, 0.30104536, 0, 0.021095574, 0.0032070875)
+visible = false
 mesh = SubResource("CylinderMesh_m6vfl")
 surface_material_override/0 = SubResource("ShaderMaterial_8hoyo")
-animation = &"hidden"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=513218477]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.060821533, 0)
