@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://d135ox5j5w4ae"]
+
+[ext_resource type="Script" uid="uid://bmge4leetlt04" path="res://Scripts/rope.gd" id="1_ghbyf"]
+[ext_resource type="Texture2D" uid="uid://c3vofrlg7usyp" path="res://assets/textures/rope.png" id="1_icxtj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_icxtj"]
+size = Vector3(0.19573975, 1.6240082, 0.2097168)
+
+[node name="Rope" type="Area3D" unique_id=1885729063]
+script = ExtResource("1_ghbyf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1211628084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004547119, -0.060173035, 0.03137207)
+shape = SubResource("BoxShape3D_icxtj")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=45289998]
+texture_filter = 0
+texture = ExtResource("1_icxtj")

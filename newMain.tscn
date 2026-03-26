@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://bk641x1hnklb1" path="res://scenes/pumpkinEnemy.tscn" id="31_mmjla"]
 [ext_resource type="PackedScene" uid="uid://bjlpdkdxkgqkc" path="res://scenes/wrench.tscn" id="32_tvhpe"]
 [ext_resource type="PackedScene" uid="uid://dn73xhgj7xv41" path="res://scenes/machine_part.tscn" id="33_fvapf"]
+[ext_resource type="PackedScene" uid="uid://d135ox5j5w4ae" path="res://scenes/rope.tscn" id="34_fvapf"]
 [ext_resource type="Material" uid="uid://duxbd5lv13iuf" path="res://assets/materials/grass.tres" id="38_ek2hi"]
 [ext_resource type="Texture2D" uid="uid://vielv5tboong" path="res://assets/models/door_WhatsApp Image 2026-03-23 at 2.46.jpg" id="39_ek2hi"]
 
@@ -702,3 +703,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.412904, 3.4607646, 16.5963
 
 [node name="Quest NPC" parent="." unique_id=1023472071 instance=ExtResource("27_x3xat")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1698656, 3.532795, -3.8977659)
+
+[node name="Rope" parent="." unique_id=1885729063 instance=ExtResource("34_fvapf")]
+transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50000006, -9.994, 4.7, 30.023)

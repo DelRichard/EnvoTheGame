@@ -4,22 +4,22 @@ extends CharacterBody3D
 @onready var collision_shape_3d: CollisionShape3D = %CollisionShape3D
 @onready var camera_3d: Camera3D = %Camera3D
 @onready var camera_pivot: Node3D = %CameraPivot
-
 @onready var health_component: HealthComponent = %HealthComponent
 @export var health_bar: ProgressBar 
 
-
-
+var can_attack := true
+var is_attacking: = false
 var last_direction := "front"
 var in_dialogue := false
-
-
 var is_dead := false
-
+var is_climbing := false
+var rope_ref: Area3D = null
 
 # MOVEMENT VARIABLES
 @export var speed = 2.0 
 @export var jump_velocity = 3.5
+@export var climb_speed := 2.5
+
 const SENSITIVITY = 0.003
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -35,16 +35,11 @@ var camera_rotation: Vector3 = Vector3.ZERO
 const MAX_LOOK_UP = deg_to_rad(40.0)  
 const MAX_LOOK_DOWN = deg_to_rad(-40.0)  
 
-
 @export var attack_damage := 10.0
 @export var attack_range := 1.5
 @export var attack_speed := 0.5
 @export var knockback_force := 5.0
 @export var attack_cooldown := 0.0
-
-var can_attack := true
-var is_attacking: = false
-
 
 func enter_dialogue():
 	in_dialogue = true
@@ -59,6 +54,15 @@ func _ready():
 	await get_tree().process_frame
 	QuestManager.start_quest("Crazy Introductions")
 	health_bar.init_health(health_component.current_health)
+
+func enter_rope(rope):
+	is_climbing = true
+	rope_ref = rope
+	velocity = Vector3.ZERO
+	
+func exit_rope():
+	is_climbing = false
+	rope_ref = null
 	
 # CAMERA
 func capture_mouse():
@@ -77,12 +81,9 @@ func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
 		if mouse_captured: release_mouse()
 		else: capture_mouse()
-
+		
 	if event is InputEventMouseMotion and mouse_captured:
-		# Rotate player horizontally (yaw)
 		rotate_y(-event.relative.x * SENSITIVITY)
-
-		# vertical rotation
 		handle_mouse_look(event.relative)
 
 
@@ -91,9 +92,28 @@ func handle_mouse_look(mouse_delta: Vector2) -> void:
 	camera_rotation.x = clamp(camera_rotation.x, MAX_LOOK_DOWN, MAX_LOOK_UP)
 	camera_pivot.rotation.x = camera_rotation.x
 
-
+func handle_climbing(delta):
+	var climb_input := 0.0
+	
+	if Input.is_action_pressed("w"):
+		climb_input += 1
+	if Input.is_action_pressed("s"):
+		climb_input -= 1
+	velocity = Vector3(0, climb_input * climb_speed, 0)
+	if rope_ref:
+		global_position.x = rope_ref.global_position.x
+		global_position.z = rope_ref.global_position.z
+	move_and_slide()
+	if Input.is_action_just_pressed("ui_accept"):
+		exit_rope()
+		velocity.y = jump_velocity
+		
 # MOVEMENT
 func _physics_process(delta):
+	if is_climbing:
+		handle_climbing(delta)
+		return
+	
 	if in_dialogue:
 		return 
 		
