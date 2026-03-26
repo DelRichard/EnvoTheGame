@@ -2,21 +2,41 @@
 
 [ext_resource type="Texture2D" uid="uid://ch8kcp6y2m3oi" path="res://assets/character_models/Pumpkin Vegion.png" id="1_gbm0w"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_win5y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbm0w"]
 atlas = ExtResource("1_gbm0w")
 region = Rect2(0, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vycp7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fxxu"]
 atlas = ExtResource("1_gbm0w")
 region = Rect2(32, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sy4ln"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0lnm"]
 atlas = ExtResource("1_gbm0w")
 region = Rect2(64, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f8vpl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gupmg"]
 atlas = ExtResource("1_gbm0w")
 region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0esd"]
+atlas = ExtResource("1_gbm0w")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34lkv"]
+atlas = ExtResource("1_gbm0w")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ffx4"]
+atlas = ExtResource("1_gbm0w")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2ppb"]
+atlas = ExtResource("1_gbm0w")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60481"]
+atlas = ExtResource("1_gbm0w")
+region = Rect2(0, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lrhu3"]
 atlas = ExtResource("1_gbm0w")
@@ -34,20 +54,32 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("1_gbm0w")
 region = Rect2(96, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_win5y"]
+atlas = ExtResource("1_gbm0w")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vycp7"]
+atlas = ExtResource("1_gbm0w")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sy4ln"]
+atlas = ExtResource("1_gbm0w")
+region = Rect2(64, 32, 32, 32)
+
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_win5y")
+"texture": SubResource("AtlasTexture_gbm0w")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vycp7")
+"texture": SubResource("AtlasTexture_7fxxu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sy4ln")
+"texture": SubResource("AtlasTexture_y0lnm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f8vpl")
+"texture": SubResource("AtlasTexture_gupmg")
 }],
 "loop": true,
 "name": &"attack",
@@ -55,7 +87,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vycp7")
+"texture": SubResource("AtlasTexture_m0esd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34lkv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ffx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2ppb")
 }],
 "loop": true,
 "name": &"death",
@@ -63,16 +104,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lrhu3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cw5hk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8q88w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xrq8m")
+"texture": SubResource("AtlasTexture_60481")
 }],
 "loop": true,
 "name": &"hit",
