@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://3u4gaglcavta"]
+
+[ext_resource type="Texture2D" uid="uid://c1sscklqpn3k5" path="res://assets/textures/waste puddle small.png" id="1_5tgyq"]
+
+[resource]
+render_priority = 1
+transparency = 1
+albedo_color = Color(0.8598441, 0.41059202, 1, 1)
+albedo_texture = ExtResource("1_5tgyq")
+roughness = 0.0
+emission_enabled = true
+emission_energy_multiplier = 6.99
+texture_filter = 0
+texture_repeat = false

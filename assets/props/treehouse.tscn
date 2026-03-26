@@ -2,6 +2,7 @@
 
 [ext_resource type="Material" uid="uid://bxj1b2sa8ufjk" path="res://assets/materials/lightwood.tres" id="1_6nvgw"]
 [ext_resource type="Texture2D" uid="uid://dwyecdnqh2jkq" path="res://assets/models/envoPropsNew_randomly-offset-uv-with-fixed-increments-v0-aulez1ph8c8c1.webp" id="1_wlgqe"]
+[ext_resource type="Texture2D" uid="uid://d3xthohy7iavb" path="res://assets/textures/WhatsApp Image 2026-03-23 at 12.53.42 PM.jpeg" id="2_4k6u1"]
 [ext_resource type="Material" uid="uid://bfgwdcuapog6f" path="res://assets/materials/wood.tres" id="2_6ekus"]
 [ext_resource type="Shader" uid="uid://b3rtm875dpluq" path="res://assets/materials/sway.gdshader" id="3_6ekus"]
 [ext_resource type="Texture2D" uid="uid://h2cmjodxfpah" path="res://assets/models/envoPropsNew_randomly-offset-uv-with-fixed-increments-v0-aulez1ph8c8c1_4.webp" id="4_4k6u1"]
@@ -43,6 +44,12 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_q6n2y")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wpgnh"]
+albedo_texture = ExtResource("2_4k6u1")
+uv1_scale = Vector3(2.87, 2.87, 2.87)
+uv1_triplanar = true
+texture_filter = 0
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wlgqe"]
 points = PackedVector3Array(-0.01130712, 1.7971685, -0.2173199, -0.090913296, 1.7958694, -0.7490984, -0.090913296, 1.8247219, -0.7490984, -0.011428356, 1.8234199, -0.2173199, -0.03469217, 1.8247191, 0.42855668, -0.03469217, 1.7958694, 0.42855668, -0.9671873, 1.7958694, -0.60880435, -0.9671873, 1.8247219, -0.60880435, -0.41733503, 1.8247219, 0.7375238, -0.41733503, 1.7958694, 0.7375238, -1.249141, 1.7958694, -0.06494659, -1.249141, 1.8247219, -0.06494659, -0.9671873, 1.8247191, 0.6993941, -0.9671873, 1.7958694, 0.6993941)
@@ -179,7 +186,7 @@ data = PackedVector3Array(-0.46739998, 1.7064999, 0.3565, -0.9809, 1.7865, 0.527
 [node name="platform2" type="MeshInstance3D" parent="." unique_id=1306513367]
 mesh = SubResource("ArrayMesh_wpgnh")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("2_6ekus")
+surface_material_override/0 = SubResource("StandardMaterial3D_wpgnh")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="platform2" unique_id=1461899135]
 
