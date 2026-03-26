@@ -9,7 +9,7 @@ extends CharacterBody3D
 @export var attack_damage := 5.0
 @export var attack_range := 1
 @export var attack_cooldown := 5.0
-@export var knockback_force := 5.0
+@export var knockback_force := 15.0
 @export var detect_range := 3.0
 
 var can_attack := true

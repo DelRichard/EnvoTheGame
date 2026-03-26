@@ -1,11 +1,9 @@
 [gd_scene format=3 uid="uid://bk641x1hnklb1"]
 
-[ext_resource type="Script" uid="uid://66c8irla78c8" path="res://Scripts/enemy_movement.gd" id="1_k6jkh"]
+[ext_resource type="Script" uid="uid://d2r2u85nokfik" path="res://Scripts/pumpkin_enemy.gd" id="1_k6jkh"]
 [ext_resource type="SpriteFrames" uid="uid://dtrxsrcf2ymoj" path="res://assets/character_models/PumpkinSpriteFrames.tres" id="2_k6jkh"]
 [ext_resource type="AudioStream" uid="uid://cs6dfgxel2a5d" path="res://assets/other/enemyDeathSound.wav" id="3_54li6"]
 [ext_resource type="Script" uid="uid://dtuix55s3pkso" path="res://Scripts/healthComponent.gd" id="4_mleu8"]
-[ext_resource type="Script" uid="uid://cxwy2c2vtih3b" path="res://Scripts/combatComponent.gd" id="5_4me7h"]
-[ext_resource type="Script" uid="uid://boqy1e4phksc2" path="res://Scripts/detectionComponent.gd" id="6_x6fhu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v0iea"]
 radius = 0.48791504
@@ -17,10 +15,6 @@ height = 0.9758301
 
 [node name="PumpkinEnemy" type="CharacterBody3D" unique_id=1327594500 groups=["Enemy"]]
 script = ExtResource("1_k6jkh")
-speed = 0.5
-jump_velocity = 4.0
-follow_distance = 0.25
-debug = true
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=167188248]
 unique_name_in_owner = true
@@ -64,16 +58,6 @@ volume_db = 34.338
 unique_name_in_owner = true
 script = ExtResource("4_mleu8")
 metadata/_custom_type_script = "uid://dtuix55s3pkso"
-
-[node name="CombatComponent" type="Node" parent="." unique_id=1364949613]
-script = ExtResource("5_4me7h")
-metadata/_custom_type_script = "uid://cxwy2c2vtih3b"
-
-[node name="DetectionComponent" type="Node" parent="." unique_id=735301194]
-unique_name_in_owner = true
-script = ExtResource("6_x6fhu")
-max_view_distance = 5.0
-metadata/_custom_type_script = "uid://boqy1e4phksc2"
 
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

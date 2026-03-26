@@ -5,6 +5,7 @@ extends CharacterBody3D
 @onready var camera_3d: Camera3D = %Camera3D
 @onready var camera_pivot: Node3D = %CameraPivot
 @onready var health_component: HealthComponent = %HealthComponent
+
 @export var health_bar: ProgressBar 
 
 var can_attack := true
@@ -199,6 +200,11 @@ func update_animations(input_dir):
 			animated_sprite_3d.flip_h = input_dir.x < 0
 
 
+func squash_effect():
+	var tween = create_tween()
+	tween.tween_property(animated_sprite_3d, "scale", Vector3(1.3, 0.6, 1.0), 0.08)
+	tween.tween_property(animated_sprite_3d, "scale", Vector3(1.0, 1.0, 1.0), 0.1)
+	
 
 
 
