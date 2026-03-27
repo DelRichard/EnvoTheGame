@@ -29,8 +29,8 @@ enum WanderState   { IDLE, WAITING_TO_MOVE, MOVE }
 @export var attack_cooldown: float = 1.0 
 @export var knockback_force: float = 30.0
 
-@export var dash_speed: float = 10.0
-@export var dash_duration: float = 0.5
+@export var dash_speed: float = 5.0
+@export var dash_duration: float = 0.6
 @export var dash_cooldown: float = 3.0
 @export var dash_trigger_range: float = 5.0 # Distance where it starts the dash
 

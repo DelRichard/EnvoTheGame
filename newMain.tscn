@@ -37,8 +37,8 @@
 [ext_resource type="PackedScene" uid="uid://cdeka7re8b7wd" path="res://assets/props/ShortGrass.tscn" id="34_vbtvo"]
 [ext_resource type="PackedScene" uid="uid://d4an8hkum7vyq" path="res://scenes/radish_enemy.tscn" id="34_xjcue"]
 [ext_resource type="PackedScene" uid="uid://bnp10shotubqu" path="res://assets/props/fences.tscn" id="35_xjcue"]
-[ext_resource type="PackedScene" uid="uid://dqwfbkhgs5lio" path="res://assets/props/pebble.tscn" id="37_c1cye"]
 [ext_resource type="PackedScene" uid="uid://dgsrbilhjqlpx" path="res://scenes/story_npc.tscn" id="36_fa2m2"]
+[ext_resource type="PackedScene" uid="uid://dqwfbkhgs5lio" path="res://assets/props/pebble.tscn" id="37_c1cye"]
 [ext_resource type="Material" uid="uid://duxbd5lv13iuf" path="res://assets/materials/grass.tres" id="38_ek2hi"]
 [ext_resource type="Texture2D" uid="uid://vielv5tboong" path="res://assets/models/door_WhatsApp Image 2026-03-23 at 2.46.jpg" id="39_ek2hi"]
 [ext_resource type="PackedScene" uid="uid://dke8kumoyhuga" path="res://scenes/pond_guard.tscn" id="39_vbtvo"]
@@ -380,7 +380,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.199507, 3.529527, 29.12871
 transform = Transform3D(0.58566535, 0, -0.81055313, 0, 1, 0, 0.81055313, 0, 0.58566535, -4.1850615, 3.5107238, 1.0710242)
 
 [node name="ChiliBoss" parent="." unique_id=1076033435 instance=ExtResource("29_aq8fk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.452693, 4.3897624, 4.477297)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.068652, 4.334075, 20.786427)
 
 [node name="PumpkinEnemy" parent="." unique_id=1536759346 node_paths=PackedStringArray("following_target") instance=ExtResource("31_mmjla")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.300853, 3.7457955, 23.596441)
@@ -2139,10 +2139,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3944309, 3.4465284, 20.0241
 [node name="Machine_Part2" parent="." unique_id=1141725124 instance=ExtResource("33_fvapf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.412904, 3.4607646, 16.596375)
 
-[node name="Rope" parent="." unique_id=1885729063 instance=ExtResource("34_fvapf")]
+[node name="Rope2" parent="." unique_id=1804538985 instance=ExtResource("34_fvapf")]
 transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50000006, -9.994, 4.7, 30.023)
 
-[node name="RadishEnemy" parent="." unique_id=1223622874 instance=ExtResource("34_xjcue")]
+[node name="RadishEnemy2" parent="." unique_id=1494872043 instance=ExtResource("34_xjcue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0798073, 3.616506, 20.450787)
 
 [node name="Story_NPC" parent="." unique_id=650234995 instance=ExtResource("36_fa2m2")]
