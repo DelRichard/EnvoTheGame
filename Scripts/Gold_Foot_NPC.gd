@@ -26,7 +26,7 @@ func _ready():
 	add_to_group("npcs")
 	DialogueManager.dialogue_finished.connect(_on_dialogue_finished)
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_moving:
 		var direction = target_position - global_transform.origin
 		direction.y = 0
@@ -112,8 +112,9 @@ func exit_dialogue() -> void:
 	dialogue_target = null
 	
 func interact():
-	if DialogueManager.is_active:
+	if DialogueManager.is_active or is_moving:
 		return
+		
 		
 	var npc_body = self
 	var q1 = QuestManager.quests.get("Teary Fields")

@@ -45,7 +45,7 @@ animations = [{
 }]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_d831w"]
-radius = 1.3714558
+radius = 0.3370944
 
 [node name="Story_NPC" type="CharacterBody3D" unique_id=704570871]
 script = ExtResource("1_6d61i")
