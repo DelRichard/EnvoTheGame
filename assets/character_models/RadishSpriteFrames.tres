@@ -22,21 +22,9 @@ region = Rect2(96, 128, 32, 32)
 atlas = ExtResource("1_78lno")
 region = Rect2(0, 160, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2mug5"]
-atlas = ExtResource("1_78lno")
-region = Rect2(0, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_yviil"]
 atlas = ExtResource("1_78lno")
 region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aocor"]
-atlas = ExtResource("1_78lno")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5wfbq"]
-atlas = ExtResource("1_78lno")
-region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vtbn7"]
 atlas = ExtResource("1_78lno")
@@ -53,6 +41,18 @@ region = Rect2(64, 64, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_fy3ta"]
 atlas = ExtResource("1_78lno")
 region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mug5"]
+atlas = ExtResource("1_78lno")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aocor"]
+atlas = ExtResource("1_78lno")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wfbq"]
+atlas = ExtResource("1_78lno")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u04ow"]
 atlas = ExtResource("1_78lno")
@@ -106,16 +106,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2mug5")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_yviil")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aocor")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5wfbq")
 }],
 "loop": true,
 "name": &"death",
@@ -123,16 +114,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2mug5")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_yviil")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aocor")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5wfbq")
 }],
 "loop": true,
 "name": &"hit",
@@ -184,20 +166,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_side",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2mug5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yviil")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aocor")
-}],
-"loop": true,
-"name": &"jump",
 "speed": 5.0
 }, {
 "frames": [{

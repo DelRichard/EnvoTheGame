@@ -55,13 +55,13 @@ func update_behavior(delta: float) -> void:
 	if detection_component.see_player:
 		time_since_seen_player = 0.0
 		
-		if enemy.current_behavior != enemy.BehaviorState.FOLLOW:
-			enemy.be_following()
+		if enemy.current_behavior != enemy.BehaviorState.ATTACK:
+			enemy.be_attacking_player()
 	else:
 		time_since_seen_player += delta
 		
 		if time_since_seen_player >= lose_sight_time:
-			if enemy.current_behavior == enemy.BehaviorState.FOLLOW:
+			if enemy.current_behavior == enemy.BehaviorState.ATTACK:
 				enemy.be_wandering()
 
 

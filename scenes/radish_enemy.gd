@@ -1,13 +1,12 @@
 extends CharacterBody3D
 
 @onready var animated_sprite_3d: AnimatedSprite3D = $AnimatedSprite3D
-@onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
-
+@onready var detection_component: DetectionComponent = %DetectionComponent
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = %AudioStreamPlayer3D
 
-enum BehaviorState { IDLE, WANDER, MOVE_TO_TARGET, FOLLOW, ATTACK }
+enum BehaviorState { IDLE, WANDER, MOVE_TO_TARGET, FOLLOW, HIT, DEATH, ATTACK}
 enum WanderState   { IDLE, WAITING_TO_MOVE, MOVE }
 
 @export var speed: float = 1.5
@@ -39,6 +38,7 @@ var wander_state: WanderState = WanderState.IDLE
 var idle_timer_count: float = 0.0
 var was_idle: bool = false
 
+var is_dying: bool = false
 var player
 
 func _ready():
@@ -58,6 +58,20 @@ func _physics_process(delta: float) -> void:
 			follow(following_target, delta)
 		BehaviorState.ATTACK:
 			follow(player, delta)
+		BehaviorState.HIT:
+			animated_sprite_3d.play("hit")
+			animated_sprite_3d.modulate = Color.RED
+			await get_tree().create_timer(0.1).timeout
+			animated_sprite_3d.modulate = Color.WHITE
+			
+		BehaviorState.DEATH:
+			if not is_dying:
+				is_dying = true
+				animated_sprite_3d.play("death")
+				audio_stream_player_3d.play()
+				await animated_sprite_3d.animation_finished
+				queue_free()
+			return
 
 	# Navigation
 	last_path_update_time += delta
@@ -93,6 +107,18 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, speed)
 
 	update_animations(Vector2(direction.x, direction.z))
+	
+	
+	#attack
+	update_behavior(delta)
+	if not can_attack:
+		attack_cooldown -= delta
+		if attack_cooldown <= 0:
+			can_attack = true
+	
+	if can_attack:
+		attack()
+	
 	move_and_slide()
 
 
@@ -173,15 +199,7 @@ func get_view_direction() -> String:
 		return "side"
 
 
-func get_view_flip() -> bool:
-	var camera = get_viewport().get_camera_3d()
-	if not camera:
-		return false
-	var to_camera = (camera.global_position - global_position)
-	to_camera.y = 0
-	var npc_forward = -global_transform.basis.z
-	npc_forward.y = 0
-	return npc_forward.cross(to_camera).y > 0
+
 
 
 func update_animations(movement_dir: Vector2) -> void:
@@ -194,7 +212,7 @@ func update_animations(movement_dir: Vector2) -> void:
 	animated_sprite_3d.play(prefix + view_dir)
 
 	if view_dir == "side":
-		animated_sprite_3d.flip_h = get_view_flip()
+		animated_sprite_3d.play("walk_side")
 
 func rotate_to_movement_direction(delta: float) -> void:
 	if direction.length() > 0.01:
@@ -269,6 +287,102 @@ func follow(myFollowTarget: Node3D, delta: float) -> void:
 		stop_movement()
 
 
+
+
+
+
+# Call these externally to change behaviour
+
+func be_idle() -> void:
+	current_behavior = BehaviorState.IDLE
+
+
+func be_wandering() -> void:
+	current_behavior = BehaviorState.WANDER
+	wander_state = WanderState.IDLE
+
+
+func go_there() -> void:
+	current_behavior = BehaviorState.MOVE_TO_TARGET
+
+
+func be_following() -> void:
+	current_behavior = BehaviorState.FOLLOW
+
+func be_attacking_player() -> void:
+	current_behavior = BehaviorState.ATTACK
+
+
+
+
+
+
+
+
+@export var attack_damage:= 5.0
+@export var attack_range:= 0.75
+@export var attack_speed := 1
+@export var attack_angle := 180.0 
+@export var knockback_force := 5.0
+
+var can_attack := true
+var attack_cooldown := 0.0
+
+
+@export var lose_sight_time := 5.0
+
+var time_since_seen_player := 0.0
+
+
+
+func target_in_range():
+	var dist_sq = global_position.distance_squared_to(
+		player.global_position)
+	return dist_sq < attack_range * attack_range
+
+func attack():
+	if not target_in_range():
+		return
+	
+	if not is_player_in_front():
+		return
+	
+	can_attack = false
+	attack_cooldown = attack_speed
+	
+	player.health_component.damage(attack_damage, global_position, knockback_force)
+	
+	
+func update_behavior(delta: float) -> void:
+	if detection_component.see_player:
+		time_since_seen_player = 0.0
+		
+		if current_behavior != BehaviorState.ATTACK:
+			be_attacking_player()
+	else:
+		time_since_seen_player += delta
+		
+		if time_since_seen_player >= lose_sight_time:
+			if current_behavior == BehaviorState.ATTACK:
+				be_wandering()
+
+
+func is_player_in_front() -> bool:
+	var to_player = (player.global_position - global_position).normalized()
+	
+	# Enemy forward direction (-Z in Godot)
+	var forward = -global_transform.basis.z
+	
+	var dot = forward.dot(to_player)
+	
+	# Convert angle to dot threshold
+	var threshold = cos(deg_to_rad(attack_angle * 0.5))
+	
+	return dot >= threshold
+
+
+
+
 # SIGNALS
 
 func _on_navigation_agent_3d_target_reached() -> void:
@@ -293,43 +407,16 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 
 
 
-
-# Call these externally to change behaviour
-
-func be_idle() -> void:
-	current_behavior = BehaviorState.IDLE
-
-
-func be_wandering() -> void:
-	current_behavior = BehaviorState.WANDER
-	wander_state = WanderState.IDLE
-
-
-func go_there() -> void:
-	current_behavior = BehaviorState.MOVE_TO_TARGET
-
-
-func be_following() -> void:
-	current_behavior = BehaviorState.FOLLOW
-	
-func be_attacking_player() -> void:
-	current_behavior = BehaviorState.ATTACK
-
-
 func _on_enemy_died() -> void:
 	print("Enemy Killed!")
-	audio_stream_player_3d.play()
-	await get_tree().create_timer(1.0).timeout
-	queue_free()
+	current_behavior = BehaviorState.DEATH
 
 
 func _on_enemy_hit(from_position: Vector3, knockback: float) -> void:
 	print("Enemy Hit!")
-	animated_sprite_3d.modulate = Color.RED
-	await get_tree().create_timer(0.1).timeout
-	animated_sprite_3d.modulate = Color.WHITE
+	current_behavior = BehaviorState.HIT
 	apply_knockback(from_position, knockback)
-	if current_behavior != BehaviorState.FOLLOW:
+	if current_behavior != BehaviorState.ATTACK:
 		var dir = (from_position - global_position)
 		if dir.length() > 0.01:
 			var target_rot = atan2(-dir.x, -dir.z)

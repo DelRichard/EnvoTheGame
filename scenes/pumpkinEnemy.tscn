@@ -9,10 +9,6 @@
 radius = 0.48791504
 height = 0.9758301
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c4w8v"]
-
-[sub_resource type="PrismMesh" id="PrismMesh_abqhh"]
-
 [node name="PumpkinEnemy" type="CharacterBody3D" unique_id=1327594500 groups=["Enemy"]]
 script = ExtResource("1_k6jkh")
 
@@ -37,11 +33,6 @@ avoidance_enabled = true
 height = 0.5
 radius = 0.1
 debug_enabled = true
-
-[node name="FaceDirection" type="MeshInstance3D" parent="." unique_id=1508491913]
-transform = Transform3D(0.0674028, 0, 0, 0, -6.5248447e-09, 0.0674028, 0, -0.14927106, -2.94627e-09, 0, 0, -0.17517102)
-material_override = SubResource("StandardMaterial3D_c4w8v")
-mesh = SubResource("PrismMesh_abqhh")
 
 [node name="Head" type="Node3D" parent="." unique_id=587238579]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.074888974, 0)
