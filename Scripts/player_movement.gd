@@ -8,6 +8,7 @@ extends CharacterBody3D
 
 @export var health_bar: ProgressBar 
 
+var spawn_position: Vector3
 var can_attack := true
 var is_attacking: = false
 var last_direction := "front"
@@ -55,6 +56,7 @@ func _ready():
 	await get_tree().process_frame
 	QuestManager.start_quest("Crazy Introductions")
 	health_bar.init_health(health_component.current_health)
+	spawn_position = global_position
 
 func enter_rope(rope):
 	is_climbing = true
@@ -209,22 +211,27 @@ func squash_effect():
 
 
 func die():
-	# Stop movement
 	velocity = Vector3.ZERO
-	
-	# Disable input
 	set_process(false)
 	set_physics_process(false)
-	
 	animated_sprite_3d.play("death")
 	await get_tree().create_timer(2.0).timeout
 	restart_level()
-
-
+	
 func restart_level():
-	get_tree().reload_current_scene()
-
-
+	respawn_player()
+	
+func respawn_player():
+	velocity = Vector3.ZERO
+	global_position = spawn_position
+	is_dead = false
+	is_attacking = false
+	is_jumping = false
+	health_component.reset_health()
+	set_physics_process(true)
+	set_process(true)
+	animated_sprite_3d.play("idle_back")
+	
 func _on_died() -> void:
 	if is_dead:
 		return
