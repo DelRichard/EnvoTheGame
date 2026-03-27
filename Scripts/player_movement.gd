@@ -216,6 +216,7 @@ func die():
 	set_process(false)
 	set_physics_process(false)
 	
+	animated_sprite_3d.play("death")
 	await get_tree().create_timer(2.0).timeout
 	restart_level()
 

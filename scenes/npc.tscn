@@ -7,8 +7,6 @@
 radius = 0.11035156
 height = 0.4045782
 
-[sub_resource type="PrismMesh" id="PrismMesh_abqhh"]
-
 [node name="NPC" type="CharacterBody3D" unique_id=1327594500]
 script = ExtResource("1_abqhh")
 
@@ -31,16 +29,6 @@ avoidance_enabled = true
 radius = 0.25
 avoidance_mask = 3
 debug_enabled = true
-
-[node name="FaceDirection" type="MeshInstance3D" parent="." unique_id=1508491913]
-transform = Transform3D(0.0674028, 0, 0, 0, -6.5248447e-09, 0.0674028, 0, -0.14927106, -2.94627e-09, 0, 0, -0.17517102)
-mesh = SubResource("PrismMesh_abqhh")
-
-[node name="Head" type="Node3D" parent="." unique_id=587238579]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.074888974, 0)
-
-[node name="RayCast3D" type="RayCast3D" parent="Head" unique_id=423178346]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

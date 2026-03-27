@@ -1,7 +1,6 @@
 extends CharacterBody3D
 
 @onready var animated_sprite_3d: AnimatedSprite3D = $AnimatedSprite3D
-@onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 
 enum BehaviorState { IDLE, WANDER, MOVE_TO_TARGET, FOLLOW }
@@ -19,8 +18,6 @@ enum WanderState   { IDLE, WAITING_TO_MOVE, MOVE }
 
 # MOVEMENT VARIABLES
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
-var is_jumping: bool = false
-var wants_jump: bool = false
 var direction: Vector3 = Vector3.ZERO
 var rotation_speed: float = 6.0
 var is_moving: bool = false
@@ -71,18 +68,9 @@ func _physics_process(delta: float) -> void:
 	# Gravity & jumping
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-		if is_jumping and animated_sprite_3d.frame == 1:
-			animated_sprite_3d.pause()
-	else:
-		if is_jumping:
-			is_jumping = false
-			animated_sprite_3d.play("idle_back")
+		
 
-	if wants_jump and is_on_floor():
-		velocity.y = jump_velocity
-		is_jumping = true
-		animated_sprite_3d.play("jump")
-		animated_sprite_3d.frame = 0
+
 
 	# Horizontal movement
 	if direction:
@@ -208,8 +196,6 @@ func get_view_flip() -> bool:
 
 
 func update_animations(movement_dir: Vector2) -> void:
-	if is_jumping:
-		return
 
 	var view_dir = get_view_direction()
 	var prefix   = "walk_" if movement_dir != Vector2.ZERO else "idle_"

@@ -46,10 +46,13 @@ glow_enabled = true
 fog_light_color = Color(0.28304002, 0.36228034, 0.20387715, 1)
 fog_light_energy = 2.83
 fog_sun_scatter = 0.09
-fog_density = 0.0218
-volumetric_fog_albedo = Color(0.8236454, 0.9603972, 0.6210863, 1)
+fog_density = 0.0751
+volumetric_fog_albedo = Color(0.61895704, 0.79195297, 0.30526656, 1)
 adjustment_enabled = true
 adjustment_contrast = 1.25
+
+[sub_resource type="FogMaterial" id="FogMaterial_fvapf"]
+albedo = Color(0.7090756, 1, 0.59170693, 1)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_c1cye"]
 vertices = PackedVector3Array(-2.385851, 7.5343156, -9.390703, -2.385851, 7.5343156, -8.890703, -2.135851, 7.5343156, -9.140703, -2.135851, 7.5343156, -9.640703, -2.635851, 7.5343156, -9.640703, -1.8858509, 7.2843156, -9.390703, -8.635851, 6.0343156, -3.8907032, -8.885851, 5.7843156, -3.8907032, -8.885851, 5.7843156, -3.6407032, -8.385851, 5.7843156, -3.6407032, -8.135851, 6.7843156, -5.640703, -8.135851, 6.7843156, -5.140703, -7.635851, 6.7843156, -5.140703, -7.635851, 7.0343156, -5.640703, -8.385851, 6.0343156, -3.8907032, -8.385851, 6.2843156, -4.140703, -8.135851, 6.2843156, -4.140703, -8.135851, 6.5343156, -4.640703, -7.635851, 6.7843156, -4.890703, -8.385851, 6.2843156, -4.390703, -7.635851, 7.0343156, -6.140703, -7.885851, 7.0343156, -6.390703, -8.135851, 6.7843156, -6.140703, -7.885851, 6.0343156, -4.140703, -7.635851, 6.2843156, -4.390703, -5.635851, 7.0343156, -6.390703, -6.135851, 6.7843156, -6.390703, -6.135851, 6.7843156, -6.140703, -5.885851, 6.7843156, -5.890703, -5.385851, 7.0343156, -6.140703, -5.885851, 6.7843156, -5.640703, -5.635851, 6.7843156, -5.390703, -5.135851, 6.7843156, -5.390703, -5.135851, 7.0343156, -5.890703, -4.635851, 7.0343156, -5.390703, -4.635851, 7.0343156, -5.890703, -14.635851, 7.0343156, -4.390703, -14.885851, 7.0343156, -4.140703, -14.635851, 7.0343156, -3.8907032, -14.385851, 7.0343156, -2.8907032, -14.385851, 6.7843156, -2.3907032, -14.135851, 6.7843156, -2.3907032, -13.385851, 6.2843156, -2.1407032, -12.885851, 6.0343156, -2.1407032, -12.885851, 6.0343156, -2.3907032, -12.635851, 6.2843156, -3.8907032, -12.635851, 6.2843156, -4.140703, -12.885851, 6.2843156, -4.390703, -13.385851, 6.5343156, -5.140703, -13.635851, 6.5343156, -5.140703, -13.885851, 6.7843156, -4.890703, -13.885851, 7.0343156, -4.640703, -12.885851, 6.2843156, -4.640703, -12.885851, 6.2843156, -5.140703, -14.385851, 7.0343156, -3.6407032, -12.635851, 6.0343156, -3.3907032, -14.135851, 7.0343156, -4.390703, -14.385851, 7.0343156, -3.1407032, -13.885851, 6.5343156, -2.1407032, -12.635851, 6.0343156, -2.6407032, -12.635851, 6.0343156, -3.1407032, -18.63585, 7.0343156, -4.390703, -18.88585, 7.0343156, -4.640703, -18.88585, 7.0343156, -4.140703, -18.88585, 6.7843156, -3.6407032, -18.63585, 7.0343156, -3.6407032, -17.38585, 6.7843156, -3.8907032, -17.38585, 6.5343156, -4.140703, -17.88585, 6.7843156, -4.140703, -17.88585, 6.7843156, -3.3907032, -17.38585, 6.7843156, -3.3907032, -18.13585, 7.0343156, -3.6407032, -18.13585, 7.0343156, -4.390703)
@@ -348,21 +351,24 @@ offset_bottom = 43.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=184488807]
 environment = SubResource("Environment_5a7ea")
 
+[node name="FogVolume" type="FogVolume" parent="WorldEnvironment" unique_id=1647288805]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.232849, 3.9213476, 14.488525)
+size = Vector3(31.280396, 1.6912842, 40.35791)
+material = SubResource("FogMaterial_fvapf")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1180688813]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, -0.1904545, 0.7479879, 0.6357995, -0.4623063, 0.5030049, -0.7302458, 0, 9.825304, 0)
 shadow_enabled = true
 
 [node name="Player" parent="." unique_id=1327594500 node_paths=PackedStringArray("health_bar") instance=ExtResource("6_0jcyh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.930329, 5.8491607, 29.305471)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.930329, 5.8491607, 29.857443)
 health_bar = NodePath("../UIManager/MainUI/PlayerHealthBar")
 
 [node name="Gold_Foot_NPC" parent="." unique_id=704570871 instance=ExtResource("25_fa2m2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.199507, 3.529527, 29.128712)
 
-[node name="Ogre" parent="." unique_id=856251689 node_paths=PackedStringArray("following_target") instance=ExtResource("26_y3t1l")]
+[node name="Ogre" parent="." unique_id=856251689 instance=ExtResource("26_y3t1l")]
 transform = Transform3D(-0.22015265, 0, -0.9754654, 0, 1, 0, 0.9754654, 0, -0.22015265, -3.433823, 3.510724, 1.4173579)
-current_behavior = 0
-following_target = NodePath("../Player")
 
 [node name="ChiliBoss" parent="." unique_id=1076033435 node_paths=PackedStringArray("following_target") instance=ExtResource("29_aq8fk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8126545, 4.3897624, 2.1054788)
@@ -401,7 +407,7 @@ following_target = NodePath("../../Player")
 [node name="World" type="Node3D" parent="." unique_id=694525152]
 
 [node name="WastePuddle" parent="World" unique_id=1054346495 instance=ExtResource("16_t66ac")]
-transform = Transform3D(1.9005693, 0, -1.7393552, 0, 2.5763383, 0, 1.7393552, 0, 1.9005693, 5.8826942, 3.293838, 6.547644)
+transform = Transform3D(1.9005693, 0, -1.7393552, 0, 2.5763383, 0, 1.7393552, 0, 1.9005693, 5.8826942, 3.348299, 10.204206)
 skeleton = NodePath("../NavigationRegion3D/Map/StaticBody3D")
 
 [node name="BigNavigationRegion3D" type="NavigationRegion3D" parent="World" unique_id=1107817988]
@@ -507,16 +513,17 @@ transform = Transform3D(1.807246, -2.3057931e-09, -0.005579201, 2.509355e-10, 16
 mesh = SubResource("BoxMesh_ek2hi")
 surface_material_override/0 = ExtResource("23_ogwjn")
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="World/NavigationRegion3D/NeonCity" unique_id=1840786510]
+[node name="pipe" type="CSGCombiner3D" parent="World/NavigationRegion3D/NeonCity" unique_id=1840786510]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 9.46072, 5.379489, 7.0758214)
 material_overlay = SubResource("StandardMaterial3D_wpe1g")
 use_collision = true
 
-[node name="pipe" type="CSGCylinder3D" parent="World/NavigationRegion3D/NeonCity/CSGCombiner3D" unique_id=1632136230]
+[node name="pipe" type="CSGCylinder3D" parent="World/NavigationRegion3D/NeonCity/pipe" unique_id=1632136230]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.3318915)
 radius = 1.2172852
 height = 3.859375
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="World/NavigationRegion3D/NeonCity/CSGCombiner3D/pipe" unique_id=497046314]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="World/NavigationRegion3D/NeonCity/pipe/pipe" unique_id=497046314]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56347656, 0)
 operation = 2
 radius = 0.82177734
@@ -685,6 +692,18 @@ transform = Transform3D(0.96227026, 0, 0.2720955, 0, 1, 0, -0.2720955, 0, 0.9622
 [node name="tree17" parent="World/NavigationRegion3D/trees" unique_id=1292677315 instance=ExtResource("13_folv4")]
 transform = Transform3D(0.50093687, 0, -0.8654838, 0, 1, 0, 0.8654838, 0, 0.50093687, 20.493135, 3.5217974, 29.563303)
 
+[node name="tree" parent="World" unique_id=942384316 instance=ExtResource("13_folv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3993783, 3.504843, 16.64264)
+
+[node name="tree2" parent="World" unique_id=1848287580 instance=ExtResource("13_folv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.758796, 3.5091312, 15.659215)
+
+[node name="tree3" parent="World" unique_id=1551091556 instance=ExtResource("13_folv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.507047, 3.5068755, 15.10391)
+
+[node name="tree4" parent="World" unique_id=2053622731 instance=ExtResource("13_folv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.73254, 3.507797, 14.844049)
+
 [node name="OnionEnemy" parent="." unique_id=1272817638 instance=ExtResource("30_bvj8e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.938884, 3.4571047, 25.749943)
 
@@ -705,3 +724,18 @@ transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50
 
 [node name="RadishEnemy" parent="." unique_id=1223622874 instance=ExtResource("34_xjcue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4691415, 3.616506, 25.32972)
+
+[node name="tree" parent="." unique_id=1840752512 instance=ExtResource("13_folv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1186194, 3.501586, 24.64859)
+
+[node name="tree2" parent="." unique_id=372981390 instance=ExtResource("13_folv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.20957, 3.492099, 24.69822)
+
+[node name="tree3" parent="." unique_id=722005093 instance=ExtResource("13_folv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.399442, 3.493105, 24.545694)
+
+[node name="tree4" parent="." unique_id=1207530778 instance=ExtResource("13_folv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.885334, 3.493797, 25.209929)
+
+[node name="tree5" parent="." unique_id=134814398 instance=ExtResource("13_folv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.561164, 3.4939523, 26.24128)

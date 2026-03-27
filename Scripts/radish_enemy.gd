@@ -2,9 +2,11 @@ extends CharacterBody3D
 
 @onready var animated_sprite_3d: AnimatedSprite3D = $AnimatedSprite3D
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
-@onready var detection_component: DetectionComponent = %DetectionComponent
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = %AudioStreamPlayer3D
+@onready var head: Node3D = $Head
+@onready var ray_cast_3d: RayCast3D = $Head/RayCast3D
+
 
 enum BehaviorState { IDLE, WANDER, MOVE_TO_TARGET, FOLLOW, HIT, DEATH, ATTACK}
 enum WanderState   { IDLE, WAITING_TO_MOVE, MOVE }
@@ -12,7 +14,7 @@ enum WanderState   { IDLE, WAITING_TO_MOVE, MOVE }
 @export var speed: float = 1.5
 @export var jump_velocity: float = 2.0
 @export var idle_wait_time: float = 2.0
-@export var follow_distance: float = 0.75
+@export var follow_distance: float = 0.5
 
 @export var current_behavior: BehaviorState = BehaviorState.WANDER
 @export var my_target: Node3D
@@ -29,7 +31,7 @@ var is_moving: bool = false
 
 # NAVIGATION VARIABLES
 var current_target: Vector3 = Vector3.ZERO
-var target_update_threshold: float = 1.0
+var target_update_threshold: float = 0.5
 var last_path_update_time: float = 0.0
 var min_path_update_interval: float = 0.1
 
@@ -41,8 +43,43 @@ var was_idle: bool = false
 var is_dying: bool = false
 var player
 
+var is_attacking := false
+
+
+
+
+@export var horizontal_fov := 180.0
+@export var vertical_fov := 120.0  
+@export var max_view_distance := 5.0
+
+
+var player_head
+
+var see_player := false
+var last_state := false
+
+
+@export var attack_damage:= 5.0
+@export var attack_range:= 0.5
+@export var attack_cooldown := 1.0
+@export var attack_angle := 180.0 
+@export var knockback_force := 5.0
+
+var can_attack := true
+var attack_cooldown_timer := 0.0
+
+
+@export var lose_sight_time := 5.0
+
+var time_since_seen_player := 0.0
+
+
+
+
+
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
+	player_head = player.get_node("CameraPivot")
 
 
 func _physics_process(delta: float) -> void:
@@ -112,12 +149,23 @@ func _physics_process(delta: float) -> void:
 	#attack
 	update_behavior(delta)
 	if not can_attack:
-		attack_cooldown -= delta
-		if attack_cooldown <= 0:
+		attack_cooldown_timer -= delta
+		if attack_cooldown_timer <= 0:
 			can_attack = true
 	
 	if can_attack:
 		attack()
+	
+	if player and can_see_player() and is_in_fov() and has_line_of_sight():
+		see_player = true
+	else:
+		see_player = false
+	
+	if see_player != last_state:
+		if debug:
+			print("See player:", see_player)
+		last_state = see_player
+	
 	
 	move_and_slide()
 
@@ -203,7 +251,10 @@ func get_view_direction() -> String:
 
 
 func update_animations(movement_dir: Vector2) -> void:
-	if is_jumping:
+	if is_jumping or is_attacking:
+		return
+	
+	if current_behavior == BehaviorState.DEATH:
 		return
 
 	var view_dir = get_view_direction()
@@ -316,25 +367,6 @@ func be_attacking_player() -> void:
 
 
 
-
-
-
-@export var attack_damage:= 5.0
-@export var attack_range:= 0.75
-@export var attack_speed := 1
-@export var attack_angle := 180.0 
-@export var knockback_force := 5.0
-
-var can_attack := true
-var attack_cooldown := 0.0
-
-
-@export var lose_sight_time := 5.0
-
-var time_since_seen_player := 0.0
-
-
-
 func target_in_range():
 	var dist_sq = global_position.distance_squared_to(
 		player.global_position)
@@ -343,18 +375,20 @@ func target_in_range():
 func attack():
 	if not target_in_range():
 		return
-	
 	if not is_player_in_front():
 		return
 	
 	can_attack = false
-	attack_cooldown = attack_speed
-	
+	is_attacking = true
+	attack_cooldown_timer = attack_cooldown
+	animated_sprite_3d.play("attack")
 	player.health_component.damage(attack_damage, global_position, knockback_force)
-	
+	await animated_sprite_3d.animation_finished
+	is_attacking = false
+
 	
 func update_behavior(delta: float) -> void:
-	if detection_component.see_player:
+	if see_player:
 		time_since_seen_player = 0.0
 		
 		if current_behavior != BehaviorState.ATTACK:
@@ -365,6 +399,49 @@ func update_behavior(delta: float) -> void:
 		if time_since_seen_player >= lose_sight_time:
 			if current_behavior == BehaviorState.ATTACK:
 				be_wandering()
+
+
+
+
+
+
+
+
+
+
+
+func can_see_player() -> bool:
+	if not player:
+		return false
+		
+	var distance = head.global_position.distance_to(player_head.global_position)
+	return distance <= max_view_distance
+
+
+func is_in_fov() -> bool:
+	var to_player = player_head.global_position - head.global_position
+	var local_dir = head.global_transform.basis.inverse() * to_player
+	
+	var horizontal_angle = rad_to_deg(atan2(local_dir.x, -local_dir.z))
+	var vertical_angle = rad_to_deg(atan2(local_dir.y, -local_dir.z))
+	
+	return (
+		abs(horizontal_angle) <= horizontal_fov * 0.5
+		and
+		abs(vertical_angle) <= vertical_fov * 0.5
+	)
+
+
+func has_line_of_sight() -> bool:
+	ray_cast_3d.target_position = ray_cast_3d.to_local(player_head.global_position)
+	ray_cast_3d.force_raycast_update()
+	# If nothing is in the way, we can see them
+	if not ray_cast_3d.is_colliding():
+		return true
+	# If something is in the way, check if it's the player themselves
+	return ray_cast_3d.get_collider() == player
+
+
 
 
 func is_player_in_front() -> bool:
@@ -379,6 +456,9 @@ func is_player_in_front() -> bool:
 	var threshold = cos(deg_to_rad(attack_angle * 0.5))
 	
 	return dot >= threshold
+
+
+
 
 
 

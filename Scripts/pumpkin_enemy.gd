@@ -298,7 +298,7 @@ func apply_knockback(from_position: Vector3, force: float = 5.0):
 	var dir = (global_position - from_position)
 	dir.y = 0.0
 	dir = dir.normalized()
-	velocity += dir * force
+	velocity += dir * (force/2)
 
 
 func target_in_range():

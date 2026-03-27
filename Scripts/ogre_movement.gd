@@ -1,25 +1,20 @@
 extends CharacterBody3D
 
-@onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 
-enum BehaviorState { IDLE, WANDER, MOVE_TO_TARGET, FOLLOW }
+enum BehaviorState { IDLE, WANDER, MOVE_TO_TARGET}
 enum WanderState   { IDLE, WAITING_TO_MOVE, MOVE }
 
 @export var speed: float = 1.0
-@export var jump_velocity: float = 2.0
 @export var idle_wait_time: float = 2.0
-@export var follow_distance: float = 0.75
 
-@export var current_behavior: BehaviorState = BehaviorState.WANDER
+
+@export var current_behavior: BehaviorState = BehaviorState.IDLE
 @export var my_target: Node3D
-@export var following_target: Node3D
 @export var debug: bool = false
 
 # MOVEMENT VARIABLES
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
-var is_jumping: bool = false
-var wants_jump: bool = false
 var direction: Vector3 = Vector3.ZERO
 var rotation_speed: float = 6.0
 var is_moving: bool = false
@@ -47,8 +42,7 @@ func _physics_process(delta: float) -> void:
 			wander(delta)
 		BehaviorState.MOVE_TO_TARGET:
 			go_to_target(my_target)
-		BehaviorState.FOLLOW:
-			follow(following_target)
+
 
 	# Navigation
 	last_path_update_time += delta
@@ -61,15 +55,6 @@ func _physics_process(delta: float) -> void:
 	# Gravity & jumping
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-
-	else:
-		if is_jumping:
-			is_jumping = false
-
-
-	if wants_jump and is_on_floor():
-		velocity.y = jump_velocity
-		is_jumping = true
 
 
 	# Horizontal movement
@@ -125,9 +110,6 @@ func move_to_target(target: Vector3) -> void:
 		current_target = safe_target
 		is_moving = true
 		last_path_update_time = 0.0
-
-
-
 
 
 func rotate_to_movement_direction(delta: float) -> void:
@@ -187,17 +169,7 @@ func go_to_target(currentTarget: Node3D) -> void:
 	move_to_target(currentTarget.global_position)
 
 
-# follow
-func follow(myFollowTarget: Node3D) -> void:
-	was_idle = false
 
-	var direction = myFollowTarget.global_position - global_position
-	var distance = direction.length()
-
-	if distance > follow_distance:
-		move_to_target(myFollowTarget.global_position)
-	else:
-		stop_movement()
 
 
 # SIGNALS
@@ -238,7 +210,3 @@ func be_wandering() -> void:
 
 func go_there() -> void:
 	current_behavior = BehaviorState.MOVE_TO_TARGET
-
-
-func be_following() -> void:
-	current_behavior = BehaviorState.FOLLOW
