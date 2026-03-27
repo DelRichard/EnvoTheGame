@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dgsrbilhjqlpx"]
 
-[ext_resource type="Script" uid="uid://cudyrjpatiugj" path="res://NPC.gd" id="1_6d61i"]
+[ext_resource type="Script" uid="uid://cudyrjpatiugj" path="res://Scripts/NPC.gd" id="1_6d61i"]
 [ext_resource type="Resource" uid="uid://bsuug6flfgfds" path="res://Dialogue/Please_Help.tres" id="2_fb36u"]
 [ext_resource type="Texture2D" uid="uid://g1t80f4gvsio" path="res://assets/character_models/Field Person 1.png" id="3_fb36u"]
 
