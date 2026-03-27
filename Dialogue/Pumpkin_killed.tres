@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_kqkot")
-lines = Array[String](["Oh thank you for getting rid of that monster", "Here have this"])
+lines = Array[String](["Oh thank you for getting rid of that monster", "We are forever grateful tho I fear we have no reward for you", "I did find this piece of scrap lying around.", "I don't know what it does but I'm sure the old timmer will have a use for it."])
 metadata/_custom_type_script = "uid://dmp1iu63or1av"

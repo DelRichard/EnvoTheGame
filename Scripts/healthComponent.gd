@@ -34,6 +34,10 @@ func heal(amount: float) -> void:
 	current_health = clamp(current_health + amount, 0.0, max_health)
 	_emit()
 
+func reset_health() -> void:
+	current_health = max_health
+	invincible = false
+	_emit()
 
 
 func _emit() -> void:

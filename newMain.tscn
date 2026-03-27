@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://b8kuia6ranms1"]
 
-[ext_resource type="Script" uid="uid://b7knmavu1c175" path="res://World.gd" id="1_c1cye"]
+[ext_resource type="Script" uid="uid://b7knmavu1c175" path="res://Scripts/World.gd" id="1_c1cye"]
 [ext_resource type="PackedScene" uid="uid://dx334m23y6gsy" path="res://ui/pause_menu.tscn" id="1_tvhpe"]
 [ext_resource type="PackedScene" uid="uid://bevt2tbays3j0" path="res://scenes/health_bar.tscn" id="2_fvapf"]
 [ext_resource type="PackedScene" uid="uid://c5w31euxmh80k" path="res://ui/quest_ui.tscn" id="3_xjcue"]
@@ -15,8 +15,11 @@
 [ext_resource type="Material" uid="uid://bct612xa8g6qi" path="res://assets/materials/IndigoBuildingLight.tres" id="13_nmdbu"]
 [ext_resource type="PackedScene" uid="uid://cgfm2ft76xuph" path="res://assets/props/rock.tscn" id="14_qhmxi"]
 [ext_resource type="PackedScene" uid="uid://du7ohy3c4hm2u" path="res://assets/props/treehouse.tscn" id="15_daay6"]
+[ext_resource type="PackedScene" uid="uid://dl2112nsg6mk4" path="res://scenes/npc_2.tscn" id="16_qhmxi"]
 [ext_resource type="PackedScene" uid="uid://bdop58hcewd5l" path="res://assets/props/waste_puddle.tscn" id="16_t66ac"]
+[ext_resource type="PackedScene" uid="uid://bdhjkx5n13j8b" path="res://scenes/npc_3.tscn" id="17_daay6"]
 [ext_resource type="PackedScene" uid="uid://rsrikm046yjg" path="res://assets/props/hut.tscn" id="18_i8ohx"]
+[ext_resource type="PackedScene" uid="uid://c87dndfi6uoig" path="res://scenes/npc_4.tscn" id="18_t66ac"]
 [ext_resource type="PackedScene" uid="uid://dco23pfh2faf4" path="res://assets/props/mossy_rock.tscn" id="19_ew6xa"]
 [ext_resource type="Material" uid="uid://dwpmarienad8e" path="res://assets/materials/water.tres" id="21_0jcyh"]
 [ext_resource type="PackedScene" uid="uid://bes7orguh81oe" path="res://assets/props/skyscraper_1.tscn" id="21_yn54q"]
@@ -25,7 +28,7 @@
 [ext_resource type="Material" uid="uid://b1etmo4g4avdh" path="res://assets/materials/cobblestone.tres" id="24_k5n8k"]
 [ext_resource type="PackedScene" uid="uid://bi1ulsobs7vgx" path="res://scenes/gold_foot_npc.tscn" id="25_fa2m2"]
 [ext_resource type="PackedScene" uid="uid://q425jtwl4rf8" path="res://scenes/ogre.tscn" id="26_y3t1l"]
-[ext_resource type="PackedScene" uid="uid://dfs65ke4d7os0" path="res://scenes/npc.tscn" id="27_x3xat"]
+[ext_resource type="PackedScene" uid="uid://dfs65ke4d7os0" path="res://scenes/npc1.tscn" id="27_x3xat"]
 [ext_resource type="PackedScene" uid="uid://4qbwmfk73gcx" path="res://scenes/chiliBoss.tscn" id="29_aq8fk"]
 [ext_resource type="PackedScene" uid="uid://clmvy1n7ikcbr" path="res://scenes/onionEnemy.tscn" id="30_bvj8e"]
 [ext_resource type="PackedScene" uid="uid://bh0rytqsacy71" path="res://assets/props/machine.tscn" id="31_fa2m2"]
@@ -41,6 +44,10 @@
 [ext_resource type="PackedScene" uid="uid://dqwfbkhgs5lio" path="res://assets/props/pebble.tscn" id="37_c1cye"]
 [ext_resource type="Material" uid="uid://duxbd5lv13iuf" path="res://assets/materials/grass.tres" id="38_ek2hi"]
 [ext_resource type="Texture2D" uid="uid://vielv5tboong" path="res://assets/models/door_WhatsApp Image 2026-03-23 at 2.46.jpg" id="39_ek2hi"]
+[ext_resource type="PackedScene" uid="uid://dke8kumoyhuga" path="res://scenes/pond_guard.tscn" id="39_vbtvo"]
+[ext_resource type="Resource" uid="uid://c0qck7i3sckns" path="res://Dialogue/Go_Away.tres" id="45_t66ac"]
+[ext_resource type="PackedScene" uid="uid://bh4d4e7g6464u" path="res://scenes/npc_5.tscn" id="46_8of62"]
+[ext_resource type="PackedScene" uid="uid://c4oou04pmen38" path="res://scenes/boss_spawner.tscn" id="46_daay6"]
 
 [sub_resource type="Sky" id="Sky_go701"]
 sky_material = ExtResource("5_c1cye")
@@ -426,27 +433,41 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.930329, 5.8491607, 29.857443)
 health_bar = NodePath("../UIManager/MainUI/PlayerHealthBar")
 
-[node name="Gold_Foot_NPC" parent="." unique_id=704570871 instance=ExtResource("25_fa2m2")]
+[node name="Gold_Foot_NPC" parent="." unique_id=704570871 node_paths=PackedStringArray("point_a", "point_b") instance=ExtResource("25_fa2m2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.199507, 3.529527, 29.128712)
+point_a = NodePath("../Markers/Position1")
+point_b = NodePath("../Markers/Position2")
 
 [node name="Ogre" parent="." unique_id=856251689 instance=ExtResource("26_y3t1l")]
 transform = Transform3D(0.58566535, 0, -0.81055313, 0, 1, 0, 0.81055313, 0, 0.58566535, -4.1850615, 3.5107238, 1.0710242)
 
-[node name="ChiliBoss" parent="." unique_id=1076033435 instance=ExtResource("29_aq8fk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.452693, 4.3897624, 4.477297)
-
 [node name="PumpkinEnemy" parent="." unique_id=1536759346 node_paths=PackedStringArray("following_target") instance=ExtResource("31_mmjla")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.913241, 3.725118, 17.747787)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.249581, 3.719295, -0.78384876)
 following_target = NodePath("../Player")
 
 [node name="OnionEnemy" parent="." unique_id=1272817638 instance=ExtResource("30_bvj8e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.94077, 3.4571047, 25.749943)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.549134, 3.4672365, 19.373302)
 
-[node name="Quest NPC" parent="." unique_id=1023472071 instance=ExtResource("27_x3xat")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1698656, 3.532795, -3.8977659)
+[node name="OnionEnemy2" parent="." unique_id=643895315 instance=ExtResource("30_bvj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.091167, 3.4737082, 18.444971)
+
+[node name="OnionEnemy3" parent="." unique_id=1237832628 instance=ExtResource("30_bvj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.87183, 3.4651783, 17.066444)
+
+[node name="OnionEnemy4" parent="." unique_id=981010887 instance=ExtResource("30_bvj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.424208, 3.4624763, 17.942635)
 
 [node name="RadishEnemy" parent="." unique_id=1223622874 instance=ExtResource("34_xjcue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0798073, 3.616506, 20.450787)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1119187, 3.4990153, 20.566866)
+
+[node name="RadishEnemy3" parent="." unique_id=512486921 instance=ExtResource("34_xjcue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.098629, 3.4381814, 15.80116)
+
+[node name="RadishEnemy4" parent="." unique_id=1779945051 instance=ExtResource("34_xjcue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.315599, 3.4385798, 15.518725)
+
+[node name="RadishEnemy5" parent="." unique_id=1733939411 instance=ExtResource("34_xjcue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.26544, 3.4263773, 14.598847)
 
 [node name="Rope" parent="." unique_id=1885729063 instance=ExtResource("34_fvapf")]
 transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50000006, -9.994, 4.7, 30.023)
@@ -454,28 +475,20 @@ transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50
 [node name="NPCs" type="Node3D" parent="." unique_id=814977460]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.604881, 3.5222418, 26.924236)
 
-[node name="NPC" parent="NPCs" unique_id=2090999675 node_paths=PackedStringArray("following_target") instance=ExtResource("27_x3xat")]
-following_target = NodePath("../../Player")
+[node name="NPC2" parent="NPCs" unique_id=1228539789 instance=ExtResource("27_x3xat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1304393, -0.030765295, 0.048109055)
 
-[node name="NPC2" parent="NPCs" unique_id=1228539789 node_paths=PackedStringArray("following_target") instance=ExtResource("27_x3xat")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9130921, 0, 0)
-following_target = NodePath("../../Player")
+[node name="NPC6" parent="NPCs" unique_id=200217856 instance=ExtResource("27_x3xat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9997973, 0.0032143593, 3.8614082)
 
-[node name="NPC3" parent="NPCs" unique_id=1657853878 node_paths=PackedStringArray("following_target") instance=ExtResource("27_x3xat")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4476457, 0, 0.88175774)
-following_target = NodePath("../../Player")
+[node name="NPC7" parent="NPCs" unique_id=661039942 instance=ExtResource("16_qhmxi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008469105, -0.035138845, -0.51205444)
 
-[node name="NPC4" parent="NPCs" unique_id=281633761 node_paths=PackedStringArray("following_target") instance=ExtResource("27_x3xat")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.422914, 0, 3.5877476)
-following_target = NodePath("../../Player")
+[node name="NPC5" parent="NPCs" unique_id=1837762327 instance=ExtResource("17_daay6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4058871, -0.0030059814, 3.0901089)
 
-[node name="NPC6" parent="NPCs" unique_id=200217856 node_paths=PackedStringArray("following_target") instance=ExtResource("27_x3xat")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.613073, 0, 3.5877476)
-following_target = NodePath("../../Player")
-
-[node name="NPC5" parent="NPCs" unique_id=329168103 node_paths=PackedStringArray("following_target") instance=ExtResource("27_x3xat")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6218872, 0, 2.9798794)
-following_target = NodePath("../../Player")
+[node name="NPC4" parent="NPCs" unique_id=168332130 instance=ExtResource("18_t66ac")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2450213, -0.024730682, 4.164072)
 
 [node name="World" type="Node3D" parent="." unique_id=694525152]
 
@@ -2236,19 +2249,51 @@ transform = Transform3D(0.9337242, 0, 0, 0, 0.9337242, 0, 0, 0, 0.9337242, -15.8
 transform = Transform3D(0.353402, 0, -0.44594625, 0, 0.569, 0, 0.44594625, 0, 0.353402, -15.727127, 3.299016, 10.48699)
 
 [node name="Wrench" parent="." unique_id=1209115370 instance=ExtResource("32_tvhpe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.807267, 3.4573863, 25.003796)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.238928, 3.4424229, 18.277193)
 
 [node name="Machine_Part" parent="." unique_id=1741133662 instance=ExtResource("33_fvapf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3944309, 3.4465284, 20.0241)
 
 [node name="Machine_Part2" parent="." unique_id=1141725124 instance=ExtResource("33_fvapf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.412904, 3.4607646, 16.596375)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.703766, 3.4776092, 14.76479)
 
-[node name="Rope2" parent="." unique_id=26085276 instance=ExtResource("34_fvapf")]
+[node name="Rope2" parent="." unique_id=1804538985 instance=ExtResource("34_fvapf")]
 transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50000006, -9.994, 4.7, 30.023)
 
-[node name="RadishEnemy2" parent="." unique_id=850605118 instance=ExtResource("34_xjcue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0798073, 3.616506, 20.450787)
+[node name="RadishEnemy2" parent="." unique_id=1494872043 instance=ExtResource("34_xjcue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9214497, 3.487323, 20.560776)
 
 [node name="Story_NPC" parent="." unique_id=650234995 instance=ExtResource("36_fa2m2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.982456, 3.4792023, 27.83614)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15873033, 3.4980013, 13.466153)
+
+[node name="Pond_Guard" parent="." unique_id=1710801015 node_paths=PackedStringArray("boss_spawner") instance=ExtResource("39_vbtvo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.419699, 3.508613, -3.7411182)
+initial_dialogue = ExtResource("45_t66ac")
+boss_spawner = NodePath("../Boss_Spawner")
+
+[node name="NPC5" parent="." unique_id=243780882 instance=ExtResource("46_8of62")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.10255, 3.490766, 26.886993)
+
+[node name="Boss_Spawner" parent="." unique_id=277506695 node_paths=PackedStringArray("spawn_position") instance=ExtResource("46_daay6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.446, 3.9, 3.778)
+boss_scene = ExtResource("29_aq8fk")
+spawn_position = NodePath("SpawnPoint")
+
+[node name="SpawnPoint" type="Marker3D" parent="Boss_Spawner" unique_id=1742666291]
+
+[node name="Markers" type="Node3D" parent="." unique_id=466135530]
+
+[node name="Position1" type="Marker3D" parent="Markers" unique_id=574100205]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.084959, 3.5146139, 28.328535)
+
+[node name="Position2" type="Marker3D" parent="Markers" unique_id=1257156914]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.116287, 3.515062, 12.448994)
+
+[node name="NPC2" parent="." unique_id=1472271164 instance=ExtResource("16_qhmxi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.898366, 3.513556, -4.092733)
+
+[node name="NPC3" parent="." unique_id=85148270 instance=ExtResource("17_daay6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.501839, 3.5403254, -4.0339203)
+
+[node name="NPC6" parent="." unique_id=1640406928 instance=ExtResource("46_8of62")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7943716, 3.5339422, -3.997247)

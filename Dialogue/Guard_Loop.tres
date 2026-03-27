@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://bftbpg4g2dw5i"]
+
+[ext_resource type="Script" uid="uid://dmp1iu63or1av" path="res://Scripts/DialogueData.gd" id="1_t7ohd"]
+
+[resource]
+script = ExtResource("1_t7ohd")
+lines = Array[String](["No response"])
+metadata/_custom_type_script = "uid://dmp1iu63or1av"

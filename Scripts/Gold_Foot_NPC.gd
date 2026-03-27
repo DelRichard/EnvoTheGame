@@ -1,19 +1,107 @@
 extends CharacterBody3D
 
+@onready var animated_sprite_3d: AnimatedSprite3D = $AnimatedSprite3D
 @onready var interact_area: Area3D = $Interact_Area
 @onready var interact_icon = get_node("/root/Main/Player/Interact_Icon")
 @export var npc_id: String = "Gold_Foot"
 @export var initial_dialogue: DialogueData
 
+@export var move_speed: float = 2.0
 
+@export var point_a: Node3D
+@export var point_b: Node3D
+
+
+var target_position: Vector3
+var is_moving := false
 var player_in_range := false
 var has_talked := false
 var in_dialogue := false
 var dialogue_target: Node3D = null
+var found_two_played := false
+var pending_move_marker: Node3D = null
+var last_direction := Vector2.DOWN
 
 func _ready():
 	add_to_group("npcs")
-
+	DialogueManager.dialogue_finished.connect(_on_dialogue_finished)
+	
+func _physics_process(_delta):
+	if is_moving:
+		var direction = target_position - global_transform.origin
+		direction.y = 0
+		
+		if direction.length() > 0.1:
+			direction = direction.normalized()
+			
+			velocity.x = direction.x * move_speed
+			velocity.z = direction.z * move_speed
+			
+			update_animation(direction)
+		else:
+			velocity = Vector3.ZERO
+			is_moving = false
+			play_idle_animation()
+	else:
+		velocity = Vector3.ZERO
+		play_idle_animation()
+	
+	move_and_slide()
+func get_camera_relative_direction(direction: Vector3) -> Vector2:
+	var camera := get_viewport().get_camera_3d()
+	if camera == null:
+		return Vector2.ZERO
+	
+	var cam_forward = -camera.global_transform.basis.z
+	var cam_right = camera.global_transform.basis.x
+	
+	var dir_2d = Vector2(
+		direction.dot(cam_right),
+		direction.dot(cam_forward)
+	)
+	
+	return dir_2d.normalized()
+	
+func update_animation(direction: Vector3):
+	var dir_2d = get_camera_relative_direction(direction)
+	last_direction = dir_2d
+	
+	if abs(dir_2d.x) > abs(dir_2d.y):
+		animated_sprite_3d.play("walk_side")
+		animated_sprite_3d.flip_h = dir_2d.x < 0
+	else:
+		if dir_2d.y > 0:
+			animated_sprite_3d.play("walk_back")
+		else:
+			animated_sprite_3d.play("walk_front")
+			
+			
+func play_idle_animation():
+	if abs(last_direction.x) > abs(last_direction.y):
+		animated_sprite_3d.play("idle_side")
+		animated_sprite_3d.flip_h = last_direction.x < 0
+	else:
+		if last_direction.y > 0:
+			animated_sprite_3d.play("idle_front")
+		else:
+			animated_sprite_3d.play("idle_back")
+			
+			
+			
+func move_after_dialogue(marker: Node3D):
+	pending_move_marker = marker
+	
+func move_to_marker(marker: Node3D):
+	if marker == null:
+		return
+		
+	target_position = marker.global_transform.origin
+	is_moving = true
+	
+func _on_dialogue_finished():
+	if pending_move_marker:
+		move_to_marker(pending_move_marker)
+		pending_move_marker = null
 
 func enter_dialogue(target: Node3D) -> void:
 	in_dialogue = true
@@ -24,15 +112,15 @@ func exit_dialogue() -> void:
 	dialogue_target = null
 	
 func interact():
-	if DialogueManager.is_active:
+	if DialogueManager.is_active or is_moving:
 		return
+		
 		
 	var npc_body = self
 	var q1 = QuestManager.quests.get("Teary Fields")
 	var q2 = QuestManager.quests.get("Green Waters")
 	var q3 = QuestManager.quests.get("Red Hot Chilli Pepper")
 	
-	#Dialogue to repeat after player finishes all gold foot quests
 	if (q3 and q3.state == Quest.QuestState.STARTED) or (q2 and q2.state == Quest.QuestState.COMPLETED):
 		var dialogue = preload("res://Dialogue/Repeat goodluck.tres")
 		DialogueManager.start_dialogue(dialogue, npc_body)
@@ -54,7 +142,7 @@ func interact():
 			var dialogue = preload("res://Dialogue/Found_Wrench.tres")
 			DialogueManager.start_dialogue(dialogue, npc_body)
 			QuestManager.finish_quest("Teary Fields")
-			print("Unlock next area and move gold foot")
+			move_after_dialogue(point_a)
 			return 
 		else:
 			var dialogue = preload("res://Dialogue/Missing_Wrench.tres")
@@ -66,34 +154,37 @@ func interact():
 		var parts = InventoryManager.get_item_count("MachinePart")
 		
 		if q2.current_objective_index == 0:
-			var dialogue = preload("res://Dialogue/Stolen_Parts.tres")
-			DialogueManager.start_dialogue(dialogue, npc_body)
+			var dialogue1 = preload("res://Dialogue/Stolen_Parts.tres")
+			DialogueManager.start_dialogue(dialogue1, npc_body)
 			QuestManager.set_objective_index("Green Waters", 1)
 			return
-		#When player finds two parts
-		if parts == 2:
-			if q2.current_objective_index == 5:
-				var dialogue = preload("res://Dialogue/Found_Two.tres")
-				DialogueManager.start_dialogue(dialogue, npc_body)
-				print("Unlock next area and move gold foot")
-				QuestManager.set_objective_index("Green Waters", 2)
-				return
-			elif q2.current_objective_index == 2:
-				var dialogue = preload("res://Dialogue/Find_Villagers.tres")
-				DialogueManager.start_dialogue(dialogue, npc_body)
-				return
-		#When player finds three parts
+			
+		if parts >= 2 and not found_two_played:
+			var dialogue2 = preload("res://Dialogue/Found_Two.tres")
+			DialogueManager.start_dialogue(dialogue2, npc_body)
+			found_two_played = true
+			QuestManager.set_objective_index("Green Waters", 2)
+			move_after_dialogue(point_b)
+			return
+			
+		if found_two_played and parts < 3:
+			var dialogue3 = preload("res://Dialogue/Find_Villagers.tres")
+			DialogueManager.start_dialogue(dialogue3, npc_body)
+			return
+		
+		# When player finds three parts
 		if parts >= 3:
-			var dialogue = preload("res://Dialogue/Final_Found.tres")
-			DialogueManager.start_dialogue(dialogue, npc_body)
+			var dialogue4 = preload("res://Dialogue/Final_Found.tres")
+			DialogueManager.start_dialogue(dialogue4, npc_body)
 			QuestManager.finish_quest("Green Waters")
 			InventoryManager.add_item("water", 1)
 			print("Unlock next area")
 			return
+		
 		var dialogue = preload("res://Dialogue/Missing_Parts.tres")
 		DialogueManager.start_dialogue(dialogue, npc_body)
 		return
-	# This should not hit
+		
 	DialogueManager.start_dialogue(initial_dialogue, npc_body)
 	
 func _input(event):

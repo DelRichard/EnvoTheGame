@@ -7,15 +7,18 @@ extends CharacterBody3D
 @export var npc_id: String = "Jimmy"
 @export var initial_dialogue: DialogueData
 
-var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var in_dialogue := false
 var dialogue_target: Node3D = null
 var player_in_range := false
 var pumpkin_killed := false
+var machine_part_given := false
+var post_reward_dialogue_played := false
 
 func _physics_process(delta: float) -> void:
-		if not is_on_floor():
-			velocity.y -= gravity * delta
+	velocity = Vector3.ZERO
+	if not is_on_floor():
+		velocity.y -= ProjectSettings.get_setting("physics/3d/default_gravity") * delta
+	move_and_slide()
 		
 func _ready():
 	animated_sprite_3d.play("idle")
@@ -32,12 +35,18 @@ func exit_dialogue() -> void:
 func interact():
 	var npc_body = self
 	var q2 = QuestManager.quests.get("Green Waters")
-	
+	if machine_part_given:
+		var dialogue = preload("res://Dialogue/Pumpkin_Loop.tres")
+		DialogueManager.start_dialogue(dialogue, npc_body)
+		return
+		
 	if pumpkin_killed:
 		var dialogue = preload("res://Dialogue/Pumpkin_killed.tres")
 		DialogueManager.start_dialogue(dialogue, npc_body)
 		InventoryManager.add_item("MachinePart", 1)
+		machine_part_given = true
 		QuestManager.set_objective_index("Green Waters", 5)
+		return
 		
 	elif q2 and q2.state == Quest.QuestState.STARTED:
 		QuestManager.set_objective_index("Green Waters", 3)

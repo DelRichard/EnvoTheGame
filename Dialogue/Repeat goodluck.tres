@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_yy35a")
-lines = Array[String](["Reapeat good luck to player"])
+lines = Array[String](["You've been a good help lad. I bid you safe travels."])
 metadata/_custom_type_script = "uid://dmp1iu63or1av"

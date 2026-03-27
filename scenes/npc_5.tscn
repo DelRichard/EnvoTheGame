@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://bh4d4e7g6464u"]
+
+[ext_resource type="Script" uid="uid://crbl6wh7cpy5m" path="res://Scripts/Modified_NPC.gd" id="1_134k1"]
+[ext_resource type="Texture2D" uid="uid://b58hbuj0154df" path="res://assets/character_models/Field Person 7.png" id="2_y4dhl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h64tt"]
+atlas = ExtResource("2_y4dhl")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xqlo"]
+atlas = ExtResource("2_y4dhl")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnlig"]
+atlas = ExtResource("2_y4dhl")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljuxu"]
+atlas = ExtResource("2_y4dhl")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ufq8v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h64tt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xqlo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnlig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljuxu")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v0iea"]
+radius = 0.11035156
+height = 0.4045782
+
+[node name="NPC5" type="CharacterBody3D" unique_id=1327594500]
+script = ExtResource("1_134k1")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=42194776]
+unique_name_in_owner = true
+billboard = 2
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_ufq8v")
+animation = &"idle"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=513218477]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0006121546, 0)
+shape = SubResource("CapsuleShape3D_v0iea")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=512202661]
+path_desired_distance = 0.25
+target_desired_distance = 0.5
+avoidance_enabled = true
+radius = 0.25
+avoidance_mask = 3
+debug_enabled = true
+
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

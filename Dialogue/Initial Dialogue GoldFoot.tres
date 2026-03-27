@@ -4,7 +4,5 @@
 
 [resource]
 script = ExtResource("1_ri8li")
-lines = Array[String](["Gold foot introduces himself. 
-asks for help finding missing wrench
-direct player to field"])
+lines = Array[String](["Ah. You're the one that lives in the treehouse", "Either you're extraordinarily lucky or extraordinarily stupid. I haven't decided which.", "You know, they used to say the same thing about me. \"Goldfoot's crazy. Goldfoot's wasting his time.\" Meanwhile half the village is eating bark soup, and the other half isn't eating at all.", "Listen. I need a wrench. Small thing. Can't weigh more than my pride and I have lost a considerable amount of that. Dropped it north of here, past the onion patch. The problem is my knees sound like village morale absolutely shot.", "A water purification machine. Air filtration. Soil regeneration. The Neon City took everything from us the water, the air, the dirt under our feet. But they cannot take what I know. Not yet anyway.", "The land can recover the problem was never the land itself. It was who was allowed to destroy it without consequence."])
 metadata/_custom_type_script = "uid://dmp1iu63or1av"

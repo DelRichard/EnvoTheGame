@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://dns3x0oeyyfiq"]
+
+[ext_resource type="Script" uid="uid://dmp1iu63or1av" path="res://Scripts/DialogueData.gd" id="1_a8pk0"]
+
+[resource]
+script = ExtResource("1_a8pk0")
+lines = Array[String](["You killed it...", "...", "You're not what I expected...", "Huh?... You managed to purify the lake?...", "...", "My mother used to talk about the fields. Before all this. She said the field people and the pond people used to trade your crops for our fish. Said the river ran through both our lands like a handshake.", "The Neon City builds walls. Between people. Between lands. To make us stop working together so that they can have all the power.", "We blocked this river to survive. I will not pretend that did not cost your people.", "We wanted to protect what we had but alas the city became bigger.", "They started dumping their waste into our rivers.", "We had to cut some branches off but there have been rumours off more expansion, more waste and I fear we will not be able to fight it.", "...", "Come back tommorow.", "You have earned a seat before our queen."])
+metadata/_custom_type_script = "uid://dmp1iu63or1av"

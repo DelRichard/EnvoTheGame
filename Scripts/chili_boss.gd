@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+signal boss_killed(boss_id)
+
 @onready var animated_sprite_3d: AnimatedSprite3D = $AnimatedSprite3D
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var health_component: HealthComponent = $HealthComponent
@@ -27,8 +29,8 @@ enum WanderState   { IDLE, WAITING_TO_MOVE, MOVE }
 @export var attack_cooldown: float = 1.0 
 @export var knockback_force: float = 30.0
 
-@export var dash_speed: float = 10.0
-@export var dash_duration: float = 0.5
+@export var dash_speed: float = 5.0
+@export var dash_duration: float = 0.6
 @export var dash_cooldown: float = 3.0
 @export var dash_trigger_range: float = 5.0 # Distance where it starts the dash
 
@@ -143,7 +145,7 @@ func _physics_process(delta: float) -> void:
 
 
 # MOVEMENT
-func handle_movement(delta: float) -> void:
+func handle_movement(_delta: float) -> void:
 	if current_behavior == BehaviorState.DASHING:
 		return
 	if is_moving:
@@ -456,6 +458,7 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 func _on_enemy_died() -> void:
 	print("Enemy Killed!")
 	current_behavior = BehaviorState.DEATH
+	emit_signal("boss_killed", "boss")
 
 
 func _on_enemy_hit(from_position: Vector3, knockback: float) -> void:

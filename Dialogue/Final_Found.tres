@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_slhvx")
-lines = Array[String](["Thanks the player for finding the third. Mentions that the water will be limited and asks player to negotiate with the pond people"])
+lines = Array[String](["Aha... you found the last piece", "There she is.", "My wife used to say the land remembers kindness. I thought that was sentimental nonsense. I'm less sure now.", "It's not enough though. This pond is just a puddle. The main river is upstream, blocked off by the pond people after the Neon City started dumping into it. I can't blame them. ", "They were protecting what they had. But we're downstream, and we've got nothing. When people are forced to choose between survival and compassion, they will choose survival. That is not evil that is desperation. The cause is always upstream.", "Take this to them. Not as a bribe. As proof. Show them what clean water looks like when someone actually tries. Maybe they'll remember what that felt like.", "Because the Neon City is expanding east. Toward their village. The waste in their river isn't an accident, kid. It's an announcement. They just don't know it yet."])
 metadata/_custom_type_script = "uid://dmp1iu63or1av"

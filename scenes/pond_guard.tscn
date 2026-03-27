@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dke8kumoyhuga"]
+
+[ext_resource type="Script" uid="uid://diy03d2oo3a7y" path="res://Scripts/pond_guard.gd" id="1_mw0iv"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_d831w"]
+radius = 1.3714558
+
+[node name="Pond_Guard" type="CharacterBody3D" unique_id=704570871]
+script = ExtResource("1_mw0iv")
+
+[node name="Interact_Area" type="Area3D" parent="." unique_id=1537820307]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interact_Area" unique_id=1258156383]
+shape = SubResource("SphereShape3D_d831w")
+
+[connection signal="body_entered" from="Interact_Area" to="." method="_on_interact_area_body_entered"]
+[connection signal="body_exited" from="Interact_Area" to="." method="_on_interact_area_body_exited"]

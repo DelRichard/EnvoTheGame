@@ -1,22 +1,22 @@
-[gd_scene format=3 uid="uid://dfs65ke4d7os0"]
+[gd_scene format=3 uid="uid://dl2112nsg6mk4"]
 
-[ext_resource type="Script" uid="uid://ebs5cwglrhkw" path="res://Scripts/npc_movement.gd" id="1_abqhh"]
-[ext_resource type="SpriteFrames" uid="uid://blvw70gbvj3jo" path="res://assets/character_models/FieldPerson4bSpriteFrames.tres" id="2_4wlns"]
+[ext_resource type="Script" uid="uid://crbl6wh7cpy5m" path="res://Scripts/Modified_NPC.gd" id="1_23bb0"]
+[ext_resource type="SpriteFrames" uid="uid://blvw70gbvj3jo" path="res://assets/character_models/FieldPerson4bSpriteFrames.tres" id="2_8v6sq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v0iea"]
 radius = 0.11035156
 height = 0.4045782
 
-[node name="NPC" type="CharacterBody3D" unique_id=1327594500]
-script = ExtResource("1_abqhh")
+[node name="NPC2" type="CharacterBody3D" unique_id=1327594500]
+script = ExtResource("1_23bb0")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=42194776]
 unique_name_in_owner = true
 billboard = 2
 alpha_cut = 1
 texture_filter = 0
-sprite_frames = ExtResource("2_4wlns")
-animation = &"walk_side"
+sprite_frames = ExtResource("2_8v6sq")
+animation = &"idle"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=513218477]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0006121546, 0)
