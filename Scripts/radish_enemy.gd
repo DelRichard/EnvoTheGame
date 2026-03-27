@@ -401,15 +401,6 @@ func update_behavior(delta: float) -> void:
 				be_wandering()
 
 
-
-
-
-
-
-
-
-
-
 func can_see_player() -> bool:
 	if not player:
 		return false
