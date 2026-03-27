@@ -24,7 +24,7 @@ func load_quests():
 	q2.objectives = [
 		"Talk to Gold Foot in the village",
 		"Find the missing machine parts",
-		"Investigate the valley",
+		"Talk to the villager",
 		"Defeat the pumpkin veggions",
 		"Talk to the villager",
 		"Talk to Gold Foot",

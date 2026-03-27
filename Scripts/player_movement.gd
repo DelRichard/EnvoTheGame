@@ -36,7 +36,7 @@ var camera_rotation: Vector3 = Vector3.ZERO
 const MAX_LOOK_UP = deg_to_rad(40.0)  
 const MAX_LOOK_DOWN = deg_to_rad(-40.0)  
 
-@export var attack_damage := 10.0
+@export var attack_damage := 100.0
 @export var attack_range := 1.5
 @export var attack_speed := 0.5
 @export var knockback_force := 5.0

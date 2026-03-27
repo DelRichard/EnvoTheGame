@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+signal enemy_killed(enemy_id)
+
 @onready var animated_sprite_3d: AnimatedSprite3D = $AnimatedSprite3D
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var health_component: HealthComponent = $HealthComponent
@@ -418,6 +420,7 @@ func _on_navigation_agent_3d_target_reached() -> void:
 func _on_enemy_died() -> void:
 	print("Enemy Killed!")
 	current_behavior = BehaviorState.DEATH
+	emit_signal("enemy_killed", "pumpkin")
 
 
 func _on_enemy_hit(from_position: Vector3, knockback: float) -> void:

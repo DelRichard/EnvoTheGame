@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://b8kuia6ranms1"]
 
+[ext_resource type="Script" uid="uid://b7knmavu1c175" path="res://World.gd" id="1_c1cye"]
 [ext_resource type="PackedScene" uid="uid://dx334m23y6gsy" path="res://ui/pause_menu.tscn" id="1_tvhpe"]
 [ext_resource type="PackedScene" uid="uid://bevt2tbays3j0" path="res://scenes/health_bar.tscn" id="2_fvapf"]
 [ext_resource type="PackedScene" uid="uid://c5w31euxmh80k" path="res://ui/quest_ui.tscn" id="3_xjcue"]
@@ -37,6 +38,7 @@
 [ext_resource type="PackedScene" uid="uid://d4an8hkum7vyq" path="res://scenes/radish_enemy.tscn" id="34_xjcue"]
 [ext_resource type="PackedScene" uid="uid://bnp10shotubqu" path="res://assets/props/fences.tscn" id="35_xjcue"]
 [ext_resource type="PackedScene" uid="uid://dqwfbkhgs5lio" path="res://assets/props/pebble.tscn" id="37_c1cye"]
+[ext_resource type="PackedScene" uid="uid://dgsrbilhjqlpx" path="res://scenes/story_npc.tscn" id="36_fa2m2"]
 [ext_resource type="Material" uid="uid://duxbd5lv13iuf" path="res://assets/materials/grass.tres" id="38_ek2hi"]
 [ext_resource type="Texture2D" uid="uid://vielv5tboong" path="res://assets/models/door_WhatsApp Image 2026-03-23 at 2.46.jpg" id="39_ek2hi"]
 
@@ -330,6 +332,7 @@ shadow_mesh = SubResource("ArrayMesh_5qrj3")
 size = Vector3(1.1947327, 1.5813904, 0.06359863)
 
 [node name="Main" type="Node3D" unique_id=1172873568]
+script = ExtResource("1_c1cye")
 
 [node name="UIManager" type="CanvasLayer" parent="." unique_id=322643656]
 
@@ -379,7 +382,7 @@ transform = Transform3D(0.58566535, 0, -0.81055313, 0, 1, 0, 0.81055313, 0, 0.58
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.452693, 4.3897624, 4.477297)
 
 [node name="PumpkinEnemy" parent="." unique_id=1536759346 node_paths=PackedStringArray("following_target") instance=ExtResource("31_mmjla")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.597763, 3.6150534, 3.7854385)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.913241, 3.725118, 17.747787)
 following_target = NodePath("../Player")
 
 [node name="OnionEnemy" parent="." unique_id=1272817638 instance=ExtResource("30_bvj8e")]
@@ -427,6 +430,8 @@ transform = Transform3D(1.9005693, 0, -1.7393552, 0, 2.5763383, 0, 1.7393552, 0,
 skeleton = NodePath("../NavigationRegion3D/Map/StaticBody3D")
 
 [node name="BigNavigationRegion3D" type="NavigationRegion3D" parent="World" unique_id=1107817988]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0018725395, -0.009241819, 0.008019447)
+visible = false
 navigation_mesh = SubResource("NavigationMesh_c1cye")
 navigation_layers = 2
 metadata/_edit_lock_ = true
@@ -2132,3 +2137,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3944309, 3.4465284, 20.0241
 
 [node name="Machine_Part2" parent="." unique_id=1141725124 instance=ExtResource("33_fvapf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.412904, 3.4607646, 16.596375)
+
+[node name="Rope" parent="." unique_id=1885729063 instance=ExtResource("34_fvapf")]
+transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50000006, -9.994, 4.7, 30.023)
+
+[node name="RadishEnemy" parent="." unique_id=1223622874 instance=ExtResource("34_xjcue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0798073, 3.616506, 20.450787)
+
+[node name="Story_NPC" parent="." unique_id=650234995 instance=ExtResource("36_fa2m2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.982456, 3.7037082, 27.83614)
