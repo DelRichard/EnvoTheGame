@@ -10,7 +10,7 @@ extends CharacterBody3D
 
 @export var max_view_distance := 10.0
 
-enum BehaviorState { IDLE, WANDER, MOVE_TO_TARGET, FOLLOW, ATTACK }
+enum BehaviorState { IDLE, WANDER, MOVE_TO_TARGET, FOLLOW, ATTACK, HIT, DEATH}
 enum WanderState   { IDLE, WAITING_TO_MOVE, MOVE }
 
 @export var speed: float = 1.5
@@ -71,6 +71,9 @@ var player_head
 var see_player := false
 var last_state := false
 
+var is_dying: bool = false
+
+
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	player_head = player.get_node("CameraPivot")
@@ -90,6 +93,21 @@ func _physics_process(delta: float) -> void:
 		BehaviorState.ATTACK:
 			if not is_jump_attacking: #only follow if not mid-jump
 				follow(player)
+		BehaviorState.HIT:
+			animated_sprite_3d.play("hit")
+			animated_sprite_3d.modulate = Color.RED
+			await get_tree().create_timer(0.1).timeout
+			animated_sprite_3d.modulate = Color.WHITE
+			
+		BehaviorState.DEATH:
+			if not is_dying:
+				is_dying = true
+				animated_sprite_3d.play("death")
+				audio_stream_player_3d.play()
+				await animated_sprite_3d.animation_finished
+				queue_free()
+			return
+		
 	
 	# combat
 	update_behavior(delta)
@@ -277,7 +295,9 @@ func be_attacking_player() -> void:
 
 # COMBAT
 func apply_knockback(from_position: Vector3, force: float = 5.0):
-	var dir = (global_position - from_position).normalized()
+	var dir = (global_position - from_position)
+	dir.y = 0.0
+	dir = dir.normalized()
 	velocity += dir * force
 
 
@@ -382,6 +402,8 @@ func has_line_of_sight() -> bool:
 
 
 
+
+
 # SIGNALS
 
 func _on_navigation_agent_3d_target_reached() -> void:
@@ -395,15 +417,12 @@ func _on_navigation_agent_3d_target_reached() -> void:
 
 func _on_enemy_died() -> void:
 	print("Enemy Killed!")
-	audio_stream_player_3d.play()
-	await get_tree().create_timer(1.0).timeout
-	queue_free()
+	current_behavior = BehaviorState.DEATH
 
 
 func _on_enemy_hit(from_position: Vector3, knockback: float) -> void:
 	print("Enemy Hit!")
-	animated_sprite_3d.modulate = Color.RED
-	await get_tree().create_timer(0.1).timeout
-	animated_sprite_3d.modulate = Color.WHITE
+	current_behavior = BehaviorState.HIT
 	apply_knockback(from_position, knockback)
+	
 	

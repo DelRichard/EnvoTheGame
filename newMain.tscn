@@ -31,7 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://bk641x1hnklb1" path="res://scenes/pumpkinEnemy.tscn" id="31_mmjla"]
 [ext_resource type="PackedScene" uid="uid://bjlpdkdxkgqkc" path="res://scenes/wrench.tscn" id="32_tvhpe"]
 [ext_resource type="PackedScene" uid="uid://dn73xhgj7xv41" path="res://scenes/machine_part.tscn" id="33_fvapf"]
-[ext_resource type="PackedScene" path="res://scenes/rope.tscn" id="34_fvapf"]
+[ext_resource type="PackedScene" uid="uid://d135ox5j5w4ae" path="res://scenes/rope.tscn" id="34_fvapf"]
 [ext_resource type="Material" uid="uid://duxbd5lv13iuf" path="res://assets/materials/grass.tres" id="38_ek2hi"]
 [ext_resource type="Texture2D" uid="uid://vielv5tboong" path="res://assets/models/door_WhatsApp Image 2026-03-23 at 2.46.jpg" id="39_ek2hi"]
 
@@ -373,7 +373,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.921223, 3.621206, 20.258835
 following_target = NodePath("../Player")
 
 [node name="PumpkinEnemy" parent="." unique_id=1536759346 node_paths=PackedStringArray("following_target") instance=ExtResource("31_mmjla")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7111601, 3.6150534, -0.9671624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.321956, 3.6150534, 22.189455)
 following_target = NodePath("../Player")
 
 [node name="NPCs" type="Node3D" parent="." unique_id=814977460]
