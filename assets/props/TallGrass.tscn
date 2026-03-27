@@ -43,6 +43,6 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_5tl1k")
 
 [node name="TallGrass" type="MeshInstance3D" unique_id=297500220]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("ArrayMesh_evsfj")
 skeleton = NodePath("")

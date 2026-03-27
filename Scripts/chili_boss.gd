@@ -30,7 +30,7 @@ enum WanderState   { IDLE, WAITING_TO_MOVE, MOVE }
 @export var dash_speed: float = 10.0
 @export var dash_duration: float = 0.5
 @export var dash_cooldown: float = 3.0
-@export var dash_trigger_range: float = 6.0 # Distance where it starts the dash
+@export var dash_trigger_range: float = 5.0 # Distance where it starts the dash
 
 var is_dashing: bool = false
 var dash_timer: float = 0.0
@@ -39,7 +39,7 @@ var dash_direction: Vector3 = Vector3.ZERO
 @export_group("Targets")
 @export var my_target: Node3D
 @export var following_target: Node3D
-@export var max_view_distance := 15.0
+@export var max_view_distance := 10.0
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var direction: Vector3 = Vector3.ZERO
