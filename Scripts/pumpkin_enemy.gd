@@ -8,7 +8,7 @@ extends CharacterBody3D
 @onready var ray_cast_3d: RayCast3D = $Head/RayCast3D
 
 
-@export var max_view_distance := 10.0
+@export var max_view_distance := 5.0
 
 enum BehaviorState { IDLE, WANDER, MOVE_TO_TARGET, FOLLOW, ATTACK, HIT, DEATH}
 enum WanderState   { IDLE, WAITING_TO_MOVE, MOVE }
@@ -96,7 +96,7 @@ func _physics_process(delta: float) -> void:
 		BehaviorState.HIT:
 			animated_sprite_3d.play("hit")
 			animated_sprite_3d.modulate = Color.RED
-			await get_tree().create_timer(0.1).timeout
+			await get_tree().create_timer(0.2).timeout
 			animated_sprite_3d.modulate = Color.WHITE
 			
 		BehaviorState.DEATH:

@@ -11,9 +11,6 @@ height = 1.9456024
 
 [node name="ChiliBoss" type="CharacterBody3D" unique_id=1327594500 groups=["Enemy"]]
 script = ExtResource("1_vsxyj")
-speed = 2.0
-follow_distance = 0.25
-debug = true
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=167188248]
 unique_name_in_owner = true
@@ -24,6 +21,8 @@ alpha_cut = 1
 texture_filter = 0
 sprite_frames = ExtResource("2_vsxyj")
 animation = &"attack"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=513218477]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24289703, 0)
