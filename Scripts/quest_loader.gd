@@ -33,7 +33,6 @@ func load_quests():
 	
 	q3.quest_name = "Red Hot Chilli Pepper"
 	q3.objectives = [
-		"Talk to the ogre",
 		"Go to the pond village gate",
 		"Defeat the boss",
 		"Talk to the guard"

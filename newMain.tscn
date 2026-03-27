@@ -41,6 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://dgsrbilhjqlpx" path="res://scenes/story_npc.tscn" id="36_fa2m2"]
 [ext_resource type="Material" uid="uid://duxbd5lv13iuf" path="res://assets/materials/grass.tres" id="38_ek2hi"]
 [ext_resource type="Texture2D" uid="uid://vielv5tboong" path="res://assets/models/door_WhatsApp Image 2026-03-23 at 2.46.jpg" id="39_ek2hi"]
+[ext_resource type="PackedScene" uid="uid://dke8kumoyhuga" path="res://scenes/pond_guard.tscn" id="39_vbtvo"]
 
 [sub_resource type="Sky" id="Sky_go701"]
 sky_material = ExtResource("5_c1cye")
@@ -382,7 +383,7 @@ transform = Transform3D(0.58566535, 0, -0.81055313, 0, 1, 0, 0.81055313, 0, 0.58
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.452693, 4.3897624, 4.477297)
 
 [node name="PumpkinEnemy" parent="." unique_id=1536759346 node_paths=PackedStringArray("following_target") instance=ExtResource("31_mmjla")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.913241, 3.725118, 17.747787)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.300853, 3.7457955, 23.596441)
 following_target = NodePath("../Player")
 
 [node name="OnionEnemy" parent="." unique_id=1272817638 instance=ExtResource("30_bvj8e")]
@@ -2146,3 +2147,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0798073, 3.616506, 20.45078
 
 [node name="Story_NPC" parent="." unique_id=650234995 instance=ExtResource("36_fa2m2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.982456, 3.7037082, 27.83614)
+
+[node name="Pond_Guard" parent="." unique_id=1710801015 instance=ExtResource("39_vbtvo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.823871, 3.2818696, 34.406578)
