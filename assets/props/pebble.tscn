@@ -1,13 +1,6 @@
 [gd_scene format=4 uid="uid://dqwfbkhgs5lio"]
 
-[ext_resource type="Texture2D" uid="uid://dwyecdnqh2jkq" path="res://assets/models/envoPropsNew_randomly-offset-uv-with-fixed-increments-v0-aulez1ph8c8c1.webp" id="1_q1qu1"]
 [ext_resource type="Material" uid="uid://7fwopv2rk4tw" path="res://assets/materials/rock.tres" id="2_12xmb"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rhdss"]
-resource_name = "Material.001"
-cull_mode = 2
-albedo_texture = ExtResource("1_q1qu1")
-roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_nlvt5"]
 _surfaces = [{
@@ -31,7 +24,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 186,
 "index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgACQAKAAsACgAJAAwACgAMAA0ADgAPABAADgARAA8AEgATABQAEgAVABMAFgAXABgAFgAZABcAGgAbABwAGgAdABsAHgAfACAAHgAhAB8AIgAjACQAIwAiACUAJQAiACYAIwAlACcAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEANAA1ADYANAA3ADUAOAA5ADoAOQA4ADsAOwA4ADwAOQA7AD0APgA/AEAAPgBBAD8AQgBDAEQAQgBFAEMARgBHAEgARgBJAEcASgBLAEwASgBNAEsATgBPAFAATgBRAE8AUgBTAFQAUgBVAFMAVgBXAFgAVwBWAFkAWQBWAFoAVwBZAFsAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZABlAGYAZQBkAGcAZQBnAGgAaQBqAGsAaQBsAGoAbQBuAG8AbgBtAHAAbgBwAHEAcgBzAHQAcgB1AHMA"),
-"material": SubResource("StandardMaterial3D_rhdss"),
+"material": ExtResource("2_12xmb"),
 "name": "Material.001",
 "primitive": 3,
 "uv_scale": Vector4(1.8565309, 2, 0, 0),
