@@ -45,7 +45,9 @@
 [ext_resource type="Material" uid="uid://duxbd5lv13iuf" path="res://assets/materials/grass.tres" id="38_ek2hi"]
 [ext_resource type="Texture2D" uid="uid://vielv5tboong" path="res://assets/models/door_WhatsApp Image 2026-03-23 at 2.46.jpg" id="39_ek2hi"]
 [ext_resource type="PackedScene" uid="uid://dke8kumoyhuga" path="res://scenes/pond_guard.tscn" id="39_vbtvo"]
+[ext_resource type="Resource" uid="uid://c0qck7i3sckns" path="res://Dialogue/Go_Away.tres" id="45_t66ac"]
 [ext_resource type="PackedScene" uid="uid://bh4d4e7g6464u" path="res://scenes/npc_5.tscn" id="46_8of62"]
+[ext_resource type="PackedScene" uid="uid://c4oou04pmen38" path="res://scenes/boss_spawner.tscn" id="46_daay6"]
 
 [sub_resource type="Sky" id="Sky_go701"]
 sky_material = ExtResource("5_c1cye")
@@ -382,9 +384,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.199507, 3.529527, 29.12871
 
 [node name="Ogre" parent="." unique_id=856251689 instance=ExtResource("26_y3t1l")]
 transform = Transform3D(0.58566535, 0, -0.81055313, 0, 1, 0, 0.81055313, 0, 0.58566535, -4.1850615, 3.5107238, 1.0710242)
-
-[node name="ChiliBoss" parent="." unique_id=1076033435 instance=ExtResource("29_aq8fk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.136943, 4.4780707, 11.3601675)
 
 [node name="PumpkinEnemy" parent="." unique_id=1536759346 node_paths=PackedStringArray("following_target") instance=ExtResource("31_mmjla")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.378901, 3.9327943, 16.203745)
@@ -2144,8 +2143,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0798073, 3.616506, 20.45078
 [node name="Story_NPC" parent="." unique_id=650234995 instance=ExtResource("36_fa2m2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.982456, 3.7037082, 27.83614)
 
-[node name="Pond_Guard" parent="." unique_id=1710801015 instance=ExtResource("39_vbtvo")]
+[node name="Pond_Guard" parent="." unique_id=1710801015 node_paths=PackedStringArray("boss_spawner") instance=ExtResource("39_vbtvo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.823871, 3.2818696, 34.406578)
+initial_dialogue = ExtResource("45_t66ac")
+boss_spawner = NodePath("../Boss_Spawner")
 
 [node name="NPC5" parent="." unique_id=243780882 instance=ExtResource("46_8of62")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.10255, 3.490766, 26.886993)
+
+[node name="Boss_Spawner" parent="." unique_id=277506695 node_paths=PackedStringArray("spawn_position") instance=ExtResource("46_daay6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.446, 3.9, 3.778)
+boss_scene = ExtResource("29_aq8fk")
+spawn_position = NodePath("SpawnPoint")
+
+[node name="SpawnPoint" type="Marker3D" parent="Boss_Spawner" unique_id=1742666291]
+
+[node name="Machine_Part" parent="Boss_Spawner" unique_id=396089322 instance=ExtResource("33_fvapf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8527746, -0.44762444, 25.314205)
+
+[node name="Machine_Part2" parent="Boss_Spawner" unique_id=1537535424 instance=ExtResource("33_fvapf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2492046, -0.44783068, 24.866943)

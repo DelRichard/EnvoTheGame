@@ -14,8 +14,8 @@ var found_two_played := false
 
 func _ready():
 	add_to_group("npcs")
-
-
+	
+	
 func enter_dialogue(target: Node3D) -> void:
 	in_dialogue = true
 	dialogue_target = target
@@ -66,28 +66,28 @@ func interact():
 		var parts = InventoryManager.get_item_count("MachinePart")
 		
 		if q2.current_objective_index == 0:
-			var dialogue = preload("res://Dialogue/Stolen_Parts.tres")
-			DialogueManager.start_dialogue(dialogue, npc_body)
+			var dialogue1 = preload("res://Dialogue/Stolen_Parts.tres")
+			DialogueManager.start_dialogue(dialogue1, npc_body)
 			QuestManager.set_objective_index("Green Waters", 1)
 			return
 			
 		if parts >= 2 and not found_two_played:
-			var dialogue = preload("res://Dialogue/Found_Two.tres")
-			DialogueManager.start_dialogue(dialogue, npc_body)
+			var dialogue2 = preload("res://Dialogue/Found_Two.tres")
+			DialogueManager.start_dialogue(dialogue2, npc_body)
 			found_two_played = true
 			QuestManager.set_objective_index("Green Waters", 2)
 			print("Unlock next area and move gold foot")
 			return
 			
 		if found_two_played and parts < 3:
-			var dialogue = preload("res://Dialogue/Find_Villagers.tres")
-			DialogueManager.start_dialogue(dialogue, npc_body)
+			var dialogue3 = preload("res://Dialogue/Find_Villagers.tres")
+			DialogueManager.start_dialogue(dialogue3, npc_body)
 			return
 		
 		# When player finds three parts
 		if parts >= 3:
-			var dialogue = preload("res://Dialogue/Final_Found.tres")
-			DialogueManager.start_dialogue(dialogue, npc_body)
+			var dialogue4 = preload("res://Dialogue/Final_Found.tres")
+			DialogueManager.start_dialogue(dialogue4, npc_body)
 			QuestManager.finish_quest("Green Waters")
 			InventoryManager.add_item("water", 1)
 			print("Unlock next area")

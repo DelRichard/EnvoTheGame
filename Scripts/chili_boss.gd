@@ -145,7 +145,7 @@ func _physics_process(delta: float) -> void:
 
 
 # MOVEMENT
-func handle_movement(delta: float) -> void:
+func handle_movement(_delta: float) -> void:
 	if current_behavior == BehaviorState.DASHING:
 		return
 	if is_moving:

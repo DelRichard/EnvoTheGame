@@ -5,6 +5,7 @@ extends CharacterBody3D
 
 @export var npc_id: String = "Guard"
 @export var initial_dialogue: DialogueData
+@export var boss_spawner: Node
 
 var in_dialogue := false
 var dialogue_target: Node3D = null
@@ -12,10 +13,13 @@ var player_in_range := false
 var chilli_killed := false
 var chilli_dialogue_played := false 
 var go_away_played := false
+var should_spawn_boss := false
 
 func _ready():
 	add_to_group("npcs")
 	
+	if not DialogueManager.dialogue_finished.is_connected(_on_dialogue_finished):
+		DialogueManager.dialogue_finished.connect(_on_dialogue_finished)
 func enter_dialogue(target: Node3D) -> void:
 	in_dialogue = true
 	dialogue_target = target
@@ -43,8 +47,10 @@ func interact():
 		var dialogue = preload("res://Dialogue/Go_Away.tres")
 		DialogueManager.start_dialogue(dialogue, npc_body)
 		go_away_played = true
+		should_spawn_boss = true
 		
-		
+
+			
 	elif q3 and q3.state == Quest.QuestState.STARTED and go_away_played:
 		var dialogue = preload("res://Dialogue/Guard_Loop.tres")
 		DialogueManager.start_dialogue(dialogue, npc_body)
@@ -65,6 +71,15 @@ func _on_boss_killed(boss_id: String) -> void:
 		if q3:
 			QuestManager.set_objective_index("Red Hot Chilli Pepper", 2)
 			
+func _on_dialogue_finished():
+	if should_spawn_boss and boss_spawner:
+		var boss = boss_spawner.spawn_boss()
+		
+		if boss:
+			boss.boss_killed.connect(_on_boss_killed)
+		
+		should_spawn_boss = false
+		
 func _on_interact_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
 		interact_icon.toggle_visibility()

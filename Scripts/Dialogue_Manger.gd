@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal dialogue_finished
+
 @onready var panel: Panel = $BackgroundPanel
 @onready var text_label: Label = $BackgroundPanel/Label
 
@@ -50,6 +52,7 @@ func finish_dialogue():
 	if active_npc:
 		active_npc.exit_dialogue()
 		active_npc = null
+	emit_signal("dialogue_finished") 
 		
 func _input(event):
 	if is_active and event.is_action_pressed("interact"):

@@ -93,7 +93,7 @@ func handle_mouse_look(mouse_delta: Vector2) -> void:
 	camera_rotation.x = clamp(camera_rotation.x, MAX_LOOK_DOWN, MAX_LOOK_UP)
 	camera_pivot.rotation.x = camera_rotation.x
 
-func handle_climbing(delta):
+func handle_climbing(_delta):
 	var climb_input := 0.0
 	
 	if Input.is_action_pressed("w"):
