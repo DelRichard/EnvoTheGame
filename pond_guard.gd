@@ -10,6 +10,8 @@ var in_dialogue := false
 var dialogue_target: Node3D = null
 var player_in_range := false
 var chilli_killed := false
+var chilli_dialogue_played := false 
+var go_away_played := false
 
 func _ready():
 	add_to_group("npcs")
@@ -26,14 +28,25 @@ func interact():
 	var npc_body = self
 	var q3 = QuestManager.quests.get("Red Hot Chilli Pepper")
 	
-	if chilli_killed:
+	if chilli_killed and not chilli_dialogue_played:
 		var dialogue = preload("res://Dialogue/chilli_killed.tres")
 		DialogueManager.start_dialogue(dialogue, npc_body)
 		QuestManager.finish_quest("Red Hot Chilli Pepper")
+		chilli_dialogue_played = true  
 		
-	elif q3 and q3.state == Quest.QuestState.STARTED:
+	elif chilli_killed and chilli_dialogue_played:
+		var dialogue = preload("res://Dialogue/Guard_Loop.tres")
+		DialogueManager.start_dialogue(dialogue, npc_body)
+		
+	elif q3 and q3.state == Quest.QuestState.STARTED and not go_away_played:
 		QuestManager.set_objective_index("Red Hot Chilli Pepper", 1)
 		var dialogue = preload("res://Dialogue/Go_Away.tres")
+		DialogueManager.start_dialogue(dialogue, npc_body)
+		go_away_played = true
+		
+		
+	elif q3 and q3.state == Quest.QuestState.STARTED and go_away_played:
+		var dialogue = preload("res://Dialogue/Guard_Loop.tres")
 		DialogueManager.start_dialogue(dialogue, npc_body)
 		
 	else:

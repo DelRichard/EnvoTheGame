@@ -380,10 +380,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.199507, 3.529527, 29.12871
 transform = Transform3D(0.58566535, 0, -0.81055313, 0, 1, 0, 0.81055313, 0, 0.58566535, -4.1850615, 3.5107238, 1.0710242)
 
 [node name="ChiliBoss" parent="." unique_id=1076033435 instance=ExtResource("29_aq8fk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.068652, 4.334075, 20.786427)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.136943, 4.4780707, 11.3601675)
 
 [node name="PumpkinEnemy" parent="." unique_id=1536759346 node_paths=PackedStringArray("following_target") instance=ExtResource("31_mmjla")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.300853, 3.7457955, 23.596441)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.378901, 3.9327943, 16.203745)
 following_target = NodePath("../Player")
 
 [node name="OnionEnemy" parent="." unique_id=1272817638 instance=ExtResource("30_bvj8e")]

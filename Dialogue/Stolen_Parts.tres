@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_6i6gd")
-lines = Array[String](["Asks for another favour. mentions that veggions stole some parts"])
+lines = Array[String](["Ah there you are kid. Not far from here is my machine that will restore this waste land into what we once were.", "However a pack of radish veggions ran off with the components. Probably nesting in them. They've been nesting in everything since the air went bad. Desperate creatures find desperate places.", "With the components this machine pulls toxins out of the water and air. Filters them. Then soon after the soil with be restored.", "Clean water, kid. Do you know what that would mean for this village? People are dying of thirst. That's not a natural disaster. That is a crime.", "When water is poisoned, communities don't just lose water they lose farming, health, dignity, and the will to keep going.", "Please, assist me in retrieving the stolen parts."])
 metadata/_custom_type_script = "uid://dmp1iu63or1av"

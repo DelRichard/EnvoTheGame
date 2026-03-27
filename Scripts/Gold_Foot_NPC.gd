@@ -10,6 +10,7 @@ var player_in_range := false
 var has_talked := false
 var in_dialogue := false
 var dialogue_target: Node3D = null
+var found_two_played := false
 
 func _ready():
 	add_to_group("npcs")
@@ -32,7 +33,6 @@ func interact():
 	var q2 = QuestManager.quests.get("Green Waters")
 	var q3 = QuestManager.quests.get("Red Hot Chilli Pepper")
 	
-	#Dialogue to repeat after player finishes all gold foot quests
 	if (q3 and q3.state == Quest.QuestState.STARTED) or (q2 and q2.state == Quest.QuestState.COMPLETED):
 		var dialogue = preload("res://Dialogue/Repeat goodluck.tres")
 		DialogueManager.start_dialogue(dialogue, npc_body)
@@ -70,19 +70,21 @@ func interact():
 			DialogueManager.start_dialogue(dialogue, npc_body)
 			QuestManager.set_objective_index("Green Waters", 1)
 			return
-		#When player finds two parts
-		if parts == 2:
-			if q2.current_objective_index == 5:
-				var dialogue = preload("res://Dialogue/Found_Two.tres")
-				DialogueManager.start_dialogue(dialogue, npc_body)
-				print("Unlock next area and move gold foot")
-				QuestManager.set_objective_index("Green Waters", 2)
-				return
-			elif q2.current_objective_index == 2:
-				var dialogue = preload("res://Dialogue/Find_Villagers.tres")
-				DialogueManager.start_dialogue(dialogue, npc_body)
-				return
-		#When player finds three parts
+			
+		if parts >= 2 and not found_two_played:
+			var dialogue = preload("res://Dialogue/Found_Two.tres")
+			DialogueManager.start_dialogue(dialogue, npc_body)
+			found_two_played = true
+			QuestManager.set_objective_index("Green Waters", 2)
+			print("Unlock next area and move gold foot")
+			return
+			
+		if found_two_played and parts < 3:
+			var dialogue = preload("res://Dialogue/Find_Villagers.tres")
+			DialogueManager.start_dialogue(dialogue, npc_body)
+			return
+		
+		# When player finds three parts
 		if parts >= 3:
 			var dialogue = preload("res://Dialogue/Final_Found.tres")
 			DialogueManager.start_dialogue(dialogue, npc_body)
@@ -90,10 +92,11 @@ func interact():
 			InventoryManager.add_item("water", 1)
 			print("Unlock next area")
 			return
+		
 		var dialogue = preload("res://Dialogue/Missing_Parts.tres")
 		DialogueManager.start_dialogue(dialogue, npc_body)
 		return
-	# This should not hit
+		
 	DialogueManager.start_dialogue(initial_dialogue, npc_body)
 	
 func _input(event):
