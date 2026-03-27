@@ -1,8 +1,13 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://dwpmarienad8e"]
 
+[ext_resource type="Texture2D" uid="uid://tf6c4xu6w84m" path="res://assets/textures/Water Tile.png" id="1_mlyr4"]
+
 [resource]
 albedo_color = Color(0.1687369, 0.4696498, 0.999994, 1)
+albedo_texture = ExtResource("1_mlyr4")
 roughness = 0.0
 emission_enabled = true
 emission = Color(0, 0, 1, 1)
 emission_energy_multiplier = 0.17
+uv1_triplanar = true
+texture_filter = 0
