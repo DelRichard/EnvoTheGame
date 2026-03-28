@@ -1,4 +1,5 @@
 extends CharacterBody3D
+@onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 
 @onready var animated_sprite_3d: AnimatedSprite3D = $AnimatedSprite3D
 @onready var interact_area: Area3D = $Interact_Area
@@ -11,11 +12,11 @@ extends CharacterBody3D
 @export var point_a: Node3D
 @export var point_b: Node3D
 
+@onready var boss_area_block: CollisionShape3D = $"../World/AreaBoundaries/bossAreaBlock"
+@onready var pumpkin_area_block: CollisionShape3D = $"../World/AreaBoundaries/pumpkinAreaBlock"
+@onready var village_block: CollisionShape3D = $"../World/AreaBoundaries/villageBlock"
+@onready var toxic_gas_block: CollisionShape3D = $"../World/AreaBoundaries/toxicGasBlock"
 
-@onready var boss_area_block: CollisionShape3D = $"../World/NavigationRegion3D/Map/AreaBoundaries/bossAreaBlock"
-@onready var pumpkin_area_block: CollisionShape3D = $"../World/NavigationRegion3D/Map/AreaBoundaries/pumpkinAreaBlock"
-@onready var village_block: CollisionShape3D = $"../World/NavigationRegion3D/Map/AreaBoundaries/villageBlock"
-@onready var toxic_gas_block: CollisionShape3D = $"../World/NavigationRegion3D/Map/AreaBoundaries/toxicGasBlock"
 @onready var big_fog: FogVolume = $"../WorldEnvironment/BigFog"
 @onready var pond: MeshInstance3D = $"../World/NavigationRegion3D/pond"
 var clean_water = preload("res://assets/materials/water.tres")
@@ -23,8 +24,6 @@ var clean_water = preload("res://assets/materials/water.tres")
 
 @onready var ogre: CharacterBody3D = $"../Ogre"
 
-
-var target_position: Vector3
 var is_moving := false
 var player_in_range := false
 var has_talked := false
@@ -38,27 +37,33 @@ func _ready():
 	add_to_group("npcs")
 	DialogueManager.dialogue_finished.connect(_on_dialogue_finished)
 	
-func _physics_process(_delta):
-	if is_moving:
-		var direction = target_position - global_transform.origin
-		direction.y = 0
-		
-		if direction.length() > 0.1:
-			direction = direction.normalized()
-			
-			velocity.x = direction.x * move_speed
-			velocity.z = direction.z * move_speed
-			
-			update_animation(direction)
-		else:
-			velocity = Vector3.ZERO
-			is_moving = false
-			play_idle_animation()
-	else:
-		velocity = Vector3.ZERO
-		play_idle_animation()
+	navigation_agent_3d.path_desired_distance = 0.5
+	navigation_agent_3d.target_desired_distance = 0.5
 	
+	set_physics_process(false)
+	await get_tree().physics_frame
+	set_physics_process(true)
+	
+func _physics_process(_delta):
+	if is_moving and not navigation_agent_3d.is_navigation_finished():
+		var current_location = global_transform.origin
+		var next_path_position = navigation_agent_3d.get_next_path_position()
+		var new_velocity = (next_path_position - current_location).normalized() * move_speed
+		
+		if navigation_agent_3d.distance_to_target() > 0.1:
+			velocity = new_velocity
+			update_animation(velocity)
+		else:
+			stop_moving()
+	else:
+		stop_moving()
 	move_and_slide()
+	
+func stop_moving():
+	velocity = Vector3.ZERO
+	is_moving = false
+	play_idle_animation()
+	
 func get_camera_relative_direction(direction: Vector3) -> Vector2:
 	var camera := get_viewport().get_camera_3d()
 	if camera == null:
@@ -106,8 +111,7 @@ func move_after_dialogue(marker: Node3D):
 func move_to_marker(marker: Node3D):
 	if marker == null:
 		return
-		
-	target_position = marker.global_transform.origin
+	navigation_agent_3d.target_position = marker.global_transform.origin
 	is_moving = true
 	
 func _on_dialogue_finished():
@@ -200,7 +204,6 @@ func interact():
 			DialogueManager.start_dialogue(dialogue4, npc_body)
 			QuestManager.finish_quest("Green Waters")
 			InventoryManager.add_item("water", 1)
-			print("Unlock next area")
 			return
 		
 		var dialogue = preload("res://Dialogue/Missing_Parts.tres")
