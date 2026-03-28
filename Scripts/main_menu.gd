@@ -5,12 +5,14 @@ extends Control
 @onready var master_bus = AudioServer.get_bus_index("Master")
 @onready var how_to_play_ui: Panel = $"How to play UI"
 
+var mouse_captured = true
 
 func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	setting.visible = false
 	how_to_play_ui.visible = false
 	volume.value = db_to_linear(AudioServer.get_bus_volume_db(master_bus))
-
+	
 func _on_start_pressed() -> void:
 	AudioManager.dialogue_sound()
 	get_tree().change_scene_to_file("res://newMain.tscn")
