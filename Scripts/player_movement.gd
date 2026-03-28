@@ -139,6 +139,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("attack") and can_attack:
 		is_attacking = true
 		animated_sprite_3d.play("attack")
+		AudioManager.whoosh_sound()
 		attack()
 	
 	apply_cooldown(delta)

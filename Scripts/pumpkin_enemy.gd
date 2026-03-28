@@ -141,6 +141,7 @@ func _physics_process(delta: float) -> void:
 			is_jumping = false
 			animated_sprite_3d.play("idle")
 			animated_sprite_3d.play()
+			AudioManager.jump_sound()
 
 		# Jump attack landing
 		if is_jump_attacking and jump_attack_has_left_floor:
@@ -355,6 +356,7 @@ func _on_jump_attack_land() -> void:
 	var land_dist_sq = global_position.distance_squared_to(player.global_position)
 	if land_dist_sq < jump_attack_land_range * jump_attack_land_range:
 		player.health_component.damage(attack_damage, global_position, knockback_force)
+		AudioManager.pumkin_squash_sound()
 		player.squash_effect()
 
 

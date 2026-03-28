@@ -4,6 +4,7 @@
 [ext_resource type="Material" uid="uid://cuuy02qm51f8r" path="res://assets/materials/bronze.tres" id="1_xit70"]
 [ext_resource type="Material" uid="uid://bxvwjuy5vjvmh" path="res://assets/materials/metal.tres" id="2_as5h2"]
 [ext_resource type="Material" uid="uid://7fwopv2rk4tw" path="res://assets/materials/rock.tres" id="3_3rgp2"]
+[ext_resource type="AudioStream" uid="uid://dgc0ryi5j4gm" path="res://assets/audio/gears turning.wav" id="5_3rgp2"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_c03wl"]
 _surfaces = [{
@@ -289,3 +290,7 @@ libraries/ = SubResource("AnimationLibrary_3rgp2")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1097485278]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23095703, 0.016235352, -0.29232788)
 shape = SubResource("BoxShape3D_xit70")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=2033060022]
+stream = ExtResource("5_3rgp2")
+volume_db = -20.0

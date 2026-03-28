@@ -31,6 +31,7 @@ func start_dialogue(data: DialogueData, npc: Node = null):
 	
 	if npc:
 		active_npc = npc
+		AudioManager.dialogue_sound()
 		npc.enter_dialogue(player)
 	panel.show()
 	set_process_input(true)
@@ -57,4 +58,5 @@ func finish_dialogue():
 func _input(event):
 	if is_active and event.is_action_pressed("interact"):
 		line_index += 1
+		AudioManager.dialogue_sound()
 		display_line()

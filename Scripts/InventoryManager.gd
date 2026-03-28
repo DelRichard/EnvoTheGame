@@ -3,6 +3,7 @@ class_name Inventory_Manager extends Node
 var items: Array[InventoryItem] = []
 
 func add_item(item_name: String, amount: int = 1):
+	AudioManager.pick_up_sound()
 	for item in items:
 		if item.item_name == item_name:
 			item.item_quantity += amount
@@ -14,6 +15,7 @@ func add_item(item_name: String, amount: int = 1):
 	items.append(new_item)
 	
 func remove_item(item_name: String, amount: int = 1):
+	AudioManager.drop_sound()
 	for item in items:
 		if item.item_name == item_name:
 			item.item_quantity -= amount

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dgc0ryi5j4gm"
+path="res://.godot/imported/gears turning.wav-ff0ce704907f9c0bdc5d955a783d15f1.sample"
+
+[deps]
+
+source_file="res://assets/audio/gears turning.wav"
+dest_files=["res://.godot/imported/gears turning.wav-ff0ce704907f9c0bdc5d955a783d15f1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

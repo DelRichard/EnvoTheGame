@@ -174,7 +174,7 @@ func interact():
 			
 		if parts >= 2 and not found_two_played:
 			pumpkin_area_block.disabled = true
-			ogre.go_there()
+			
 			
 			var dialogue2 = preload("res://Dialogue/Found_Two.tres")
 			DialogueManager.start_dialogue(dialogue2, npc_body)
@@ -190,6 +190,7 @@ func interact():
 		
 		# When player finds three parts
 		if parts >= 3:
+			ogre.go_there()
 			boss_area_block.disabled = true
 			big_fog.material.density = 0.0
 			pond.material_override = clean_water

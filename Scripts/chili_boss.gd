@@ -8,10 +8,8 @@ signal boss_killed(boss_id)
 @onready var head: Node3D = $Head
 @onready var ray_cast_3d: RayCast3D = $Head/RayCast3D
 
-
-
-@onready var boss_ui: Control = $"../UIManager/BossUI"
-@onready var boss_health_bar: ProgressBar = %BossHealthBar
+var boss_ui
+var boss_health_bar
 
 
 enum BehaviorState { IDLE, WANDER, MOVE_TO_TARGET, FOLLOW, ATTACK, HIT, DEATH, DASHING }
@@ -73,7 +71,9 @@ var is_dying := false
 
 
 func _ready():
-	AudioManager.stop_music()
+	boss_ui = get_node("/root/MainScene/Player")
+	boss_health_bar = get_node("/root/MainScene/Player")
+	
 	AudioManager.play_boss_music()
 	boss_health_bar.init_health(health_component.current_health)
 	boss_ui.show()
@@ -269,7 +269,8 @@ func process_dash(delta: float) -> void:
 func check_for_chomp_collision() -> void:
 	# If the player is within tiny range during the dash, hit them
 	if global_position.distance_to(player.global_position) < 1.5:
-		animated_sprite_3d.play("attack") 
+		animated_sprite_3d.play("attack")
+		AudioManager.boss_bite_sound() 
 		player.squash_effect()
 		player.health_component.damage(attack_damage, global_position, knockback_force)
 		# Optional: Stop dashing once we hit
