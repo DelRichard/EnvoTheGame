@@ -9,6 +9,8 @@ signal boss_killed(boss_id)
 @onready var head: Node3D = $Head
 @onready var ray_cast_3d: RayCast3D = $Head/RayCast3D
 
+
+
 enum BehaviorState { IDLE, WANDER, MOVE_TO_TARGET, FOLLOW, ATTACK, HIT, DEATH, DASHING }
 enum WanderState   { IDLE, WAITING_TO_MOVE, MOVE }
 
@@ -458,6 +460,9 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 func _on_enemy_died() -> void:
 	print("Enemy Killed!")
 	current_behavior = BehaviorState.DEATH
+	
+	
+	
 	emit_signal("boss_killed", "boss")
 
 

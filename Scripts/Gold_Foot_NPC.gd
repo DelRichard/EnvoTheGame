@@ -12,6 +12,15 @@ extends CharacterBody3D
 @export var point_b: Node3D
 
 
+@onready var boss_area_block: CollisionShape3D = $"../World/NavigationRegion3D/Map/AreaBoundaries/bossAreaBlock"
+@onready var pumpkin_area_block: CollisionShape3D = $"../World/NavigationRegion3D/Map/AreaBoundaries/pumpkinAreaBlock"
+@onready var village_block: CollisionShape3D = $"../World/NavigationRegion3D/Map/AreaBoundaries/villageBlock"
+@onready var toxic_gas_block: CollisionShape3D = $"../World/NavigationRegion3D/Map/AreaBoundaries/toxicGasBlock"
+@onready var big_fog: FogVolume = $"../WorldEnvironment/BigFog"
+@onready var pond: MeshInstance3D = $"../World/NavigationRegion3D/pond"
+var clean_water = preload("res://assets/materials/water.tres")
+
+
 var target_position: Vector3
 var is_moving := false
 var player_in_range := false
@@ -139,6 +148,7 @@ func interact():
 	#Quest 1
 	if q1 and q1.state == Quest.QuestState.STARTED:
 		if InventoryManager.has_item("Wrench"):
+			village_block.disabled = true
 			var dialogue = preload("res://Dialogue/Found_Wrench.tres")
 			DialogueManager.start_dialogue(dialogue, npc_body)
 			QuestManager.finish_quest("Teary Fields")
@@ -160,6 +170,7 @@ func interact():
 			return
 			
 		if parts >= 2 and not found_two_played:
+			pumpkin_area_block.disabled = true
 			var dialogue2 = preload("res://Dialogue/Found_Two.tres")
 			DialogueManager.start_dialogue(dialogue2, npc_body)
 			found_two_played = true
@@ -174,6 +185,10 @@ func interact():
 		
 		# When player finds three parts
 		if parts >= 3:
+			boss_area_block.disabled = true
+			big_fog.material.density = 0.0
+			pond.material_override = clean_water
+			
 			var dialogue4 = preload("res://Dialogue/Final_Found.tres")
 			DialogueManager.start_dialogue(dialogue4, npc_body)
 			QuestManager.finish_quest("Green Waters")

@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cybnuyj427c4p"]
+
+[ext_resource type="Texture2D" uid="uid://c5hj1laaxujny" path="res://assets/textures/Polluted Water Tile.png" id="1_a0v27"]
+
+[resource]
+albedo_color = Color(0, 1, 0, 1)
+albedo_texture = ExtResource("1_a0v27")
+roughness = 0.0
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+emission_energy_multiplier = 2.21
+uv1_scale = Vector3(4.345, 4.345, 4.345)
+uv1_triplanar = true
+texture_filter = 0
