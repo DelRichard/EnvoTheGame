@@ -148,7 +148,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -165,7 +165,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"death",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -230,7 +230,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -291,6 +291,8 @@ height = 0.4045782
 [node name="Player" type="CharacterBody3D" unique_id=1327594500 groups=["Player"]]
 safe_margin = 0.01
 script = ExtResource("1_cvnsp")
+attack_damage = 10.0
+attack_range = 1.0
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1056046344]
 unique_name_in_owner = true
@@ -298,8 +300,8 @@ billboard = 2
 alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_83xs0")
-animation = &"death"
-frame = 3
+animation = &"attack"
+frame = 1
 frame_progress = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=513218477]
