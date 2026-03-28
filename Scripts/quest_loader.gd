@@ -25,7 +25,7 @@ func load_quests():
 		"Talk to Gold Foot in the village",
 		"Find the missing machine parts",
 		"Talk to the villager",
-		"Defeat the pumpkin veggions",
+		"Defeat the pumpkin veggion",
 		"Talk to the villager",
 		"Talk to Gold Foot",
 	]
