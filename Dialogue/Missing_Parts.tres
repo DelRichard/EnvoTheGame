@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_dwkg3")
-lines = Array[String](["Those pesky creatures should be lurking nearby with the stolen parts."])
+lines = Array[String](["Those pesky creatures should be lurkin' nearby with the stolen parts"])
 metadata/_custom_type_script = "uid://dmp1iu63or1av"

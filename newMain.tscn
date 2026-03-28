@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://b8kuia6ranms1"]
 
-[ext_resource type="Script" path="res://Scripts/World.gd" id="1_c1cye"]
+[ext_resource type="Script" uid="uid://b7knmavu1c175" path="res://Scripts/World.gd" id="1_c1cye"]
 [ext_resource type="PackedScene" uid="uid://dx334m23y6gsy" path="res://ui/pause_menu.tscn" id="1_tvhpe"]
 [ext_resource type="PackedScene" uid="uid://dsh1tl7s5ykkw" path="res://scenes/audio_manager.tscn" id="2_ew6xa"]
 [ext_resource type="PackedScene" uid="uid://bevt2tbays3j0" path="res://scenes/health_bar.tscn" id="2_fvapf"]
@@ -988,16 +988,7 @@ transform = Transform3D(-0.6576063, 0, -2.1655235, 0, 2.26317, 0, 2.1655235, 0, 
 [node name="machine" parent="World/NavigationRegion3D" unique_id=1370622259 groups=["NavMeshGroup"] instance=ExtResource("31_fa2m2")]
 transform = Transform3D(-0.31811926, 0, 0.3066574, 0, 0.4418581, 0, -0.3066574, 0, -0.31811926, 7.6763835, 4.2785063, 7.942093)
 
-[node name="tank" parent="World/NavigationRegion3D/machine" index="0" unique_id=329363344]
-surface_material_override/0 = null
-
 [node name="tap" parent="World/NavigationRegion3D/machine" index="1" unique_id=81604559]
-surface_material_override/0 = null
-
-[node name="pipe" parent="World/NavigationRegion3D/machine" index="2" unique_id=2141747846]
-surface_material_override/0 = null
-
-[node name="legs" parent="World/NavigationRegion3D/machine" index="3" unique_id=1203665395]
 surface_material_override/0 = null
 
 [node name="Cone" parent="World/NavigationRegion3D/machine" index="4" unique_id=1144466146]

@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_xc2yg")
-lines = Array[String](["Over there near the walls.", "A pumpkin veggion has our people cornered."])
+lines = Array[String](["Over there near the walls", "A pumpkin veggion has our people cornered"])
 metadata/_custom_type_script = "uid://dmp1iu63or1av"

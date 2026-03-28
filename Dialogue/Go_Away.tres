@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_gf6rc")
-lines = Array[String](["Huh...?", "Who goes there?", "A filthy field rat", "We have no business with you", "Nothing from the fields passes this gate. Not disease. Not drought. Not whatever you are. Turn around.", "Your people should have stopped them when they first started dumping into it. Not our problem that you didn't.", "...", "What's that humbling?"])
+lines = Array[String](["Huh...?", "Who goes there?", "A filthy field rat", "We have no business with you", "Nothing from the fields passes this gate. Not disease. Not drought. Not whatever you are. Turn around", "Your people should have stopped them when they first started dumping into it. Not our problem that you didn't", "...", "What's that humbling?"])
 metadata/_custom_type_script = "uid://dmp1iu63or1av"

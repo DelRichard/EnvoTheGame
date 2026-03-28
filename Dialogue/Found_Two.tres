@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_sthji")
-lines = Array[String](["I see you have collected some of the parts. Very well done. However I am still missing one component.", "Hey kid hold on a sec...", "Something urgent has come up that needs your attention.", "A pumpkin veggion was spotted near the lake.", "At the same time some villagers that were going in that direction have not come back.", "Looks like my machine will have to wait for now. I saw a young lad near the bridge that managed to flee.", "We should go check the situation out."])
+lines = Array[String](["Good work kid you found some of the missing parts but we're still missing one", "Hold on there buckoo...", "There's been a bit of a kerfuffle that needs our attention", "A pumpkin veggion was spotted near the lake", "Some of our village folk that were going in that direction haven't made it back", "Looks like my machine will have to wait for now", "I saw a young lad near the bridge that managed to flee", "We should go check the situation out"])
 metadata/_custom_type_script = "uid://dmp1iu63or1av"
