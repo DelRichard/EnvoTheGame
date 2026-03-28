@@ -2450,7 +2450,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7943716, 3.5339422, -3.9972
 
 [node name="PumpkinEnemy" parent="." unique_id=1536759346 node_paths=PackedStringArray("following_target") instance=ExtResource("31_mmjla")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.249581, 3.719295, -0.78384876)
-current_behavior = 0
 following_target = NodePath("../Player")
 
 [node name="OnionEnemy" parent="." unique_id=1272817638 instance=ExtResource("30_bvj8e")]
@@ -2482,5 +2481,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.315599, 3.4385798, 15.5187
 
 [node name="RadishEnemy5" parent="." unique_id=1733939411 instance=ExtResource("34_xjcue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.26544, 3.4263773, 14.598847)
+
+[node name="RadishEnemy7" parent="." unique_id=1398362717 instance=ExtResource("34_xjcue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0346537, 3.283779, 19.877542)
+
+[node name="RadishEnemy8" parent="." unique_id=1390312841 instance=ExtResource("34_xjcue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7508662, 3.2703657, 19.888485)
+
+[node name="RadishEnemy9" parent="." unique_id=548219442 instance=ExtResource("34_xjcue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.849212, 3.383599, 14.09909)
+
+[node name="RadishEnemy10" parent="." unique_id=1657680648 instance=ExtResource("34_xjcue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.273312, 3.3826675, 15.245368)
+
+[node name="OnionEnemy5" parent="." unique_id=329540083 instance=ExtResource("30_bvj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.335869, 3.4582407, 18.56194)
+
+[node name="OnionEnemy6" parent="." unique_id=418373900 instance=ExtResource("30_bvj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.516263, 3.45934, 19.065868)
+
+[node name="OnionEnemy7" parent="." unique_id=218043634 instance=ExtResource("30_bvj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.46332, 3.4596772, 17.50546)
+
+[node name="OnionEnemy8" parent="." unique_id=1447453283 instance=ExtResource("30_bvj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6690855, 3.459346, 18.05486)
 
 [editable path="World/NavigationRegion3D/machine"]

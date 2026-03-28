@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://d2r2u85nokfik" path="res://Scripts/pumpkin_enemy.gd" id="1_k6jkh"]
 [ext_resource type="SpriteFrames" uid="uid://dtrxsrcf2ymoj" path="res://assets/character_models/PumpkinSpriteFrames.tres" id="2_k6jkh"]
-[ext_resource type="AudioStream" uid="uid://cs6dfgxel2a5d" path="res://assets/other/enemyDeathSound.wav" id="3_54li6"]
 [ext_resource type="Script" uid="uid://dtuix55s3pkso" path="res://Scripts/healthComponent.gd" id="4_mleu8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v0iea"]
@@ -12,6 +11,7 @@ height = 0.9758301
 [node name="PumpkinEnemy" type="CharacterBody3D" unique_id=1327594500 groups=["Enemy"]]
 script = ExtResource("1_k6jkh")
 max_view_distance = 3.0
+current_behavior = 0
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=167188248]
 unique_name_in_owner = true
@@ -40,11 +40,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.074888974, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="Head" unique_id=423178346]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=372986322]
-unique_name_in_owner = true
-stream = ExtResource("3_54li6")
-volume_db = 34.338
 
 [node name="HealthComponent" type="Node" parent="." unique_id=893036511]
 unique_name_in_owner = true
