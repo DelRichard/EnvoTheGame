@@ -2657,8 +2657,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.46332, 3.4596772, 17.5054
 [node name="OnionEnemy8" parent="." unique_id=1447453283 instance=ExtResource("30_bvj8e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6690855, 3.459346, 18.05486)
 
-<<<<<<< Updated upstream
-=======
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=477969249]
 
 [node name="FadeRect" type="ColorRect" parent="CanvasLayer" unique_id=1536568892]
@@ -2666,7 +2664,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 0)
 
->>>>>>> Stashed changes
 [connection signal="pressed" from="UIManager/PauseMenu/Setting/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="UIManager/PauseMenu/Setting/Back" to="UIManager/PauseMenu" method="_on_back_pressed"]
 

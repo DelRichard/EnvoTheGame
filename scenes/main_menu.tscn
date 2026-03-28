@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://bg7uqthq3cyth" path="res://assets/UI Elements/Untitled 6.png" id="6_oa1go"]
 [ext_resource type="Texture2D" uid="uid://cvnh67urh7sct" path="res://assets/UI Elements/Untitled 8.png" id="7_tbmy8"]
 
-
 [sub_resource type="Theme" id="Theme_tbmy8"]
 default_font = ExtResource("3_rtw2f")
 

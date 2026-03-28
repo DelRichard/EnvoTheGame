@@ -52,8 +52,6 @@ func exit_dialogue():
 	in_dialogue = false
 	
 func _ready():
-	InventoryManager.add_item("Wrench", 1)
-	InventoryManager.add_item("MachinePart", 3)
 	capture_mouse()
 	await get_tree().process_frame
 	QuestManager.start_quest("Crazy Introductions")
@@ -80,8 +78,6 @@ func release_mouse():
 	mouse_captured = false
 
 func _unhandled_input(event):
-	if event.is_action_pressed("DEBUG"):
-		InventoryManager.print_inventory()
 		
 	if event.is_action_pressed("ui_cancel"):
 		if mouse_captured: release_mouse()
@@ -244,13 +240,11 @@ func _on_died() -> void:
 	
 	is_dead = true
 	
-	print("You died")
 	
 	die()
 
 
 func _on_player_hit(from_position: Vector3, knockback: float) -> void:
-	print("Player got hit!")
 	AudioManager.hit_sound()
 	animated_sprite_3d.modulate = Color.RED
 	await get_tree().create_timer(0.1).timeout
