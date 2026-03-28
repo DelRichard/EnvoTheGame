@@ -1,11 +1,13 @@
 [gd_scene format=4 uid="uid://b8kuia6ranms1"]
 
-[ext_resource type="Script" path="res://Scripts/World.gd" id="1_c1cye"]
+[ext_resource type="Script" uid="uid://b7knmavu1c175" path="res://Scripts/World.gd" id="1_c1cye"]
 [ext_resource type="PackedScene" uid="uid://dx334m23y6gsy" path="res://ui/pause_menu.tscn" id="1_tvhpe"]
 [ext_resource type="PackedScene" uid="uid://dsh1tl7s5ykkw" path="res://scenes/audio_manager.tscn" id="2_ew6xa"]
 [ext_resource type="PackedScene" uid="uid://bevt2tbays3j0" path="res://scenes/health_bar.tscn" id="2_fvapf"]
+[ext_resource type="Texture2D" uid="uid://bi3gdliloma5h" path="res://assets/UI Elements/Untitled 5.png" id="3_ew6xa"]
 [ext_resource type="PackedScene" uid="uid://c5w31euxmh80k" path="res://ui/quest_ui.tscn" id="3_xjcue"]
 [ext_resource type="PackedScene" uid="uid://8af1w86qyvr5" path="res://scenes/dialogue_manager.tscn" id="4_fa2m2"]
+[ext_resource type="FontFile" uid="uid://dkl7qsustpbtw" path="res://assets/UI Elements/VCR_OSD_MONO_1.001.ttf" id="4_u16xd"]
 [ext_resource type="Material" uid="uid://d0mncyu3q3uhe" path="res://assets/other/simpleSky.tres" id="5_c1cye"]
 [ext_resource type="PackedScene" uid="uid://bfm5upmg7jv02" path="res://scenes/player.tscn" id="6_0jcyh"]
 [ext_resource type="Material" uid="uid://ctublrobdthly" path="res://assets/materials/dirt.tres" id="6_ww56k"]
@@ -52,6 +54,52 @@
 [ext_resource type="PackedScene" uid="uid://bh4d4e7g6464u" path="res://scenes/npc_5.tscn" id="46_8of62"]
 [ext_resource type="PackedScene" uid="uid://c4oou04pmen38" path="res://scenes/boss_spawner.tscn" id="46_daay6"]
 [ext_resource type="PackedScene" uid="uid://lvu6l761u35m" path="res://assets/props/torch.tscn" id="52_u16xd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtw2f"]
+atlas = ExtResource("3_ew6xa")
+region = Rect2(137, 322, 224, 184)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yn54q"]
+texture = SubResource("AtlasTexture_rtw2f")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ln24"]
+atlas = ExtResource("3_ew6xa")
+region = Rect2(134, 224, 344, 79)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5wh4e"]
+content_margin_left = 584.0
+content_margin_top = 600.0
+content_margin_right = 600.0
+content_margin_bottom = 600.0
+texture = SubResource("AtlasTexture_8ln24")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogwjn"]
+bg_color = Color(0.47373015, 0.30289468, 0.15428555, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5n8k"]
+atlas = ExtResource("3_ew6xa")
+region = Rect2(6, 237, 89, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbmy8"]
+atlas = ExtResource("3_ew6xa")
+region = Rect2(16, 367, 68, 5)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8gu8c"]
+resource_local_to_scene = true
+texture = SubResource("AtlasTexture_tbmy8")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dd4i"]
+atlas = ExtResource("3_ew6xa")
+region = Rect2(16, 367, 68, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgwnu"]
+atlas = SubResource("AtlasTexture_5dd4i")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y3t1l"]
+resource_local_to_scene = true
+texture = SubResource("AtlasTexture_lgwnu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xjcue"]
 
 [sub_resource type="Sky" id="Sky_go701"]
 sky_material = ExtResource("5_c1cye")
@@ -370,6 +418,106 @@ script = ExtResource("1_c1cye")
 
 [node name="PauseMenu" parent="UIManager" unique_id=1595251561 instance=ExtResource("1_tvhpe")]
 z_index = 2
+anchors_preset = -1
+anchor_right = 0.934
+anchor_bottom = 0.91200006
+offset_left = -10.0
+offset_top = 5.0
+offset_right = 71.0
+offset_bottom = 56.0
+
+[node name="Setting" type="Panel" parent="UIManager/PauseMenu" unique_id=1966825907]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -508.484
+offset_top = -206.988
+offset_right = 519.516
+offset_bottom = 278.012
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_yn54q")
+
+[node name="Panel" type="Panel" parent="UIManager/PauseMenu/Setting" unique_id=129816189]
+layout_mode = 0
+offset_left = 359.0
+offset_top = 60.0
+offset_right = 696.0
+offset_bottom = 145.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_5wh4e")
+
+[node name="Panel" type="Panel" parent="UIManager/PauseMenu/Setting/Panel" unique_id=377474813]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 329.0
+offset_bottom = 77.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ogwjn")
+
+[node name="Label" type="Label" parent="UIManager/PauseMenu/Setting/Panel" unique_id=1711959460]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 13.0
+offset_right = 310.0
+offset_bottom = 66.0
+theme_override_fonts/font = ExtResource("4_u16xd")
+theme_override_font_sizes/font_size = 50
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="TextureButton" parent="UIManager/PauseMenu/Setting" unique_id=2143832502]
+layout_mode = 0
+offset_left = 395.0
+offset_top = 338.0
+offset_right = 622.0
+offset_bottom = 416.0
+texture_normal = SubResource("AtlasTexture_k5n8k")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UIManager/PauseMenu/Setting/Back" unique_id=138949871]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -6.0
+offset_right = 225.0
+offset_bottom = 72.0
+theme_override_fonts/font = ExtResource("4_u16xd")
+theme_override_font_sizes/font_size = 36
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Volume" type="HSlider" parent="UIManager/PauseMenu/Setting" unique_id=1238168727]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.039
+anchor_top = -0.126
+anchor_right = 1.052
+anchor_bottom = 1.085
+offset_left = 442.457
+offset_top = 312.41
+offset_right = -455.276
+offset_bottom = -264.47504
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_8gu8c")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_y3t1l")
+max_value = 1.0
+step = 0.001
+value = 1.0
+
+[node name="Label" type="Label" parent="UIManager/PauseMenu/Setting" unique_id=747049767]
+layout_mode = 0
+offset_left = 434.0
+offset_top = 190.0
+offset_right = 639.0
+offset_bottom = 234.0
+theme_override_fonts/font = ExtResource("4_u16xd")
+theme_override_font_sizes/font_size = 50
+text = "Volume:"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MainUI" type="Control" parent="UIManager" unique_id=1576332577]
 layout_mode = 3
@@ -382,10 +530,11 @@ mouse_filter = 2
 
 [node name="PlayerHealthBar" parent="UIManager/MainUI" unique_id=378000757 instance=ExtResource("2_fvapf")]
 layout_mode = 0
-offset_left = 13.0
-offset_top = 16.0
-offset_right = 513.0
-offset_bottom = 43.0
+offset_left = 69.0
+offset_top = 30.0
+offset_right = 224.0
+offset_bottom = 57.0
+theme_override_styles/background = SubResource("StyleBoxTexture_xjcue")
 
 [node name="BossUI" type="Control" parent="UIManager" unique_id=1038877980]
 visible = false
@@ -2507,3 +2656,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.46332, 3.4596772, 17.5054
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6690855, 3.459346, 18.05486)
 
 [editable path="World/NavigationRegion3D/machine"]
+[connection signal="pressed" from="UIManager/PauseMenu/Setting/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="UIManager/PauseMenu/Setting/Back" to="UIManager/PauseMenu" method="_on_back_pressed"]
