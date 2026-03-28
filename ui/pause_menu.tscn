@@ -1,8 +1,9 @@
 [gd_scene format=4 uid="uid://dx334m23y6gsy"]
 
-[ext_resource type="Script" uid="uid://qbjicmv6pucc" path="res://ui/pause_menu.gd" id="1_50142"]
+[ext_resource type="Script" uid="uid://qbjicmv6pucc" path="res://Scripts/pause_menu.gd" id="1_50142"]
 [ext_resource type="Texture2D" uid="uid://bv6r0ubffo81x" path="res://assets/UI Elements/Untitled 4.png" id="2_ejwgg"]
 [ext_resource type="FontFile" uid="uid://dkl7qsustpbtw" path="res://assets/UI Elements/VCR_OSD_MONO_1.001.ttf" id="3_fob5h"]
+
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fob5h"]
 texture = ExtResource("2_ejwgg")

@@ -52,6 +52,8 @@ func exit_dialogue():
 	in_dialogue = false
 	
 func _ready():
+	InventoryManager.add_item("Wrench", 1)
+	InventoryManager.add_item("MachinePart", 3)
 	capture_mouse()
 	await get_tree().process_frame
 	QuestManager.start_quest("Crazy Introductions")

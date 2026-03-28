@@ -118,7 +118,9 @@ func _on_dialogue_finished():
 	if pending_move_marker:
 		move_to_marker(pending_move_marker)
 		pending_move_marker = null
-
+		
+		
+		
 func enter_dialogue(target: Node3D) -> void:
 	in_dialogue = true
 	dialogue_target = target

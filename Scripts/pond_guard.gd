@@ -9,6 +9,7 @@ extends CharacterBody3D
 @export var npc_id: String = "Guard"
 @export var initial_dialogue: DialogueData
 @export var boss_spawner: Node
+@onready var fade_rect = get_node("/root/Main/CanvasLayer/FadeRect")
 
 var in_dialogue := false
 var dialogue_target: Node3D = null
@@ -17,6 +18,7 @@ var chilli_killed := false
 var chilli_dialogue_played := false 
 var go_away_played := false
 var should_spawn_boss := false
+var play_end_credits := false
 
 func _ready():
 	add_to_group("npcs")
@@ -41,7 +43,8 @@ func interact():
 		var dialogue = preload("res://Dialogue/chilli_killed.tres")
 		DialogueManager.start_dialogue(dialogue, npc_body)
 		QuestManager.finish_quest("Red Hot Chilli Pepper")
-		chilli_dialogue_played = true  
+		chilli_dialogue_played = true
+		play_end_credits = true
 		
 	elif chilli_killed and chilli_dialogue_played:
 		var dialogue = preload("res://Dialogue/Guard_Loop.tres")
@@ -83,9 +86,20 @@ func _on_dialogue_finished():
 		
 		if boss:
 			boss.boss_killed.connect(_on_boss_killed)
-		
 		should_spawn_boss = false
 		
+	if play_end_credits:
+		await get_tree().create_timer(2.0).timeout
+		await fade_out()
+		get_tree().change_scene_to_file("res://scenes/end_credits.tscn")
+		
+func fade_out():
+	var tween = create_tween()
+	tween.tween_property(fade_rect, "modulate:a", 1.0, 3.0)\
+		.set_trans(Tween.TRANS_SINE)\
+		.set_ease(Tween.EASE_IN_OUT)
+	await tween.finished
+	
 func _on_interact_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
 		interact_icon.toggle_visibility()

@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://b4mxfp5m4pmta"]
+
+[ext_resource type="Script" uid="uid://b270cei1gc5pi" path="res://Scripts/credits.gd" id="1_dhn2b"]
+
+[node name="EndCredits" type="Control" unique_id=138043450]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2032211314]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=716723230]
+custom_minimum_size = Vector2(1152, 0)
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 1765.0
+size_flags_horizontal = 4
+text = "END OF DEMO
+
+GAME DIRECTOR
+LISA SOPHIE DELPHINE RICHARD (D3LPH1NN)
+
+CREATORS
+JAY ANEROODY KOWLESSUR (MR. P. MYCELIUM)
+LISA SOPHIE DELPHINE RICHARD (D3LPH1NN)
+
+2D PIXEL ARTISTS
+JAY ANEROODY KOWLESSUR
+
+3D ARTIST
+LISA SOPHIE DELPHINE RICHARD (D3LPH1NN)
+ 
+PROGRAMMERS
+JAY ANEROODY KOWLESSUR
+LISA SOPHIE DELPHINE RICHARD (D3LPH1NN)
+
+
+SOUND COMPOSERS
+
+
+UI/UX DESIGNER
+
+
+QA TESTERS
+
+
+THANK YOU FOR PLAYING"
+horizontal_alignment = 1
+script = ExtResource("1_dhn2b")

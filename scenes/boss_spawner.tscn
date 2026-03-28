@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c4oou04pmen38"]
 
-[ext_resource type="Script" uid="uid://rem82r2jss15" path="res://boss_spawner.gd" id="1_2trd2"]
+[ext_resource type="Script" uid="uid://rem82r2jss15" path="res://Scripts/boss_spawner.gd" id="1_2trd2"]
 
 [node name="Boss_Spawner" type="Node3D" unique_id=277506695]
 script = ExtResource("1_2trd2")
