@@ -1,6 +1,15 @@
 [gd_scene format=3 uid="uid://8af1w86qyvr5"]
 
 [ext_resource type="Script" uid="uid://cs8i2l1uv6lxs" path="res://Scripts/Dialogue_Manger.gd" id="1_jbixp"]
+[ext_resource type="Texture2D" uid="uid://bv6r0ubffo81x" path="res://assets/UI Elements/Untitled 4.png" id="2_516v5"]
+[ext_resource type="FontFile" uid="uid://dkl7qsustpbtw" path="res://assets/UI Elements/VCR_OSD_MONO_1.001.ttf" id="3_smvbx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smvbx"]
+atlas = ExtResource("2_516v5")
+region = Rect2(134, 224, 344, 79)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_61474"]
+texture = SubResource("AtlasTexture_smvbx")
 
 [node name="DialogueManager" type="CanvasLayer" unique_id=394143442]
 script = ExtResource("1_jbixp")
@@ -12,16 +21,21 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -200.0
-offset_top = -100.0
-offset_right = 200.0
+offset_left = -259.0
+offset_top = -137.0
+offset_right = 276.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_61474")
 
 [node name="Label" type="Label" parent="BackgroundPanel" unique_id=2092740791]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(490, 100)
 layout_mode = 0
-offset_left = 5.0
-offset_right = 495.0
-offset_bottom = 100.0
+offset_left = 27.0
+offset_top = 19.0
+offset_right = 517.0
+offset_bottom = 119.0
+theme_override_fonts/font = ExtResource("3_smvbx")
 autowrap_mode = 2

@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://coue73xfnrr4b"]
 
+[ext_resource type="FontFile" uid="uid://dkl7qsustpbtw" path="res://assets/UI Elements/VCR_OSD_MONO_1.001.ttf" id="1_52v2t"]
 [ext_resource type="Script" uid="uid://bic1j8nh7a00y" path="res://Scripts/Quest_Row.gd" id="1_drg8e"]
+
+[sub_resource type="Theme" id="Theme_jlkii"]
+default_font = ExtResource("1_52v2t")
 
 [node name="Quest_Row" type="VBoxContainer" unique_id=657019387]
 custom_minimum_size = Vector2(250, 0)
 offset_right = 40.0
 offset_bottom = 40.0
+theme = SubResource("Theme_jlkii")
 script = ExtResource("1_drg8e")
 
 [node name="Name_Label" type="Label" parent="." unique_id=882508086]

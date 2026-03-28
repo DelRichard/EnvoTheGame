@@ -71,6 +71,7 @@ func _input(event):
 func _on_boss_killed(boss_id: String) -> void:
 	if boss_id == "boss":
 		chilli_killed = true
+		boss_spawner.boss_ui.hide()
 		
 		var q3 = QuestManager.quests.get("Red Hot Chilli Pepper")
 		if q3:
