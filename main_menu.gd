@@ -1,9 +1,10 @@
-extends Node2D
+extends Control
 
 @onready var setting: Panel = $Setting
 @onready var volume: HSlider = $Setting/Volume
 @onready var master_bus = AudioServer.get_bus_index("Master")
 @onready var how_to_play_ui: Panel = $"How to play UI"
+
 
 func _ready():
 	setting.visible = false

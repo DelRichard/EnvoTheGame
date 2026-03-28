@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://b8kuia6ranms1"]
 
-[ext_resource type="Script" uid="uid://b7knmavu1c175" path="res://Scripts/World.gd" id="1_c1cye"]
+[ext_resource type="Script" path="res://Scripts/World.gd" id="1_c1cye"]
 [ext_resource type="PackedScene" uid="uid://dx334m23y6gsy" path="res://ui/pause_menu.tscn" id="1_tvhpe"]
 [ext_resource type="PackedScene" uid="uid://dsh1tl7s5ykkw" path="res://scenes/audio_manager.tscn" id="2_ew6xa"]
 [ext_resource type="PackedScene" uid="uid://bevt2tbays3j0" path="res://scenes/health_bar.tscn" id="2_fvapf"]
@@ -2655,6 +2655,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.46332, 3.4596772, 17.5054
 [node name="OnionEnemy8" parent="." unique_id=1447453283 instance=ExtResource("30_bvj8e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6690855, 3.459346, 18.05486)
 
-[editable path="World/NavigationRegion3D/machine"]
 [connection signal="pressed" from="UIManager/PauseMenu/Setting/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="UIManager/PauseMenu/Setting/Back" to="UIManager/PauseMenu" method="_on_back_pressed"]
+
+[editable path="World/NavigationRegion3D/machine"]

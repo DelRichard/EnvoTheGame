@@ -31,11 +31,12 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_61474")
 [node name="Label" type="Label" parent="BackgroundPanel" unique_id=2092740791]
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0, 0, 0, 1)
-custom_minimum_size = Vector2(490, 100)
+custom_minimum_size = Vector2(480, 100)
 layout_mode = 0
 offset_left = 27.0
 offset_top = 19.0
 offset_right = 517.0
 offset_bottom = 119.0
 theme_override_fonts/font = ExtResource("3_smvbx")
+vertical_alignment = 1
 autowrap_mode = 2
