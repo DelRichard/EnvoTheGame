@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bv6r0ubffo81x" path="res://assets/UI Elements/Untitled 4.png" id="2_ejwgg"]
 [ext_resource type="FontFile" uid="uid://dkl7qsustpbtw" path="res://assets/UI Elements/VCR_OSD_MONO_1.001.ttf" id="3_fob5h"]
 
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fob5h"]
 texture = ExtResource("2_ejwgg")
 region_rect = Rect2(130, 9, 325, 205)
@@ -32,7 +31,9 @@ data = PackedByteArray("AAEAAAAUAQAABABAR0RFRgABAAAAASewAAAADEdQT1MAGQAMAAEnvAAA
 font_name = "VCR OSD Mono"
 style_name = "Regular"
 font_style = 4
+subpixel_positioning = 0
 msdf_pixel_range = 8
+msdf_size = 128
 cache/0/variation_coordinates = {}
 cache/0/face_index = 0
 cache/0/embolden = 0.0

@@ -30,19 +30,23 @@ func toggle_pause():
 
 
 func _on_resume_button_pressed() -> void:
+	AudioManager.dialogue_sound()
 	toggle_pause()
 
 
 func _on_settings_button_pressed() -> void:
+	AudioManager.dialogue_sound()
 	print("settigs pressed")
 	setting.visible = true
 
 
 func _on_quit_button_pressed() -> void:
+	AudioManager.dialogue_sound()
 	get_tree().quit()
 
 
 func _on_back_pressed() -> void:
+	AudioManager.dialogue_sound()
 	setting.visible = false
 
 

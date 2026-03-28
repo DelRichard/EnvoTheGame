@@ -2,9 +2,6 @@
 
 [ext_resource type="Material" uid="uid://cybnuyj427c4p" path="res://assets/materials/waste.tres" id="1_v6ur6"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gcufs"]
-vertex_color_use_as_albedo = true
-
 [sub_resource type="ArrayMesh" id="ArrayMesh_7ifpv"]
 _surfaces = [{
 "aabb": AABB(-1.4392947, -0.040563833, -0.8714531, 2.2705112, 0.040563833, 1.8525108),
@@ -28,7 +25,7 @@ _surfaces = [{
 "index_count": 156,
 "index_data": PackedByteArray("KAApAAAAKAAqACkAKgABAAIAKgArAAEABAAqACgABAAoAB8AKgADACsAKgAEAAMAKwADACwAAwAEAC0ALQAEAB4AAwAtAC4ALwAwAAgAMQAwAC8AMgAwADEAMgAxAAYAMgAGAAcAMAAJACAAMAAzAAkAMAAyADMACQAzACEAMwAyAAUABQAyADQAMwAFACIANQAdABwANQA2AB0ADgA3ADgADgAPADcACgA5ADoACgALADkAOwA8AD0AOwA+ADwAPwAkACMAPwBAACQAQQARABAAQQBCABEAQwANAAwAQwBEAA0AEgATABQAEgAVABMAFgBFAEYAFgAXAEUAGgBHAEgAGgAbAEcAJgBJAEoAJgAlAEkASwBMAE0ASwBOAEwATwBQAFEATwBSAFAAUwAYABkAUwAnABgA"),
 "lods": [0.08530393, PackedByteArray("AAABAAIAAAADAAEAAAAEAAMAAwAEAB4ABAAAAB8ACAAJACAACAAhAAkACAAFACEAIQAFACIABQAIAAYABQAGAAcACgALACMAIwALACQAIwAkAA0AIwANAAwADgAPABAAEAAPABEAEgATABQAEgAVABMAFgAlACYAFgAXACUAJgAlABkAGQAlACcAGQAnABgAGgAbABwAHAAbAB0A"), 0.32649666, PackedByteArray("AAABAAIAAAADAAEAAAAEAAMABQAGAAcABQAIAAYACAAFAAkACgALAAwADAALAA0ADgAPABAAEAAPABEAEgATABQAEgAVABMAFgAXABgAFgAYABkAGgAbABwAHAAbAB0A")],
-"material": SubResource("StandardMaterial3D_gcufs"),
+"material": ExtResource("1_v6ur6"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 84,
@@ -40,4 +37,10 @@ shadow_mesh = SubResource("ArrayMesh_7ifpv")
 [node name="pond" type="MeshInstance3D" unique_id=1553385431]
 mesh = SubResource("ArrayMesh_uprdh")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("1_v6ur6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=512927630]
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="StaticBody3D" unique_id=838594050]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.4573458, 0)
+depth = 3.0
+polygon = PackedVector2Array(0.6935621, 0.5154008, 0.82823974, 0.18388668, 0.5847841, -0.67597795, 0.5019055, -0.950513, -1.0727863, -0.4273424, -1.3732209, -0.023309685, -1.2333634, 0.24604557, -0.73609227, 0.5154008, -0.4252978, 0.84691495, -0.12486309, 0.8728145)
