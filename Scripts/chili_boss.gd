@@ -8,7 +8,6 @@ signal boss_killed(boss_id)
 @onready var head: Node3D = $Head
 @onready var ray_cast_3d: RayCast3D = $Head/RayCast3D
 
-var boss_ui
 var boss_health_bar
 
 
@@ -71,12 +70,9 @@ var is_dying := false
 
 
 func _ready():
-	boss_ui = get_node("/root/MainScene/Player")
-	boss_health_bar = get_node("/root/MainScene/Player")
+	boss_health_bar = get_node("/root/Main/UIManager/BossUI/BossHealthBar")
 	
 	AudioManager.play_boss_music()
-	boss_health_bar.init_health(health_component.current_health)
-	boss_ui.show()
 	player = get_tree().get_first_node_in_group("Player")
 	player_head = player.get_node("CameraPivot")
 
@@ -471,7 +467,7 @@ func _on_enemy_died() -> void:
 	print("Enemy Killed!")
 	current_behavior = BehaviorState.DEATH
 	AudioManager.play_bg_music()
-	boss_ui.hide()
+	
 	
 	emit_signal("boss_killed", "boss")
 
