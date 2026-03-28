@@ -4,10 +4,7 @@ extends CharacterBody3D
 @onready var interact_icon = get_node("/root/Main/Player/Interact_Icon")
 
 @onready var toxic_gas: FogVolume = $"../WorldEnvironment/ToxicGas"
-@onready var toxic_gas_block: CollisionShape3D = $"../World/NavigationRegion3D/Map/AreaBoundaries/toxicGasBlock"
-
-
-
+@onready var toxic_gas_block: CollisionShape3D = $"../World/AreaBoundaries/toxicGasBlock"
 
 @export var npc_id: String = "Guard"
 @export var initial_dialogue: DialogueData

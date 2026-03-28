@@ -231,5 +231,7 @@ animation = &"walk_side"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interact_Area" unique_id=1258156383]
 shape = SubResource("SphereShape3D_d831w")
 
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=203457560]
+
 [connection signal="body_entered" from="Interact_Area" to="." method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="Interact_Area" to="." method="_on_interact_area_body_exited"]
