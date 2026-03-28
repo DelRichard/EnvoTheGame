@@ -10,6 +10,10 @@ signal boss_killed(boss_id)
 
 
 
+@onready var boss_ui: Control = $"../UIManager/BossUI"
+@onready var boss_health_bar: ProgressBar = %BossHealthBar
+
+
 enum BehaviorState { IDLE, WANDER, MOVE_TO_TARGET, FOLLOW, ATTACK, HIT, DEATH, DASHING }
 enum WanderState   { IDLE, WAITING_TO_MOVE, MOVE }
 
@@ -67,7 +71,12 @@ var can_attack := true
 var attack_cooldown_timer := 0.0
 var is_dying := false
 
+
 func _ready():
+	AudioManager.stop_music()
+	AudioManager.play_boss_music()
+	boss_health_bar.init_health(health_component.current_health)
+	boss_ui.show()
 	player = get_tree().get_first_node_in_group("Player")
 	player_head = player.get_node("CameraPivot")
 
@@ -461,7 +470,7 @@ func _on_enemy_died() -> void:
 	print("Enemy Killed!")
 	current_behavior = BehaviorState.DEATH
 	AudioManager.play_bg_music()
-	
+	boss_ui.hide()
 	
 	emit_signal("boss_killed", "boss")
 
@@ -475,3 +484,12 @@ func _on_enemy_hit(from_position: Vector3, knockback: float) -> void:
 		if dir.length() > 0.01:
 			var target_rot = atan2(-dir.x, -dir.z)
 			rotation.y = lerp_angle(rotation.y, target_rot, 1.0)
+
+
+	
+
+
+func _on_health_component_health_changed(current_health, max_health) -> void:
+	if boss_health_bar:
+		boss_health_bar.max_value = max_health
+		boss_health_bar.health = current_health

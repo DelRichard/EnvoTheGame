@@ -56,4 +56,5 @@ metadata/_custom_type_script = "uid://dtuix55s3pkso"
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="died" from="HealthComponent" to="." method="_on_enemy_died"]
+[connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="hit" from="HealthComponent" to="." method="_on_enemy_hit"]

@@ -21,6 +21,7 @@ extends CharacterBody3D
 var clean_water = preload("res://assets/materials/water.tres")
 @onready var machine: AnimationPlayer = $"../World/NavigationRegion3D/machine/gear_001/AnimationPlayer"
 
+@onready var ogre: CharacterBody3D = $"../Ogre"
 
 
 var target_position: Vector3
@@ -173,6 +174,8 @@ func interact():
 			
 		if parts >= 2 and not found_two_played:
 			pumpkin_area_block.disabled = true
+			ogre.go_there()
+			
 			var dialogue2 = preload("res://Dialogue/Found_Two.tres")
 			DialogueManager.start_dialogue(dialogue2, npc_body)
 			found_two_played = true

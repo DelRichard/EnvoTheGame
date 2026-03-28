@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_slhvx")
-lines = Array[String](["Aha... the final component", "There she is ain't she a beaute", "My wife used to say the land remembers kindness", "I thought that was sentimental jibber jabber. I'm less sure now", "But this tiny pond here won't support us for long", "Dem pond folk blocked of the main river to protect what they had", "Take this to them. Show them what clean water looks like when someone actually tries", "Maybe they'll remember what that felt like", "This will be proof that together we can rebuild again", "Against dem evil city folk"])
+lines = Array[String](["Aha... the final component", "There she is, ain't she a beaute?", "My wife used to say the land remembers kindness", "I thought that was sentimental jibber jabber. I'm less sure now", "But this tiny pond here won't support us for long", "Dem pond folk blocked of the main river to protect what they had", "Take this to them. Show them what clean water looks like when someone actually tries", "Maybe they'll remember what that felt like", "This will be proof that together we can rebuild again", "Against dem evil city folk"])
 metadata/_custom_type_script = "uid://dmp1iu63or1av"

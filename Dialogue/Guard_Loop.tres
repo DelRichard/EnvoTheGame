@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_t7ohd")
-lines = Array[String](["No response"])
+lines = Array[String](["No response."])
 metadata/_custom_type_script = "uid://dmp1iu63or1av"
