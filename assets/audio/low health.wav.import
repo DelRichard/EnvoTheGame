@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cl5mnxcjkwg6a"
+path="res://.godot/imported/low health.wav-aad8f9fa40a92e0c5ed31991266c1ea7.sample"
+
+[deps]
+
+source_file="res://assets/audio/low health.wav"
+dest_files=["res://.godot/imported/low health.wav-aad8f9fa40a92e0c5ed31991266c1ea7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

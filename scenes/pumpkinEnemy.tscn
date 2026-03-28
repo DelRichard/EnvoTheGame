@@ -11,6 +11,7 @@ height = 0.9758301
 
 [node name="PumpkinEnemy" type="CharacterBody3D" unique_id=1327594500 groups=["Enemy"]]
 script = ExtResource("1_k6jkh")
+max_view_distance = 3.0
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=167188248]
 unique_name_in_owner = true

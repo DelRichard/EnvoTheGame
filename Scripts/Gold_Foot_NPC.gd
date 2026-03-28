@@ -19,6 +19,8 @@ extends CharacterBody3D
 @onready var big_fog: FogVolume = $"../WorldEnvironment/BigFog"
 @onready var pond: MeshInstance3D = $"../World/NavigationRegion3D/pond"
 var clean_water = preload("res://assets/materials/water.tres")
+@onready var machine: AnimationPlayer = $"../World/NavigationRegion3D/machine/gear_001/AnimationPlayer"
+
 
 
 var target_position: Vector3
@@ -188,6 +190,7 @@ func interact():
 			boss_area_block.disabled = true
 			big_fog.material.density = 0.0
 			pond.material_override = clean_water
+			machine.play("on")
 			
 			var dialogue4 = preload("res://Dialogue/Final_Found.tres")
 			DialogueManager.start_dialogue(dialogue4, npc_body)

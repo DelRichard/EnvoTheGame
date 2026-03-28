@@ -129,6 +129,7 @@ func _physics_process(delta):
 			is_jumping = false
 			animated_sprite_3d.play("idle_back") 
 			animated_sprite_3d.play()
+			AudioManager.jump_sound()
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = jump_velocity
 		is_jumping = true
@@ -214,11 +215,13 @@ func die():
 	velocity = Vector3.ZERO
 	set_process(false)
 	set_physics_process(false)
+	AudioManager.death_sound()
 	animated_sprite_3d.play("death")
 	await get_tree().create_timer(2.0).timeout
 	restart_level()
 	
 func restart_level():
+	AudioManager.revive_sound()
 	respawn_player()
 	
 func respawn_player():
@@ -245,6 +248,7 @@ func _on_died() -> void:
 
 func _on_player_hit(from_position: Vector3, knockback: float) -> void:
 	print("Player got hit!")
+	AudioManager.hit_sound()
 	animated_sprite_3d.modulate = Color.RED
 	await get_tree().create_timer(0.1).timeout
 	animated_sprite_3d.modulate = Color.WHITE

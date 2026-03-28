@@ -2,7 +2,6 @@ extends CharacterBody3D
 
 @onready var animated_sprite_3d: AnimatedSprite3D = $AnimatedSprite3D
 @onready var health_component: HealthComponent = %HealthComponent
-@onready var audio_stream_player_3d: AudioStreamPlayer3D = %AudioStreamPlayer3D
 @onready var fume: MeshInstance3D = $fume
 
 @export var debug: bool = false
@@ -57,11 +56,12 @@ func change_state(new_state: States) -> void:
 
 		States.HIT:
 			animated_sprite_3d.play("hit")
+			AudioManager.hit_sound()
 			animated_sprite_3d.modulate = Color.RED
 
 		States.DEATH:
 			animated_sprite_3d.play("death")
-			audio_stream_player_3d.play()
+			AudioManager.death_sound()
 
 func _physics_process(delta: float) -> void:
 	# Cooldown ticker (runs regardless of state)

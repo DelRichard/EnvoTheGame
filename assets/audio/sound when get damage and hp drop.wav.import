@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dqetueeoelepy"
+path="res://.godot/imported/sound when get damage and hp drop.wav-968cc1e0c1d18f59d806d13676c4cf1f.sample"
+
+[deps]
+
+source_file="res://assets/audio/sound when get damage and hp drop.wav"
+dest_files=["res://.godot/imported/sound when get damage and hp drop.wav-968cc1e0c1d18f59d806d13676c4cf1f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

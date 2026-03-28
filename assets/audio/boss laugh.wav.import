@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dfejd8ievvr7l"
+path="res://.godot/imported/boss laugh.wav-9a8b6da543a18d6cd57e6d11c21426b0.sample"
+
+[deps]
+
+source_file="res://assets/audio/boss laugh.wav"
+dest_files=["res://.godot/imported/boss laugh.wav-9a8b6da543a18d6cd57e6d11c21426b0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

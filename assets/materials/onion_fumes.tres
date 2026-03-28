@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dj36m4vfh1m5j"]
+
+[ext_resource type="Shader" uid="uid://42i1iuuc5vf8" path="res://assets/materials/smoke.gdshader" id="1_7ofgq"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_7ofgq")
+shader_parameter/top_radius = 0.986000046835
+shader_parameter/bottom_radius = 0.0550000026125
+shader_parameter/center_radius = 0.1850000087875
+shader_parameter/center_position = 0.0
+shader_parameter/cylinder_height = 2.57200012217
+shader_parameter/bottom_curve = 0.4
+shader_parameter/_vibrate_amplitude = 0.015
+shader_parameter/_vibrate_frequency = 200.0
+shader_parameter/_speed = 3.605
+shader_parameter/_scale = 5.19
+shader_parameter/base_color = Color(0.4610278, 1, 0.42935163, 1)
+shader_parameter/tip_color = Color(0, 1, 0, 1)
+shader_parameter/_color_intensity = 2.930000139175

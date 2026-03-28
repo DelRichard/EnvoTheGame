@@ -2,29 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bix3es3hy3sht" path="res://Scripts/onion_enemy.gd" id="1_u84so"]
 [ext_resource type="SpriteFrames" uid="uid://dnwfs018lx8gl" path="res://assets/character_models/OnionSpriteFrames.tres" id="2_m6vfl"]
+[ext_resource type="Material" uid="uid://dj36m4vfh1m5j" path="res://assets/materials/onion_fumes.tres" id="3_qv1vs"]
 [ext_resource type="AudioStream" uid="uid://cs6dfgxel2a5d" path="res://assets/other/enemyDeathSound.wav" id="3_rglj6"]
 [ext_resource type="Script" uid="uid://dtuix55s3pkso" path="res://Scripts/healthComponent.gd" id="4_mdh8v"]
-[ext_resource type="Shader" uid="uid://42i1iuuc5vf8" path="res://assets/materials/smoke.gdshader" id="5_qv1vs"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_m6vfl"]
 cap_top = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8hoyo"]
-render_priority = 0
-shader = ExtResource("5_qv1vs")
-shader_parameter/top_radius = 0.986000046835
-shader_parameter/bottom_radius = 0.0550000026125
-shader_parameter/center_radius = 0.1850000087875
-shader_parameter/center_position = 0.0
-shader_parameter/cylinder_height = 2.57200012217
-shader_parameter/bottom_curve = 0.4
-shader_parameter/_vibrate_amplitude = 0.015
-shader_parameter/_vibrate_frequency = 200.0
-shader_parameter/_speed = 3.605
-shader_parameter/_scale = 5.19
-shader_parameter/base_color = Color(0.4610278, 1, 0.42935163, 1)
-shader_parameter/tip_color = Color(0, 1, 0, 1)
-shader_parameter/_color_intensity = 2.930000139175
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8hoyo"]
 radius = 0.08770752
@@ -45,7 +28,7 @@ animation = &"hidden"
 transform = Transform3D(0.30104536, 0, 0, 0, 0.16527049, 0, 0, 0, 0.30104536, 0, 0.021095574, 0.0032070875)
 visible = false
 mesh = SubResource("CylinderMesh_m6vfl")
-surface_material_override/0 = SubResource("ShaderMaterial_8hoyo")
+surface_material_override/0 = ExtResource("3_qv1vs")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=513218477]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.060821533, 0)

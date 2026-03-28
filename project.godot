@@ -26,6 +26,11 @@ QuestLoader="*uid://bibvmvvs2vp5b"
 DialogueManager="*uid://8af1w86qyvr5"
 DialogueController="*uid://fj4cc2l82etv"
 InventoryManager="*uid://deoii2q8k1v24"
+AudioManager="*uid://dsh1tl7s5ykkw"
+
+[global]
+
+SFX=false
 
 [global_group]
 

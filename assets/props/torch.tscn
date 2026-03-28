@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://lvu6l761u35m"]
+
+[ext_resource type="Material" uid="uid://bfgwdcuapog6f" path="res://assets/materials/wood.tres" id="1_gvyfe"]
+[ext_resource type="Material" uid="uid://dmetrtn7ackhr" path="res://assets/materials/fire.tres" id="2_poso1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_eim0a"]
+material = ExtResource("1_gvyfe")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y5m1a"]
+albedo_color = Color(1, 1, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.5568628, 0, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_l72uj"]
+material = SubResource("StandardMaterial3D_y5m1a")
+radial_segments = 8
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gim0c"]
+material = ExtResource("2_poso1")
+
+[node name="torch" type="Node3D" unique_id=851718811]
+
+[node name="torch" type="MeshInstance3D" parent="." unique_id=820955591]
+transform = Transform3D(0.04859616, 0, 0, 0, 0.63685936, 0, 0, 0, 0.04859616, 0, 0, 0)
+mesh = SubResource("BoxMesh_eim0a")
+
+[node name="firebase" type="MeshInstance3D" parent="." unique_id=221975100]
+transform = Transform3D(0.07915296, 0, 0, 0, 0.07915296, 0, 0, 0, 0.07915296, 0, 0.34828594, 0)
+mesh = SubResource("SphereMesh_l72uj")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="firebase" unique_id=1984173316]
+light_color = Color(1, 0.91764706, 0.4117647, 1)
+
+[node name="fire" type="MeshInstance3D" parent="." unique_id=1088417804]
+transform = Transform3D(0.5636687, 0, 0, 0, 0.27238014, 0, 0, 0, 0.5636687, 0, 0.3414516, 0)
+mesh = SubResource("CylinderMesh_gim0c")

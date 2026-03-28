@@ -3,7 +3,6 @@ extends CharacterBody3D
 @onready var animated_sprite_3d: AnimatedSprite3D = $AnimatedSprite3D
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var health_component: HealthComponent = $HealthComponent
-@onready var audio_stream_player_3d: AudioStreamPlayer3D = %AudioStreamPlayer3D
 @onready var head: Node3D = $Head
 @onready var ray_cast_3d: RayCast3D = $Head/RayCast3D
 
@@ -97,6 +96,7 @@ func _physics_process(delta: float) -> void:
 			follow(player, delta)
 		BehaviorState.HIT:
 			animated_sprite_3d.play("hit")
+			AudioManager.hit_sound()
 			animated_sprite_3d.modulate = Color.RED
 			await get_tree().create_timer(0.1).timeout
 			animated_sprite_3d.modulate = Color.WHITE
@@ -105,7 +105,7 @@ func _physics_process(delta: float) -> void:
 			if not is_dying:
 				is_dying = true
 				animated_sprite_3d.play("death")
-				audio_stream_player_3d.play()
+				AudioManager.death_sound()
 				await animated_sprite_3d.animation_finished
 				queue_free()
 			return

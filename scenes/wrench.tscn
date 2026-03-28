@@ -19,5 +19,7 @@ hover_amplitude = 0.05
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pick_up_range" unique_id=899432553]
 shape = SubResource("SphereShape3D_e7nyc")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1194804734]
+
 [connection signal="body_entered" from="Pick_up_range" to="." method="_on_pick_up_range_body_entered"]
 [connection signal="body_exited" from="Pick_up_range" to="." method="_on_pick_up_range_body_exited"]

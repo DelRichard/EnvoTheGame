@@ -22,5 +22,7 @@ func spawn_boss():
 	get_tree().current_scene.add_child(boss)
 	boss.global_position = spawn_position.global_position
 	spawned = true
+	AudioManager.play_boss_music()
+	AudioManager.boss_laugh_sound()
 	print("Boss spawned!")
 	return boss

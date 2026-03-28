@@ -5,7 +5,6 @@ signal boss_killed(boss_id)
 @onready var animated_sprite_3d: AnimatedSprite3D = $AnimatedSprite3D
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var health_component: HealthComponent = $HealthComponent
-@onready var audio_stream_player_3d: AudioStreamPlayer3D = %AudioStreamPlayer3D
 @onready var head: Node3D = $Head
 @onready var ray_cast_3d: RayCast3D = $Head/RayCast3D
 
@@ -89,6 +88,7 @@ func _physics_process(delta: float) -> void:
 				follow(player, delta)
 			process_attack_logic(delta)
 		BehaviorState.HIT:
+			AudioManager.hit_sound()
 			animated_sprite_3d.play("hit")
 			squash_effect()
 			await get_tree().create_timer(0.1).timeout # hit stun
@@ -102,7 +102,7 @@ func _physics_process(delta: float) -> void:
 			if not is_dying:
 				is_dying = true
 				animated_sprite_3d.play("death")
-				audio_stream_player_3d.play()
+				AudioManager.boss_death_sound()
 				await animated_sprite_3d.animation_finished
 				queue_free()
 			return
@@ -460,7 +460,7 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 func _on_enemy_died() -> void:
 	print("Enemy Killed!")
 	current_behavior = BehaviorState.DEATH
-	
+	AudioManager.play_bg_music()
 	
 	
 	emit_signal("boss_killed", "boss")

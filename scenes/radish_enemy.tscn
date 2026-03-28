@@ -11,6 +11,7 @@ height = 0.13024902
 
 [node name="RadishEnemy" type="CharacterBody3D" unique_id=1327594500 groups=["Enemy"]]
 script = ExtResource("1_xwavj")
+max_view_distance = 3.0
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=167188248]
 unique_name_in_owner = true
@@ -19,7 +20,7 @@ billboard = 2
 alpha_cut = 1
 texture_filter = 0
 sprite_frames = ExtResource("2_xwavj")
-animation = &"death"
+animation = &"idle_front"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=513218477]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06732178, 0)
