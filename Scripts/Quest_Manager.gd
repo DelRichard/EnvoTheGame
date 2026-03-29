@@ -38,3 +38,8 @@ func finish_quest(quest_name: String):
 		emit_signal("quest_completed", quest_name)
 		if quest.next_quest != "":
 			start_quest(quest.next_quest)
+			
+func reset_manager():
+	quests.clear()
+	for quest_name in quests:
+		emit_signal("quest_completed", quest_name)

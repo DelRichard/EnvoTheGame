@@ -44,3 +44,6 @@ func print_inventory():
 		if item == null:
 			continue
 		print("%s x%d" % [item.item_name, item.item_quantity])
+		
+func reset_inventory():
+	items.clear()

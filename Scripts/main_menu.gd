@@ -15,11 +15,14 @@ func _ready():
 	
 func _on_start_pressed() -> void:
 	AudioManager.dialogue_sound()
+	InventoryManager.reset_inventory()
+	QuestManager.reset_manager()
+	QuestLoader.load_quests() 
+	QuestManager.start_quest("Crazy Introductions")
 	get_tree().change_scene_to_file("res://newMain.tscn")
 
 func _on_settings_pressed() -> void:
 	AudioManager.dialogue_sound()
-	print("settigs pressed")
 	setting.visible = true
 
 func _on_how_to_play_pressed() -> void:

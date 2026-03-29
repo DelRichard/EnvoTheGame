@@ -78,6 +78,8 @@ func release_mouse():
 	mouse_captured = false
 
 func _unhandled_input(event):
+	if event.is_action_pressed("DEBUG"):
+		InventoryManager.print_inventory()
 		
 	if event.is_action_pressed("ui_cancel"):
 		if mouse_captured: release_mouse()
