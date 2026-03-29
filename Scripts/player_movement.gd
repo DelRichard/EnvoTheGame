@@ -260,3 +260,7 @@ func _on_player_health_changed(current_health, max_health) -> void:
 func _on_animation_finished() -> void:
 	if animated_sprite_3d.animation == "attack":
 		is_attacking = false
+
+
+func _on_respawn_pressed() -> void:
+	global_position = spawn_position

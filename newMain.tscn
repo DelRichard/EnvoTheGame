@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://8af1w86qyvr5" path="res://scenes/dialogue_manager.tscn" id="4_fa2m2"]
 [ext_resource type="FontFile" uid="uid://dkl7qsustpbtw" path="res://assets/UI Elements/VCR_OSD_MONO_1.001.ttf" id="4_u16xd"]
 [ext_resource type="Material" uid="uid://d0mncyu3q3uhe" path="res://assets/other/simpleSky.tres" id="5_c1cye"]
+[ext_resource type="Texture2D" uid="uid://briv4o2wyukj7" path="res://assets/UI Elements/button_texture.tres" id="5_ogwjn"]
 [ext_resource type="PackedScene" uid="uid://bfm5upmg7jv02" path="res://scenes/player.tscn" id="6_0jcyh"]
 [ext_resource type="Material" uid="uid://ctublrobdthly" path="res://assets/materials/dirt.tres" id="6_ww56k"]
 [ext_resource type="Material" uid="uid://cr6y3bbrmlcqv" path="res://assets/materials/mountain.tres" id="8_mfv76"]
@@ -54,6 +55,13 @@
 [ext_resource type="PackedScene" uid="uid://bh4d4e7g6464u" path="res://scenes/npc_5.tscn" id="46_8of62"]
 [ext_resource type="PackedScene" uid="uid://c4oou04pmen38" path="res://scenes/boss_spawner.tscn" id="46_daay6"]
 [ext_resource type="PackedScene" uid="uid://lvu6l761u35m" path="res://assets/props/torch.tscn" id="52_u16xd"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k5n8k"]
+texture = ExtResource("5_ogwjn")
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rtw2f"]
 atlas = ExtResource("3_ew6xa")
@@ -427,7 +435,18 @@ offset_top = 5.0
 offset_right = 71.0
 offset_bottom = 56.0
 
+[node name="Respawn" type="Button" parent="UIManager/PauseMenu" unique_id=976933007]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 532.0
+offset_right = 392.0
+offset_bottom = 563.0
+theme_override_fonts/font = ExtResource("4_u16xd")
+theme_override_styles/normal = SubResource("StyleBoxTexture_k5n8k")
+text = "Respawn at Treehouse (if stuck)"
+
 [node name="Setting" type="Panel" parent="UIManager/PauseMenu" unique_id=1966825907]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -907,7 +926,6 @@ skeleton = NodePath("../../../..")
 
 [node name="pond" parent="World/NavigationRegion3D" unique_id=1553385431 groups=["NavMeshGroup"] instance=ExtResource("32_8of62")]
 transform = Transform3D(-1.3435276, 0, 0.9140892, 0, 1.6249998, 0, -0.9140892, 0, -1.3435276, 6.2363276, 3.3860674, 9.54919)
-surface_material_override/0 = null
 
 [node name="treehouse" parent="World/NavigationRegion3D" unique_id=440114955 groups=["NavMeshGroup"] instance=ExtResource("15_daay6")]
 transform = Transform3D(-0.4859998, 0, -0.87395895, 0, 1, 0, 0.87395895, 0, -0.4859998, -11.201197, 3.509358, 30.516552)
@@ -1185,15 +1203,6 @@ transform = Transform3D(-0.6576063, 0, -2.1655235, 0, 2.26317, 0, 2.1655235, 0, 
 [node name="machine" parent="World/NavigationRegion3D" unique_id=1370622259 groups=["NavMeshGroup"] instance=ExtResource("31_fa2m2")]
 transform = Transform3D(-0.31811926, 0, 0.3066574, 0, 0.4418581, 0, -0.3066574, 0, -0.31811926, 7.6763835, 4.2785063, 7.942093)
 
-[node name="tap" parent="World/NavigationRegion3D/machine" index="1" unique_id=81604559]
-surface_material_override/0 = null
-
-[node name="Cone" parent="World/NavigationRegion3D/machine" index="4" unique_id=1144466146]
-surface_material_override/0 = null
-
-[node name="gear" parent="World/NavigationRegion3D/machine/gear_001/Skeleton3D" parent_id_path=PackedInt32Array(1370622259, 613402210) index="0" unique_id=1270149153]
-surface_material_override/0 = null
-
 [node name="barrels" type="Node3D" parent="World/NavigationRegion3D" unique_id=1806585055 groups=["NavMeshGroup"]]
 
 [node name="Barrel" parent="World/NavigationRegion3D/barrels" unique_id=63585051 instance=ExtResource("43_u16xd")]
@@ -1357,7 +1366,7 @@ transform = Transform3D(-0.041316725, 0, 0.03157417, 0, 0.052, 0, -0.03157417, 0
 surface_material_override/0 = null
 
 [node name="rock27" parent="World/NavigationRegion3D/pebbles" unique_id=1223081389 instance=ExtResource("37_c1cye")]
-transform = Transform3D(0.052, 0, 0, 0, 0.052, 0, 0, 0, 0.052, 4.432568, 3.323268, 12.876881)
+transform = Transform3D(0.052, 0, 0, 0, 0.052, 0, 0, 0, 0.052, 4.432568, 3.1863427, 12.876881)
 surface_material_override/0 = null
 
 [node name="rock28" parent="World/NavigationRegion3D/pebbles" unique_id=1021298447 instance=ExtResource("37_c1cye")]
@@ -2535,7 +2544,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5012672, 3.6070213, 26.9518
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3527465, 3.6070213, 29.591452)
 
 [node name="torch3" parent="World/NavigationRegion3D/torches" unique_id=2062842570 instance=ExtResource("52_u16xd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.599785, 3.6070213, 28.295311)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.621938, 3.6070213, 27.06431)
 
 [node name="torch11" parent="World/NavigationRegion3D/torches" unique_id=2032049794 instance=ExtResource("52_u16xd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.744252, 3.6070213, 11.571796)
@@ -2543,8 +2552,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.744252, 3.6070213, 11.57179
 [node name="torch12" parent="World/NavigationRegion3D/torches" unique_id=305200282 instance=ExtResource("52_u16xd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0914583, 3.6070213, 7.575856)
 
+[node name="torch17" parent="World/NavigationRegion3D/torches" unique_id=1798216852 instance=ExtResource("52_u16xd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.97755873, 3.6070213, 13.960259)
+
+[node name="torch15" parent="World/NavigationRegion3D/torches" unique_id=754020184 instance=ExtResource("52_u16xd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28457212, 3.6070213, 3.2197733)
+
+[node name="torch16" parent="World/NavigationRegion3D/torches" unique_id=682532063 instance=ExtResource("52_u16xd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7240165, 3.6070213, -1.8747742)
+
 [node name="torch4" parent="World/NavigationRegion3D/torches" unique_id=962613159 instance=ExtResource("52_u16xd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.877005, 3.6070213, 30.22533)
+
+[node name="torch13" parent="World/NavigationRegion3D/torches" unique_id=1261329920 instance=ExtResource("52_u16xd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.141241, 3.6070213, 19.722954)
+
+[node name="torch14" parent="World/NavigationRegion3D/torches" unique_id=1748180273 instance=ExtResource("52_u16xd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.191959, 3.6070213, 16.029642)
 
 [node name="torch5" parent="World/NavigationRegion3D/torches" unique_id=275285592 instance=ExtResource("52_u16xd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.877005, 3.6070213, 27.22533)
@@ -2563,6 +2587,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.153892, 3.6070213, -1.7773
 
 [node name="torch10" parent="World/NavigationRegion3D/torches" unique_id=2002003203 instance=ExtResource("52_u16xd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.914153, 3.6070213, 31.38627)
+
+[node name="NavigationLink3D" type="NavigationLink3D" parent="World/NavigationRegion3D" unique_id=1081293151]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6819267, 5.0992594, -2.0473726)
+start_position = Vector3(0.12908936, -1.7500703, 2.850669)
+end_position = Vector3(-0.012121916, 0.063370705, 0.5291656)
+
+[node name="NavigationLink3D4" type="NavigationLink3D" parent="World/NavigationRegion3D" unique_id=828012648]
+transform = Transform3D(-0.9191491, 0, 0.3939098, 0, 1, 0, -0.3939098, 0, -0.9191491, -1.3390384, 5.0992594, 4.135156)
+start_position = Vector3(0.12908936, -1.7500703, 2.850669)
+end_position = Vector3(-0.031771183, 0.118533134, 0.23551846)
+
+[node name="NavigationLink3D5" type="NavigationLink3D" parent="World/NavigationRegion3D" unique_id=849755773]
+transform = Transform3D(-0.9191491, 0, 0.3939098, 0, 1, 0, -0.3939098, 0, -0.9191491, -4.103365, 5.0395336, 4.135156)
+start_position = Vector3(0.21651983, -1.6112373, 2.4832532)
+end_position = Vector3(-0.031771183, 0.118533134, 0.23551846)
+
+[node name="NavigationLink3D6" type="NavigationLink3D" parent="World/NavigationRegion3D" unique_id=1344784510]
+transform = Transform3D(-0.9509486, 0, 0.30934894, 0, 1, 0, -0.30934894, 0, -0.9509486, 1.7427914, 5.0395336, 5.6311374)
+start_position = Vector3(0.16617298, -1.9087772, 2.305812)
+end_position = Vector3(-0.34688807, -0.6511221, -0.5122719)
+
+[node name="NavigationLink3D2" type="NavigationLink3D" parent="World/NavigationRegion3D" unique_id=2110613094]
+transform = Transform3D(0.5899435, 0, -0.8074445, 0, 1, 0, 0.8074445, 0, 0.5899435, 8.345995, 5.0992594, -2.6061697)
+start_position = Vector3(0.18352103, -1.6253147, 2.1978679)
+end_position = Vector3(0.21231198, 0.07313204, 0.62796164)
+
+[node name="NavigationLink3D3" type="NavigationLink3D" parent="World/NavigationRegion3D" unique_id=1764675514]
+transform = Transform3D(0.1395706, 0, -0.9902121, 0, 1, 0, 0.9902121, 0, 0.1395706, 7.328479, 5.0992594, 1.8433285)
+start_position = Vector3(0.18352103, -1.6253147, 2.1978679)
+end_position = Vector3(0.15757918, 0.16204214, -0.80040216)
 
 [node name="Wrench" parent="." unique_id=1209115370 instance=ExtResource("32_tvhpe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.238928, 3.4424229, 18.277193)
@@ -2613,58 +2667,49 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.249581, 3.719295, -0.783848
 following_target = NodePath("../Player")
 
 [node name="OnionEnemy" parent="." unique_id=1272817638 instance=ExtResource("30_bvj8e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.549134, 3.4672365, 19.373302)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.103304, 3.4672365, 18.433464)
 
 [node name="OnionEnemy2" parent="." unique_id=643895315 instance=ExtResource("30_bvj8e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.091167, 3.4737082, 18.444971)
-
-[node name="OnionEnemy3" parent="." unique_id=1237832628 instance=ExtResource("30_bvj8e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.87183, 3.4651783, 17.066444)
 
 [node name="OnionEnemy4" parent="." unique_id=981010887 instance=ExtResource("30_bvj8e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.424208, 3.4624763, 17.942635)
 
 [node name="RadishEnemy" parent="." unique_id=1223622874 instance=ExtResource("34_xjcue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1119187, 3.4990153, 20.566866)
+transform = Transform3D(0.6029017, 0, -0.7978155, 0, 1, 0, 0.7978155, 0, 0.6029017, 3.1119187, 3.4990153, 20.566866)
 
 [node name="RadishEnemy6" parent="." unique_id=881847059 instance=ExtResource("34_xjcue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5291295, 3.4990153, 19.678534)
+transform = Transform3D(-0.98246664, 0, -0.18643835, 0, 1, 0, 0.18643835, 0, -0.98246664, 3.5291295, 3.4990153, 19.678534)
 
 [node name="RadishEnemy2" parent="." unique_id=1494872043 instance=ExtResource("34_xjcue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9214497, 3.487323, 20.560776)
+transform = Transform3D(0.6869987, 0, 0.72665864, 0, 1, 0, -0.72665864, 0, 0.6869987, 3.9214497, 3.487323, 20.560776)
 
 [node name="RadishEnemy3" parent="." unique_id=512486921 instance=ExtResource("34_xjcue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.098629, 3.4381814, 15.80116)
+transform = Transform3D(-0.9425482, 0, 0.33407015, 0, 1, 0, -0.33407015, 0, -0.9425482, 16.098629, 3.4381814, 15.80116)
 
 [node name="RadishEnemy4" parent="." unique_id=1779945051 instance=ExtResource("34_xjcue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.315599, 3.4385798, 15.518725)
+transform = Transform3D(-0.9915742, 0, -0.12953985, 0, 1, 0, 0.12953985, 0, -0.9915742, 15.315599, 3.4385798, 15.518725)
 
 [node name="RadishEnemy5" parent="." unique_id=1733939411 instance=ExtResource("34_xjcue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.26544, 3.4263773, 14.598847)
+transform = Transform3D(0.42386743, 0, 0.9057242, 0, 1, 0, -0.9057242, 0, 0.42386743, 15.26544, 3.4263773, 14.598847)
 
 [node name="RadishEnemy7" parent="." unique_id=1398362717 instance=ExtResource("34_xjcue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0346537, 3.283779, 19.877542)
+transform = Transform3D(0.13628621, 0, 0.9906695, 0, 1, 0, -0.9906695, 0, 0.13628621, 4.0346537, 3.283779, 19.877542)
 
 [node name="RadishEnemy8" parent="." unique_id=1390312841 instance=ExtResource("34_xjcue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7508662, 3.2703657, 19.888485)
+transform = Transform3D(0.106992885, 0, -0.9942598, 0, 1, 0, 0.9942598, 0, 0.106992885, 2.7508662, 3.2703657, 19.888485)
 
 [node name="RadishEnemy9" parent="." unique_id=548219442 instance=ExtResource("34_xjcue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.849212, 3.383599, 14.09909)
+transform = Transform3D(0.021413554, 0, 0.9997707, 0, 1, 0, -0.9997707, 0, 0.021413554, 15.849212, 3.383599, 14.09909)
 
 [node name="RadishEnemy10" parent="." unique_id=1657680648 instance=ExtResource("34_xjcue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.273312, 3.3826675, 15.245368)
-
-[node name="OnionEnemy5" parent="." unique_id=329540083 instance=ExtResource("30_bvj8e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.335869, 3.4582407, 18.56194)
-
-[node name="OnionEnemy6" parent="." unique_id=418373900 instance=ExtResource("30_bvj8e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.516263, 3.45934, 19.065868)
+transform = Transform3D(0.17923155, 0, 0.9838069, 0, 1, 0, -0.9838069, 0, 0.17923155, 16.065813, 3.3826675, 14.982199)
 
 [node name="OnionEnemy7" parent="." unique_id=218043634 instance=ExtResource("30_bvj8e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.46332, 3.4596772, 17.50546)
 
 [node name="OnionEnemy8" parent="." unique_id=1447453283 instance=ExtResource("30_bvj8e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6690855, 3.459346, 18.05486)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.441541, 3.459346, 18.05486)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=477969249]
 
@@ -2673,7 +2718,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 0)
 
+[connection signal="pressed" from="UIManager/PauseMenu/Respawn" to="Player" method="_on_respawn_pressed"]
 [connection signal="pressed" from="UIManager/PauseMenu/Setting/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="UIManager/PauseMenu/Setting/Back" to="UIManager/PauseMenu" method="_on_back_pressed"]
-
-[editable path="World/NavigationRegion3D/machine"]

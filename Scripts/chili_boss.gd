@@ -102,6 +102,7 @@ func _physics_process(delta: float) -> void:
 			else:
 				current_behavior = BehaviorState.IDLE
 		BehaviorState.DASHING:
+			AudioManager.whoosh_sound()
 			process_dash(delta)
 		BehaviorState.DEATH:
 			if not is_dying:

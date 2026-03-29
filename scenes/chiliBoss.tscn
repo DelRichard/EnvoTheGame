@@ -11,6 +11,7 @@ height = 1.9456024
 
 [node name="ChiliBoss" type="CharacterBody3D" unique_id=1327594500 groups=["Enemy"]]
 script = ExtResource("1_vsxyj")
+lose_sight_time = 15.0
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=167188248]
 unique_name_in_owner = true

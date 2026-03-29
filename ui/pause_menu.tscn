@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://qbjicmv6pucc" path="res://Scripts/pause_menu.gd" id="1_50142"]
 [ext_resource type="Texture2D" uid="uid://bv6r0ubffo81x" path="res://assets/UI Elements/Untitled 4.png" id="2_ejwgg"]
 [ext_resource type="FontFile" uid="uid://dkl7qsustpbtw" path="res://assets/UI Elements/VCR_OSD_MONO_1.001.ttf" id="3_fob5h"]
+[ext_resource type="Texture2D" uid="uid://briv4o2wyukj7" path="res://assets/UI Elements/button_texture.tres" id="4_avurv"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fob5h"]
 texture = ExtResource("2_ejwgg")
@@ -118,10 +119,6 @@ cache/0/50/0/glyphs/69/texture_idx = 0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vovkw"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jyvtb"]
-atlas = ExtResource("2_ejwgg")
-region = Rect2(6, 203, 89, 29)
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fijdv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lpidc"]
@@ -210,7 +207,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_fob5h")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_j3kxr")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_vovkw")
 text = "Resume"
-icon = SubResource("AtlasTexture_jyvtb")
+icon = ExtResource("4_avurv")
 icon_alignment = 1
 expand_icon = true
 
