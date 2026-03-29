@@ -15,9 +15,14 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Envo"
+config/description="A game about poverty"
 run/main_scene="uid://ck8t644ocqbqg"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://assets/icons/icon.svg"
+boot_splash/image="uid://djff7bca2ph7d"
+config/icon="uid://cdmlnnnei0bvc"
+config/macos_native_icon="res://assets/UI Elements/game_icon.icns"
+config/windows_native_icon="res://assets/UI Elements/game_icon.ico"
+boot_splash/minimum_display_time=8
 
 [autoload]
 
